@@ -2,10 +2,10 @@
 
 ## Rails
 ### Models
+Review
 
 ### Controllers
-Api::BlogsController (search)
-Api::PostsController (search)
+ReviewsController (create)
 
 ### Views
 
@@ -15,8 +15,5 @@ Api::PostsController (search)
 ### Collections
 
 ### Views
-* BlogSearchItem
-* SearchShow (composite view, contains BlogsIndex and PostsIndex subviews)
 
 ## Gems/Libraries
-

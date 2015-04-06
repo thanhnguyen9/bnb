@@ -2,20 +2,23 @@
 
 ## Rails
 ### Models
+* Reservation
 
 ### Controllers
+* ReservationsController (create, show, destroy)
 
 ### Views
+* reservations/show.html.erb
 
 ## Backbone
 ### Models
+* Reservation
 
 ### Collections
+* Reservations
 
 ### Views
-* PostForm
+* ReservationShow
 
 ## Gems/Libraries
-* Filepicker
-* Markdown-js
-* Bootstrap Markdown
+* Google-Maps-for-Rails

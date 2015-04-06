@@ -4,10 +4,10 @@
 ### Models
 
 ### Controllers
-Api::PostsController (feed)
+* UsersController (edit, update)
 
 ### Views
-posts/feed.json.jbuilder
+* users/edit.html.erb
 
 ## Backbone
 ### Models
@@ -15,6 +15,5 @@ posts/feed.json.jbuilder
 ### Collections
 
 ### Views
-* FeedShow (composite view, contains PostsIndex subview)
 
 ## Gems/Libraries

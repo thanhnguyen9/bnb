@@ -1,24 +1,33 @@
-# Flux-capacitr
+# PetBnB
 
 [Heroku link][heroku]
 
-[heroku]: http://flux-capacitr.herokuapp.com
+[heroku]: http://petbnb.herokuapp.com
 
 ## Minimum Viable Product
-Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
+PetBnB is AirBnB for pets, built on Rails and Backbone. Users can:
 
 <!-- This is a Markdown checklist. Use it to keep track of your progress! -->
 
-- [x] Create accounts
-- [x] Create sessions (log in)
-- [x] Create blogs
-- [x] Create blog posts
-- [ ] View blogs and posts
-- [ ] Subscribe to blogs
-- [ ] View a feed of subscribed blogs
-- [ ] Tag blog posts
-- [ ] Search for blogs by title
-- [ ] Search for posts by tag
+- [ ] Create accounts
+- [ ] Create sessions (log in)
+- [ ] Browse home page for sample listings
+- [ ] Create new listings
+- [ ] Search by location and check in/out date
+- [ ] See search results:
+  - [ ] As "previews" with images and prices
+  - [ ] On a map with pins next to the results
+- [ ] See listing details on its own page:
+  - [ ] Multiple images
+  - [ ] Brief owner's info
+  - [ ] Description
+  - [ ] Dates to book
+  - [ ] Reviews
+- [ ] Leave reviews on listings and user profiles
+- [ ] Save listings to a wishlist
+- [ ] See other users' profiles with:
+  - [ ] Listings
+  - [ ] Reviews
 
 ## Design Docs
 * [View Wireframes][views]
@@ -29,63 +38,78 @@ Flux-capacitr is a clone of Tumblr built on Rails and Backbone. Users can:
 
 ## Implementation Timeline
 
-### Phase 1: User Authentication, Blog Creation (~1 day)
-I will implement user authentication in Rails based on the practices learned at
-App Academy. By the end of this phase, users will be able to create blogs using
-a simple text form in a Rails view. The most important part of this phase will
-be pushing the app to Heroku and ensuring that everything works before moving on
-to phase 2.
+### Phase 1: User Authentication and Home Page (~1 day)
+I will implement user authentication in Rails based on the practices
+learned at App Academy. Users will sign up or log in with a modal form
+similar to the one on AirBnB's home page, and be able to view their
+profiles upon signup.
+By the end of this phase, users will be able to browse the home page to
+learn more about PetBnB and see sample listings. The layout will be a
+similar one as AirBnB's home page. The most important part of this phase
+will be laying out the grid system (I will be using buttons as
+placeholders and eventually replace them with images in phase 4). The
+app will be pushed to Heroku at the end of the day.
 
 [Details][phase-one]
 
-### Phase 2: Viewing Blogs and Posts (~2 days)
-I will add API routes to serve blog and post data as JSON, then add Backbone
-models and collections that fetch data from those routes. By the end of this
-phase, users will be able to create blogs and view both blogs and posts, all
-inside a single Backbone app.
+### Phase 2: Search and new listings (~2 days)
+I will add search functionality to the home page, which will allow users
+to enter the location and check in/out dates similar to AirBnB's search
+box on the home page. Search results will initially only show the
+listing titles (to be improved upon in phase 3). Each listing's show
+page will display the listing's data in JSON (to be improved upon in
+phase 4).
+Users will also be able to create new listings so they can host pets in
+addition to search for places to host their pets. The layout of the new
+listing page will be similar to the AirBnB "List Your Space" page. I
+will add API routes to serve listing data as JSON, then add Backbone
+models and collections that fetch data from these routes.
 
 [Details][phase-two]
 
-### Phase 3: Editing and Displaying Posts (~2 days)
-I plan to use third-party libraries to add functionality to the `PostForm` and
-`PostShow` views in this phase. First I'll need to add a Markdown editor to the
-`PostForm`, and make sure that the Markdown is properly escaped and formatted in
-the `PostShow` view. I also plan to integrate Filepicker for file upload so
-users can add images to blog posts.
-
-[Details][phase-three]
-
-### Phase 4: User Feeds (~1-2 days)
-I'll start by adding a `feed` route that uses the `current_user`'s
-`subscribed_blogs` association to serve a list of blog posts ordered
-chronologically. On the Backbone side, I'll make a `FeedShow` view whose `posts`
-collection fetches from the new route.  Ultimately, this will be the page users
-see after logging in.
+### Phase 3: Better Search Results and Reservations (~2 days)
+I will improve the search results page by adding images and other
+details to the listing titles (like on AirBnB); the original search
+criteria will also be displayed on top of the results so that users can
+modify searches on the fly. I will also display a map (using a third
+party API to integrate Google Maps).
+Users will be able to book a pet host for specified dates by going to
+a listing's detail page.
 
 [Details][phase-four]
 
-### Phase 5: Searching for Blogs and Posts (~2 days)
-I'll need to add `search` routes to both the Blogs and Posts controllers. On the
-Backbone side, there will be a `SearchResults` composite view has `BlogsIndex`
-and `PostsIndex` subviews. These views will use plain old `blogs` and `posts`
-collections, but they will fetch from the new `search` routes.
+### Phase 4: Interactive Home Page and Listing Details (~2 days)
+I will be replacing the buttons on the home page with actual images that
+link to sample listings. These will be populated in the database.
+I will modify the listing detail pages with more information, mimicking
+the AirBnB listing detail page.
+Users will be able to favorite listings from the detail page or the
+search results page. Users will also be able to edit their profiles.
+
+[Details][phase-four]
+
+### Phase 5: Reviews and Wrapping Up (~1-2 days)
+I will add the ability for users to leave reviews on both listings and
+other users. These will be shown on the bottom of a listing detail page
+or a user's profile page. This will be implemented with a polymorphic
+association that connects reviews to either users or listings.
+I will do any styling needed for the pages from previous days that still
+need styling, and standardize the format across the whole site.
+
 
 [Details][phase-five]
 
 ### Bonus Features (TBD)
-- [ ] "Like" button and counter for posts
-- [ ] Custom blog urls
-- [ ] Pagination/infinite scroll
-- [ ] Activity history (e.g. likes, reblogs, taggings)
-- [ ] Post types (image posts, quote posts, etc)
-- [ ] Reblogging
-- [ ] Multiple sessions/session management
-- [ ] User avatars
-- [ ] Typeahead search bar
+- [ ] Email activation / password reset
+- [ ] Messaging between users
+- [ ] Notifications when another user respond to your message
+- [ ] Suggest hosts near user's location on home page
+- [ ] Save the five most recent searches
+- [ ] Show listing's location on a map on bottom of listing detail page
+- [ ] Sharing listings via email or social networks
 
 [phase-one]: ./docs/phases/phase1.md
 [phase-two]: ./docs/phases/phase2.md
 [phase-three]: ./docs/phases/phase3.md
 [phase-four]: ./docs/phases/phase4.md
 [phase-five]: ./docs/phases/phase5.md
-
