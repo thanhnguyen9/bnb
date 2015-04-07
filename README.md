@@ -52,22 +52,27 @@ app will be pushed to Heroku at the end of the day.
 
 [Details][phase-one]
 
-### Phase 2: Search and new listings (~2 days)
+### Phase 2: Search (~2 days)
 I will add search functionality to the home page, which will allow users
 to enter the location and check in/out dates similar to AirBnB's search
 box on the home page. Search results will initially only show the
 listing titles (to be improved upon in phase 3). Each listing's show
 page will display the listing's data in JSON (to be improved upon in
 phase 4).
-Users will also be able to create new listings so they can host pets in
-addition to search for places to host their pets. The layout of the new
-listing page will be similar to the AirBnB "List Your Space" page. I
-will add API routes to serve listing data as JSON, then add Backbone
-models and collections that fetch data from these routes.
 
 [Details][phase-two]
 
-### Phase 3: Better Search Results and Reservations (~2 days)
+### Phase 3: Interactive Home Page and Listing Details (~2 days)
+I will be replacing the buttons on the home page with actual images that
+link to sample listings. These will be populated in the database.
+I will modify the listing detail pages with more information, mimicking
+the AirBnB listing detail page.
+Users will be able to favorite listings from the detail page or the
+search results page. Users will also be able to edit their profiles.
+
+[Details][phase-three]
+
+### Phase 4: Better Search Results and Reservations (~2 days)
 I will improve the search results page by adding images and other
 details to the listing titles (like on AirBnB); the original search
 criteria will also be displayed on top of the results so that users can
@@ -75,16 +80,6 @@ modify searches on the fly. I will also display a map (using a third
 party API to integrate Google Maps).
 Users will be able to book a pet host for specified dates by going to
 a listing's detail page.
-
-[Details][phase-four]
-
-### Phase 4: Interactive Home Page and Listing Details (~2 days)
-I will be replacing the buttons on the home page with actual images that
-link to sample listings. These will be populated in the database.
-I will modify the listing detail pages with more information, mimicking
-the AirBnB listing detail page.
-Users will be able to favorite listings from the detail page or the
-search results page. Users will also be able to edit their profiles.
 
 [Details][phase-four]
 
@@ -104,6 +99,7 @@ need styling, and standardize the format across the whole site.
 - [ ] Messaging between users
 - [ ] Notifications when another user respond to your message
 - [ ] Suggest hosts near user's location on home page
+- [ ] Create new listings
 - [ ] Save the five most recent searches
 - [ ] Show listing's location on a map on bottom of listing detail page
 - [ ] Sharing listings via email or social networks

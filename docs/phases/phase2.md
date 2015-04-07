@@ -1,4 +1,4 @@
-# Phase 2: Viewing Blogs and Posts
+# Phase 2: Search
 
 ## Rails
 ### Models
@@ -6,7 +6,7 @@
 * Images
 
 ### Controllers
-* ListingsController (create, destroy, show)
+* ListingsController (search)
 * ImagesController (create)
 
 ### Views
@@ -24,7 +24,6 @@
 * Images
 
 ### Views
-* ListingForm
 * ListingShow
 * ListingResults
 

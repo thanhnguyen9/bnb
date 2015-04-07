@@ -1,19 +1,24 @@
-# Phase 4: User Feeds
+# Phase 4: Better Search Results and Reservations
 
 ## Rails
 ### Models
+* Reservation
 
 ### Controllers
-* UsersController (edit, update)
+* ReservationsController (create, show, destroy)
 
 ### Views
-* users/edit.html.erb
+* reservations/show.html.erb
 
 ## Backbone
 ### Models
+* Reservation
 
 ### Collections
+* Reservations
 
 ### Views
+* ReservationShow
 
 ## Gems/Libraries
+* Google-Maps-for-Rails

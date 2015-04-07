@@ -1,24 +1,20 @@
-# Phase 3: Editing and Displaying Posts
+# Phase 3: Interactive Home Page and Listing Details
 
 ## Rails
 ### Models
-* Reservation
 
 ### Controllers
-* ReservationsController (create, show, destroy)
+* UsersController (edit, update)
+* ListingsController (show)
 
 ### Views
-* reservations/show.html.erb
+* users/edit.html.erb
 
 ## Backbone
 ### Models
-* Reservation
 
 ### Collections
-* Reservations
 
 ### Views
-* ReservationShow
 
 ## Gems/Libraries
-* Google-Maps-for-Rails

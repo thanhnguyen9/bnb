@@ -1,4 +1,4 @@
-# Phase 5: Searching for Blogs and Posts
+# Phase 5: Reviews and Wrapping Up
 
 ## Rails
 ### Models
