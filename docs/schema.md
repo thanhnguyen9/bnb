@@ -6,7 +6,7 @@ column name     | data type | details
 id              | integer   | not null, pk
 email           | string    | not null, unique
 password_digest | string    | not null
-session_token   | string    | not null, unique
+session_token   | string    | not null
 
 ## listings
 column name     | data type | details

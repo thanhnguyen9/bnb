@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+
+/* General */
+
+
+/* Navbar */
+
+.navbar-header { width: 80px }
+
+.navbar-brand {
+  float: right;
+  padding: 0;
+  margin: 0 20px;
+}
+
+/* Home Page */

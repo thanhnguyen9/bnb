@@ -48,13 +48,11 @@ test:
   encoding: unicode
   database: PetBnB_test
   pool: 5
-  username: PetBnB
-  password:
+  host: localhost
+  port: 5432
 
 production:
   adapter: postgresql
   encoding: unicode
   database: PetBnB_production
   pool: 5
-  username: PetBnB
-  password:
