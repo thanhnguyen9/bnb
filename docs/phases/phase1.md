@@ -14,10 +14,10 @@
 ## Backbone
 ### Models
 * User
+* Session
 
 ### Collections
 
 ### Views
-* UserForm
 
 ## Gems/Libraries
