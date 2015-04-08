@@ -12,22 +12,33 @@
       <div class="modal-body">
         <div class="errors">
         </div>
-        Email: <input type="text"
-                      class="form-control"
-                      name="user[email]" value="">
-        Password: <input type="password"
-                         class="form-control"
-                         name="user[password]" value="">
+        <div class="modal-body row">
+          Email: <input id='email'
+                        type="text"
+                        class="form-control"
+                        name="user[email]"
+                        value="">
+          Password: <input type="password"
+                           class="form-control"
+                           name="user[password]">
+        </div>
+        <div class="modal-body-row">
+          <% if title == 'Log in' %>
+            <button type="button" class="btn btn-primary btn-info">
+              Guest login
+            </button>
+          <% end %>
+          <button type="submit" class="btn btn-primary">
+            <%= title %>
+          </button>
+        </div>
       </div>
       <div class="modal-footer">
         <% if title == 'Log in' %>
-          <button type="button" class="btn btn-primary btn-info">
-            Guest login
-          </button>
+          Don't have an account? <a href="#signupModal">Sign up</a>
+        <% else %>
+          Already a PetBnB member? <a href="#loginModal">Log in</a>
         <% end %>
-        <button type="submit" class="btn btn-primary">
-          <%= title %>
-        </button>
       </div>
     </form>
   </div>

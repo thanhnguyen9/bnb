@@ -36,7 +36,7 @@ PetBnB.Views.HomeView = Backbone.View.extend({
     }
     model.save({}, {
       success: function () {
-        window.location.replace('');
+        window.location.replace('/users/' + model.id);
       },
       error: function (models, response) {
         var errors = '';

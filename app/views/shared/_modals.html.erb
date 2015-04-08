@@ -1,9 +1,15 @@
-<div class="modal fade" id="loginModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="loginModal" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
   <%= render 'shared/modal_form', title: 'Log in', action: '/session' %>
 </div>
 
-<div class="modal fade" id="signupModal" tabindex="-1" role="dialog"
+<div class="modal fade" id="signupModal" role="dialog"
      aria-labelledby="myModalLabel" aria-hidden="true">
   <%= render 'shared/modal_form', title: 'Sign up', action: '/users' %>
 </div>
+
+<script charset="utf-8">
+  $('.modal').on('shown.bs.modal', function () {
+    $('.modal.fade.in #email').focus();
+  })
+</script>

@@ -1,8 +1,8 @@
 # PetBnB
 
-[Heroku link][heroku]
+[Live app][app]
 
-[heroku]: http://petbnb.herokuapp.com
+[app]: http://petbnb.shibo.io
 
 ## Minimum Viable Product
 PetBnB is AirBnB for pets, built on Rails and Backbone. Users can:
@@ -12,7 +12,6 @@ PetBnB is AirBnB for pets, built on Rails and Backbone. Users can:
 - [x] Create accounts
 - [x] Create sessions (log in); guest login
 - [ ] Browse home page for sample listings
-- [ ] Create new listings
 - [ ] Search by location and check in/out date
 - [ ] See search results:
   - [ ] As "previews" with images and prices
