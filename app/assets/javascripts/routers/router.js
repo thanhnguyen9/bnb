@@ -1,8 +1,6 @@
 PetBnB.Routers.Router = Backbone.Router.extend({
   routes: {
-    '': 'home',
-    'login': 'loginModal',
-    'signup': 'signupModal'
+    '': 'home'
   },
 
   initialize: function (options) {
@@ -10,14 +8,12 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   },
 
   home: function () {
-
+    var homeView = new PetBnB.Views.HomeView();
   },
 
-  loginModal: function () {
-
-  },
-
-  signupModal: function () {
-
+  _swapView: function (view) {
+    this._currentView && this._currentView.remove();
+    this.$rootEl.html(view.render().$el);
+    this._currentView = view;
   }
 });

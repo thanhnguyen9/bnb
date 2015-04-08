@@ -5,8 +5,8 @@
 * User
 
 ### Controllers
-* UsersController (create, new, show)
-* SessionsController (create, new, destroy)
+* UsersController (create, show)
+* SessionsController (create, destroy)
 
 ### Views
 * users/show.html.erb
