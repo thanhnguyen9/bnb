@@ -15,19 +15,24 @@ PetBnB.Views.HomeView = Backbone.View.extend({
 
     var $target = $(event.currentTarget);
     var $form, button = $.trim($target.text());
-    if (button === 'Log in') {
-      $form = $('#loginModal form');
-    } else if (button === 'Sign up') {
+    if (button === 'Sign up') {
       $form = $('#signupModal form');
     } else {
-      console.log('Clicked button ' + button + '?!?!');
+      $form = $('#loginModal form');
     }
 
-    var userData = $form.serializeJSON(), model;
-    if (button === 'Log in') {
-      model = new PetBnB.Models.Session(userData);
+    var userData, model;
+    if (button === 'Guest user') {
+      userData = { user: { email: 'admin@petbnb.com',
+                           password: 'password' }};
     } else {
+      userData = $form.serializeJSON();
+    }
+
+    if (button === 'Sign up') {
       model = new PetBnB.Models.User(userData);
+    } else {
+      model = new PetBnB.Models.Session(userData);
     }
     model.save({}, {
       success: function () {
