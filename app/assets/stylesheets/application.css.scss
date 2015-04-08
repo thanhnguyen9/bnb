@@ -38,14 +38,11 @@
 * {
   font-family: 'Circular Book', 'Nunito', sans-serif;
   font-weight: 300;
-}
-
-body {
-  background-image: url('homepage/bg.jpg');
-  background-size: auto 700px;
+  ul { list-style: none; }
 }
 
 /* Navbar */
+.navbar { border-radius: 0; }
 
 .navbar-header { width: 80px }
 
@@ -63,6 +60,8 @@ body {
 
 /* Home Page */
 
+.homepage { background-image: url('homepage/bg.jpg'); }
+
 .intro-wrapper { height: 500px; }
 
 .intro-content {
@@ -72,7 +71,7 @@ body {
 }
 
 .intro-text {
-  position: absolute;
+  position: relative;
   width: 100%;
   top: 350px;
   text-align: center;
@@ -111,13 +110,7 @@ span > button { height: 34px; }
 
 /* Modals */
 
-.modal {
-  position: absolute;
-}
-
-ul.errors {
-  list-style: none;
-}
+.modal { position: absolute; }
 
 /* Buttons & Links */
 

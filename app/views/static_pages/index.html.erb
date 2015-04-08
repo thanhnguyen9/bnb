@@ -7,7 +7,7 @@
   </p>
 <% end %> -->
 
-<div class=".container">
+<div class="container">
   <div class="intro-wrapper">
     <div class="intro-text">
       VACATION HOMES FOR YOUR PET
@@ -37,5 +37,13 @@
       </form>
     </div>
   </div>
-
 </div>
+
+<script charset="utf-8">
+  $(document).ready(function () {
+    $('body').addClass('homepage');
+  });
+  $(document).unload(function () {
+    $('body').removeClass('homepage');
+  });
+</script>
