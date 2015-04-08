@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
       login!(@user)
       render json: @user
     else
-      render json: @user.errors.full_messages,
+      render json: 'Incorrect credentials'.to_json,
                    status: :unprocessable_entity
     end
   end
