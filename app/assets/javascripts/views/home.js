@@ -22,8 +22,8 @@ PetBnB.Views.HomeView = Backbone.View.extend({
     }
 
     var userData, model;
-    if (button === 'Guest user') {
-      userData = { user: { email: 'admin@petbnb.com',
+    if (button === 'Guest login') {
+      userData = { user: { email: 'Guest',
                            password: 'password' }};
     } else {
       userData = $form.serializeJSON();
@@ -40,14 +40,14 @@ PetBnB.Views.HomeView = Backbone.View.extend({
       },
       error: function (models, response) {
         var errors = '';
-        if (button === 'Log in') {
-          errors += 'Incorrect credentials<br>';
-        } else {
+        if (button === 'Sign up') {
           if (response.responseJSON) {
             response.responseJSON.forEach(function (error) {
               errors += (error + '<br>');
             });
           }
+        } else {
+          errors += 'Incorrect credentials<br>';
         }
         $form.find('.errors').html(errors);
       }
