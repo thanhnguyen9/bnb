@@ -15,29 +15,37 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import url(http://fonts.googleapis.com/css?family=Nunito:400,300,700);
 
 @font-face {
-  font-family: 'Circular Book';
-  src: url('https://s3-us-west-1.amazonaws.com/petbnb/fonts/lineto-circular-book-s.ttf');
-  font-weight: 300;
+  font-family:Airglyphs;
+  src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.eot");
+  src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.eot") format("eot"),
+  url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.woff") format("woff"),
+  url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.ttf") format("truetype");
+  font-weight:normal;
+  font-style:normal
 }
 @font-face {
-  font-family: 'Circular Medium';
-  src: url('https://s3-us-west-1.amazonaws.com/petbnb/fonts/lineto-circular-medium-s.ttf');
-  font-weight: 500;
-}
-@font-face {
-  font-family: 'Circular Bold';
-  src: url('https://s3-us-west-1.amazonaws.com/petbnb/fonts/lineto-circular-bold-s.ttf');
-  font-weight: 700;
+  font-family: Circular;
+  src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-book.eot");
+  src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-book.eot") format("eot"),
+  url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-book.woff") format("woff");
+  font-weight:normal;
+  font-style:normal}
+
+@font-face{
+  font-family:Circular;
+  src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.eot");
+  src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.eot") format("eot"),
+  url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.woff") format("woff");
+  font-weight:normal;
+  font-style:italic
 }
 
 /* General */
 
 * {
-  font-family: 'Circular Book', 'Nunito', sans-serif;
-  font-weight: 300;
+  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
   ul { list-style: none; }
 }
 
@@ -53,29 +61,27 @@
 }
 
 /* Content */
-//
-// #content {
-//   padding: 0 20px;
-// }
+
+#content {
+  height: 2000px;
+  // padding: 0 20px;
+}
 
 /* Home Page */
 
-.homepage { background-image: url('homepage/bg.jpg'); }
-
-.intro-wrapper { height: 500px; }
-
-.intro-content {
-  width: 100%;
-  position: absolute;
-  bottom: 0;
+.homepage {
+  background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
+  background-repeat: no-repeat;
+  .container { height: 600px; }
 }
+
+.intro-wrapper { height: 100%; }
 
 .intro-text {
   position: relative;
-  width: 100%;
-  top: 350px;
+  top: 250px;
   text-align: center;
-  font-size: 32px;
+  font-size: 54px;
   font-weight: 700;
   color: white;
 }
@@ -83,28 +89,24 @@
 .intro-search {
   padding: 33px 0;
   position: absolute;
+  top: 600px;
   left: 0;
-  top: 500px;
   width: 100%;
-  height: 100px;
-  background-color: black;
-  opacity: 0.7;
+  background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search-bg.png');
   form {
-    opacity: 1;
     div.input-group {
       margin: 0 32%;
-      .search { width: 250px; }
+      input.search {
+        width: 250px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
     }
     padding: 0;
   }
 }
 
 .form-group { margin: 0; }
-
-input.search {
-  border-top-left-radius: 4px;
-  border-bottom-left-radius: 4px;
-}
 
 span > button { height: 34px; }
 
