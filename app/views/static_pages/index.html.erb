@@ -4,7 +4,8 @@
       VACATION HOMES FOR YOUR PET
     </div>
     <div class="intro-search">
-      <form class="form-group form-inline">
+      <form class="form-group form-inline" action="/api/search" method="POST">
+        <%= auth_input %>
         <div class="input-group">
           <span class="input-group">
             <input type="text" class="form-control search"

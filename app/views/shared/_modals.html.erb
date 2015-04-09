@@ -14,8 +14,12 @@
   })
   $('#loginLink').click(function () {
     $('#signupModal').hide();
+    $('body').removeClass('.modal-open');
+    $('.modal-backdrop').remove();
   });
   $('#signupLink').click(function () {
     $('#loginModal').hide();
+    $('body').removeClass('.modal-open');
+    $('.modal-backdrop').remove();
   });
 </script>

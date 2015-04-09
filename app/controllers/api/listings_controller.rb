@@ -2,14 +2,14 @@ module Api
   class ListingsController < ApplicationController
     def search
       @listings = Listing.find_by_location(search_params)
-      if @listing
-        render
+      # render json: @listings
+      render json: @listings
     end
 
     private
 
     def search_params
-      params.require(:search):permit(:location)
+      params.require(:search).permit(:location)
     end
   end
 end

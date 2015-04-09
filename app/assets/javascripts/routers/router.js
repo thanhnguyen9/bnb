@@ -17,6 +17,7 @@ PetBnB.Routers.Router = Backbone.Router.extend({
 
   search: function () {
     $('body').removeClass('homepage');
+
   },
 
   _swapView: function (view) {

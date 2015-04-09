@@ -8,6 +8,7 @@ Review
 ReviewsController (create)
 
 ### Views
+* api/listings/new.html.erb
 
 ## Backbone
 ### Models

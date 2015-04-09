@@ -10,9 +10,8 @@
 * ImagesController (create)
 
 ### Views
-* listings/new.html.erb
-* listings/results.html.erb
-* listings/show.html.erb
+* api/listings/results.html.erb
+* api/listings/show.html.erb
 
 ## Backbone
 ### Models

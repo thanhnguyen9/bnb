@@ -55,7 +55,8 @@ PetBnB.Views.HomeView = Backbone.View.extend({
     });
   },
 
-  search: function () {
-
+  search: function (event) {
+    var $target = $(event.currentTarget);
+    debugger
   }
 });
