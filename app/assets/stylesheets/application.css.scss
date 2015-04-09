@@ -17,7 +17,7 @@
 @import "font-awesome";
 
 @font-face {
-  font-family:Airglyphs;
+  font-family: Airglyphs;
   src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.eot");
   src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.eot") format("eot"),
   url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.woff") format("woff"),
@@ -103,20 +103,21 @@
   form {
     padding: 0;
     div.input-group {
-      margin: 0;
-      padding: 0 25%;
-      & > * { float: left }
-      &::after { content: ""; }
+      margin: 0 auto;
+      display: table;
+      * {
+        height: 40px;
+        float: left;
+        font-size: 16px;
+      }
       input.search {
-        width: 250px;
+        width: 280px;
         border-top-left-radius: 4px;
         border-bottom-left-radius: 4px;
       }
       input:not(.search) { width: 180px }
-      button: {
-        height: 34px;
-        width: 180px;
-      }
+      .search { width: 100px; }
+      &::after { content: ""; }
     }
   }
 }
