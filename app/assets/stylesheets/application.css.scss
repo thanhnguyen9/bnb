@@ -85,19 +85,29 @@
   background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
   background-repeat: no-repeat;
   padding: 0;
-  .container { height: 600px; }
+  .container {
+    width: 100%;
+    padding: 0;
+    height: 700px;
+  }
 }
 
 .intro-wrapper { height: 100%; }
 
 .intro-text {
-  z-index: 1;
   position: relative;
   top: 250px;
   text-align: center;
   font-size: 54px;
   font-weight: 700;
   color: white;
+  .welcome-text {
+    height: 100px;
+    background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
+    line-height: 50px;
+    font-size: 24px;
+    font-weight: 500;
+  }
 }
 
 .intro-search {

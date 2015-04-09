@@ -2,32 +2,41 @@
   <div class="intro-wrapper">
     <div class="intro-text">
       VACATION HOMES FOR YOUR PET
-    </div>
-    <div class="intro-search">
-      <form class="form-group form-inline" action="/api/search" method="POST">
-        <%= auth_input %>
-        <div class="input-group">
-          <span class="input-group">
-            <input type="text" class="form-control search"
-                   name="search[location]"
-                   placeholder="Where does your pet want to go?">
-          </span>
-          <span class="input-group">
-            <input type="date" class="form-control"
-                   name="search[checkin]"
-                   placeholder="Check In">
-          </span>
-          <span class="input-group">
-            <input type="date" class="form-control"
-                   name="search[checkout]"
-                   placeholder="Check Out">
-          </span>
-          <span class="input-group-btn">
-            <button class="btn btn-primary search">Search</button>
-          </span>
+      <% if !logged_in? %>
+        <div class="welcome-text">
+          Welcome to PetBnB :)
+          <br>
+          Please login or sign up with the links on the top right!
         </div>
-      </form>
+      <% end %>
     </div>
+    <% if logged_in? %>
+      <div class="intro-search">
+        <form class="form-group form-inline" action="/api/search" method="POST">
+          <%= auth_input %>
+          <div class="input-group">
+            <span class="input-group">
+              <input type="text" class="form-control search"
+                     name="search[location]"
+                     placeholder="Where does your pet want to go?">
+            </span>
+            <span class="input-group">
+              <input type="date" class="form-control"
+                     name="search[checkin]"
+                     placeholder="Check In">
+            </span>
+            <span class="input-group">
+              <input type="date" class="form-control"
+                     name="search[checkout]"
+                     placeholder="Check Out">
+            </span>
+            <span class="input-group-btn">
+              <button class="btn btn-primary search">Search</button>
+            </span>
+          </div>
+        </form>
+      </div>
+    <% end %>
   </div>
 </div>
 
@@ -39,15 +48,6 @@
     $('body').removeClass('homepage');
   });
 </script>
-
-<!-- <% if logged_in? %>
-  <h2>Welcome back, <%= current_user.email%>!</h2>
-<% else %>
-  <h2>Welcome to PetBnB :)</h2>
-  <p>
-    Please login or sign up with the links on the top right!
-  </p>
-<% end %> -->
 
 <!-- <video preload="auto" loop="loop" id="markov-video"
        class="video-playing"
