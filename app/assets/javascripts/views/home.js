@@ -2,16 +2,17 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   template: _.template(''),
 
   events: {
-    'click button': 'submit'
+    'click .btn:not(.search)': 'submit',
+    'click .btn.search': 'search'
   },
 
   initialize: function () {
     this.$el = $('#modals');
-    // this.$('.errors').empty();
   },
 
   submit: function (event) {
     event.preventDefault();
+    debugger
 
     var $target = $(event.currentTarget);
     var $form, button = $.trim($target.text());
@@ -52,5 +53,9 @@ PetBnB.Views.HomeView = Backbone.View.extend({
         $form.find('.errors').html(errors);
       }
     });
+  },
+
+  search: function () {
+
   }
 });

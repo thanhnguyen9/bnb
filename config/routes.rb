@@ -3,4 +3,9 @@ PetBnB::Application.routes.draw do
 
   resource :session, only: [:create, :destroy]
   resources :users, only: [:create, :show]
+
+  namespace :api, defaults: { format: :json } do
+    resources :listings, only: [:search]
+    resources :images, only: [:create]
+  end
 end

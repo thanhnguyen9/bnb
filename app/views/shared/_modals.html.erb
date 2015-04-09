@@ -12,4 +12,10 @@
   $('.modal').on('shown.bs.modal', function () {
     $('.modal.fade.in #email').focus();
   })
+  $('#loginLink').click(function () {
+    $('#signupModal').hide();
+  });
+  $('#signupLink').click(function () {
+    $('#loginModal').hide();
+  });
 </script>
