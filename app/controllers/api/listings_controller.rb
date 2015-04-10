@@ -3,7 +3,6 @@ module Api
     def search
       @listings = Listing.find_by_location(search_params)
       render json: @listings
-      # render :results
     end
 
     def show
@@ -16,7 +15,7 @@ module Api
     private
 
     def search_params
-      params.require(:search).permit(:location)
+      params.require(:search).permit(:latitude, :longitude)
     end
   end
 end

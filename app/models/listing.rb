@@ -5,11 +5,12 @@ class Listing < ActiveRecord::Base
   validates :name, :description, :price_daily, :price_weekly, :user_id,
             presence: true
 
-  def self.find_by_location(search_params)
-    # return Listing.all if search_params[:location] == ""
-    lat, ltg = search_params[:location]
-    lat_min, lat_max = [lat - 0.0725, lat + 0.0725]
-    ltg_min, ltg_max = [ltg - 0.0725, ltg + 0.0725]
+  def self.find_by_location(coords)
+    # return Listing.all if coords[:location] == ""
+    lat, ltg = coords['latitude'].to_f, coords['longitude'].to_f
+    range = 10 / 69.0
+    lat_min, lat_max = [lat - range, lat + range]
+    ltg_min, ltg_max = [ltg - range, ltg + range]
     listings = Listing.find_by_sql(<<-SQL)
       SELECT
         *

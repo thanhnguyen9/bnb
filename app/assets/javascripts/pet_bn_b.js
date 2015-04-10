@@ -5,6 +5,9 @@ window.PetBnB = {
   Routers: {},
   initialize: function() {
     console.log('Hello from PetBnB!');
+    // this.router = new PetBnB.Routers.DemoRouter({
+    //   $rootEl: $('#content')
+    // });
     this.router = new PetBnB.Routers.Router({
       $rootEl: $('#content')
     });
