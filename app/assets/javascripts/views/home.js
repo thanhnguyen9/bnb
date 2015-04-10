@@ -6,13 +6,13 @@ PetBnB.Views.HomeView = Backbone.View.extend({
     'click .btn.search': 'search'
   },
 
-  initialize: function () {
-    this.$el = $('#modals');
+  initialize: function (options) {
+    this.$el = $('body');
+    this._router = options.router;
   },
 
   submit: function (event) {
     event.preventDefault();
-    debugger
 
     var $target = $(event.currentTarget);
     var $form, button = $.trim($target.text());
@@ -56,7 +56,16 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   },
 
   search: function (event) {
+    event.preventDefault();
+
     var $target = $(event.currentTarget);
-    debugger
+    var search_params = $('.search-bar').serializeJSON().search;
+    this._router.checkIn = search_params.checkin;
+    this._router.checkOut = search_params.checkout;
+    if (search_params.location === "") {
+      $('.errors').html("Please enter a search term");
+    } else {
+      debugger
+    }
   }
 });

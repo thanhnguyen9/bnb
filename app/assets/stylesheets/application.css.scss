@@ -111,14 +111,15 @@
 }
 
 .intro-search {
-  padding: 33px 0;
+  padding: 30px 0;
   position: absolute;
   top: 600px;
   left: 0;
   width: 100%;
   background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
+  height: 100px;
   form {
-    padding: 0;
+    height: 60px;
     div.input-group {
       margin: 0 auto;
       display: table;
@@ -133,7 +134,17 @@
         border-bottom-left-radius: 4px;
       }
       input:not(.search) { width: 180px }
-      .search { width: 100px; }
+      button.search { width: 100px; }
+      .errors {
+        position: absolute;
+        left: 0;
+        bottom: -20px;
+        width: 280px;
+        height: 20px;
+        padding: 3px 12px;
+        color: white;
+        font-size: 14px;
+      }
       &::after { content: ""; }
     }
   }

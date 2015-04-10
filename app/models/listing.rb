@@ -2,17 +2,28 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :images
 
-  validates :name, :description, :city, :state, :country, :price_daily,
-            :price_weekly, :user_id, presence: true
+  validates :name, :description, :price_daily, :price_weekly, :user_id,
+            presence: true
 
   def self.find_by_location(search_params)
-    return Listing.all #if search_params[:location] == ""
+    return Listing.all if search_params[:location] == ""
+ 
+    location = search_params[:location]
+    lat, ltg = location.split(',').map(&:to_i)
+    lat_min, lat_max = [lat - 0.0725, lat + 0.0725]
+    ltg_min, ltg_max = [ltg - 0.0725, ltg + 0.0725]
+    listings = Listing.find_by_sql(<<-SQL)
+      SELECT
+        *
+      FROM
+        listings
+      WHERE
+        latitude BETWEEN #{lat_min} AND #{lat_max}
+      AND
+        longitude BETWEEN #{ltg_min} AND #{ltg_max}
+    SQL
 
-    # location = search_params[:location]
-    # search_query = ""
-    # city, state, country = location.split(',').map(&:strip).map(&:downcase)
-    # search_query += "lower(city) LIKE %?%"
-    # Listing.where("lower(city) LIKE ? AND lower(state) LIKE ? AND " +
-    #               "lower(country) LIKE ?", city, state, country)
+    listings
   end
+
 end

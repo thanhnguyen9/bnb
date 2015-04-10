@@ -12,13 +12,15 @@
     </div>
     <% if logged_in? %>
       <div class="intro-search">
-        <form class="form-group form-inline" action="/api/search" method="POST">
+        <form class="form-group form-inline search-bar"
+              action="/api/search" method="POST">
           <%= auth_input %>
           <div class="input-group">
             <span class="input-group">
               <input type="text" class="form-control search"
                      name="search[location]"
                      placeholder="Where does your pet want to go?">
+              <span class="errors"></span>
             </span>
             <span class="input-group">
               <input type="date" class="form-control"
