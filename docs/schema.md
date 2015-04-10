@@ -15,9 +15,8 @@ id              | integer   | not null, pk
 user_id         | integer   | not null, fk (ref users)
 name            | string    | not null
 description     | string    | not null
-city            | string    | not null
-state           | string    | not null
-country         | string    | not null
+latitude        | decimal   | not null
+longitude       | decimal   | not null
 price_daily     | integer   | not null
 price_weekly    | integer   | not null
 booked          | boolean   | not null, default: false
