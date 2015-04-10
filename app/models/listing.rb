@@ -6,10 +6,8 @@ class Listing < ActiveRecord::Base
             presence: true
 
   def self.find_by_location(search_params)
-    return Listing.all if search_params[:location] == ""
- 
-    location = search_params[:location]
-    lat, ltg = location.split(',').map(&:to_i)
+    # return Listing.all if search_params[:location] == ""
+    lat, ltg = search_params[:location]
     lat_min, lat_max = [lat - 0.0725, lat + 0.0725]
     ltg_min, ltg_max = [ltg - 0.0725, ltg + 0.0725]
     listings = Listing.find_by_sql(<<-SQL)
@@ -21,6 +19,8 @@ class Listing < ActiveRecord::Base
         latitude BETWEEN #{lat_min} AND #{lat_max}
       AND
         longitude BETWEEN #{ltg_min} AND #{ltg_max}
+      AND
+        booked = FALSE
     SQL
 
     listings

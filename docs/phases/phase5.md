@@ -5,7 +5,8 @@
 Review
 
 ### Controllers
-ReviewsController (create)
+* ReviewsController (create)
+* ImagesController (create)
 
 ### Views
 * api/listings/new.html.erb

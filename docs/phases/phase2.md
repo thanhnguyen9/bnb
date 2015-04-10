@@ -7,7 +7,6 @@
 
 ### Controllers
 * ListingsController (search)
-* ImagesController (create)
 
 ### Views
 * api/listings/results.html.erb

@@ -3,7 +3,7 @@ module Api
     def search
       @listings = Listing.find_by_location(search_params)
       # render json: @listings
-      render json: @listings
+      # render :results
     end
 
     private

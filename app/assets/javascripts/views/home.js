@@ -60,12 +60,26 @@ PetBnB.Views.HomeView = Backbone.View.extend({
 
     var $target = $(event.currentTarget);
     var search_params = $('.search-bar').serializeJSON().search;
-    this._router.checkIn = search_params.checkin;
-    this._router.checkOut = search_params.checkout;
     if (search_params.location === "") {
       $('.errors').html("Please enter a search term");
     } else {
-      debugger
+      this._router._checkin = search_params.checkin;
+      this._router._checkout = search_params.checkout;
+      this._router._location = search_params.location;
+      var query = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+      query += search_params.location;
+      query += "&key=AIzaSyBFim-M4UMUmjfmk1y5ss_Kd7B_3ooi9iM";
+      $.ajax({
+        url: query,
+        type: 'get',
+        success: function (resp) {
+          this._router._result = resp.results[0];
+          Backbone.history.navigate('results', { trigger: true });
+        }.bind(this),
+        error: function (resp) {
+          console.log("Something went wrong while querying Geocoding");
+        }
+      });
     }
   }
 });

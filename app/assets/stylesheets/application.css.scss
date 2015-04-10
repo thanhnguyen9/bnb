@@ -69,7 +69,7 @@
 /* Content */
 
 #content {
-  height: 2000px;
+  height: 1000px;
   // padding: 0 20px;
 }
 
@@ -147,6 +147,18 @@
       }
       &::after { content: ""; }
     }
+  }
+}
+
+/* Results Page */
+
+.row.results {
+  height: 100%;
+  .search-container, .search-map { height: 100%; }
+  .search-details, .search-results { height: 50%; }
+  * {
+  text-align: center;
+  border: 1px solid black;
   }
 }
 
