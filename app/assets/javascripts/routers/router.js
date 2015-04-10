@@ -1,7 +1,7 @@
 PetBnB.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
-    'results': 'results'
+    'results': 'results',
   },
 
   initialize: function (options) {
@@ -17,11 +17,8 @@ PetBnB.Routers.Router = Backbone.Router.extend({
       router: this
     });
   },
-
-  // for route != home need to remove class .homepage to remove bg
-
+  
   results: function () {
-    $('body').removeClass('homepage');
     var resultsView = new PetBnB.Views.ResultsView({
       result: this._result
     });
@@ -31,6 +28,7 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this.$rootEl.html(view.render().$el);
+    $('body').removeClass('homepage');
     this._currentView = view;
   }
 });

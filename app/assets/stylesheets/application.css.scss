@@ -52,6 +52,7 @@
 /* Navbar */
 
 .navbar {
+  margin: 0;
   border-radius: 0;
   border-color: transparent;
   background-color: transparent;
@@ -155,7 +156,8 @@
 .row.results {
   height: 100%;
   .search-container, .search-map { height: 100%; }
-  .search-details, .search-results { height: 50%; }
+  .search-details, { height: 30% }
+  .search-results { height: 70%; }
   * {
   text-align: center;
   border: 1px solid black;

@@ -10,6 +10,7 @@ Review
 
 ### Views
 * api/listings/new.html.erb
+* users/edit.html.erb
 
 ## Backbone
 ### Models

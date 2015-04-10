@@ -55,9 +55,9 @@ app will be pushed to Heroku at the end of the day.
 I will add search functionality to the home page, which will allow users
 to enter the location and check in/out dates similar to AirBnB's search
 box on the home page. Search results will initially only show the
-listing titles (to be improved upon in phase 3). Each listing's show
+listing titles (to be improved upon in phase 4). Each listing's show
 page will display the listing's data in JSON (to be improved upon in
-phase 4).
+phase 3).
 
 [Details][phase-two]
 
@@ -67,7 +67,7 @@ link to sample listings. These will be populated in the database.
 I will modify the listing detail pages with more information, mimicking
 the AirBnB listing detail page.
 Users will be able to favorite listings from the detail page or the
-search results page. Users will also be able to edit their profiles.
+search results page.
 
 [Details][phase-three]
 
@@ -86,7 +86,8 @@ a listing's detail page.
 I will add the ability for users to leave reviews on both listings and
 other users. These will be shown on the bottom of a listing detail page
 or a user's profile page. This will be implemented with a polymorphic
-association that connects reviews to either users or listings.
+association that connects reviews to either users or listings. Users
+will also be able to edit their profiles.
 I will do any styling needed for the pages from previous days that still
 need styling, and standardize the format across the whole site.
 

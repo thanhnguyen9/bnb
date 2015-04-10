@@ -3,13 +3,11 @@
 ## Rails
 ### Models
 * Listing
-* Images
 
 ### Controllers
 * ListingsController (search)
 
 ### Views
-* api/listings/results.html.erb
 * api/listings/show.html.erb
 
 ## Backbone

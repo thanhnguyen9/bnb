@@ -2,13 +2,13 @@
 
 ## Rails
 ### Models
+* Images
 
 ### Controllers
 * UsersController (edit, update)
 * ListingsController (show)
 
 ### Views
-* users/edit.html.erb
 
 ## Backbone
 ### Models

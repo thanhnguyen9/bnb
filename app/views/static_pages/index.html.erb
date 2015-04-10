@@ -44,7 +44,9 @@
 
 <script charset="utf-8">
   $(document).ready(function () {
-    $('body').addClass('homepage');
+    if ($('body').find('.intro-text').length > 0) {
+      $('body').addClass('homepage');
+    }
   });
   $(document).unload(function () {
     $('body').removeClass('homepage');

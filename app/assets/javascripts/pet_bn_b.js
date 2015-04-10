@@ -5,7 +5,7 @@ window.PetBnB = {
   Routers: {},
   initialize: function() {
     console.log('Hello from PetBnB!');
-    new PetBnB.Routers.Router({
+    this.router = new PetBnB.Routers.Router({
       $rootEl: $('#content')
     });
     Backbone.history.start();
