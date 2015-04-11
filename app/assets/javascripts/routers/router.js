@@ -10,7 +10,7 @@ PetBnB.Routers.Router = Backbone.Router.extend({
     this._checkin = "";
     this._checkout = "";
     this._location = "";
-    this._result = {};
+    this._coords = {};
   },
 
   home: function () {
@@ -21,7 +21,10 @@ PetBnB.Routers.Router = Backbone.Router.extend({
 
   results: function () {
     var resultsView = new PetBnB.Views.ResultsView({
-      result: this._result
+      checkin: this._checkIn,
+      checkout: this._checkOut,
+      location: this._location,
+      coords: this._coords
     });
     this._swapView(resultsView);
   },

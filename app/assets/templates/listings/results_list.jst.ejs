@@ -1,8 +1,6 @@
 Search Results
 <ul class="list-group">
   <% listings.forEach(function (listing) { %>
-    <li>
-      
-    </li>
+    <li class="list-group-item"><%= listing.escape(title) %></li>
   <% }) %>
 </ul>

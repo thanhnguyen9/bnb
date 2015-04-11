@@ -52,7 +52,7 @@
 /* Navbar */
 
 .navbar {
-  margin: 0;
+  margin: 0;
   border-radius: 0;
   border-color: transparent;
   background-color: transparent;
@@ -70,7 +70,7 @@
 /* Content */
 
 #content {
-  height: 1000px;
+  height: 600px;
   // padding: 0 20px;
 }
 
@@ -153,14 +153,28 @@
 
 /* Results Page */
 
-.row.results {
+.results {
   height: 100%;
-  .search-container, .search-map { height: 100%; }
-  .search-details, { height: 30% }
-  .search-results { height: 70%; }
   * {
-  text-align: center;
-  border: 1px solid black;
+    text-align: center;
+    border: 1px solid black;
+  }
+  .row { margin: 0 }
+  .search-container, .search-map { height: 100%; }
+  .search-details, { height: 30%; }
+  .search-results {
+    height: 70%;
+    li {
+      float: left;
+      width: 25%;
+      height: 0;
+      padding-bottom: 25%;
+      a {
+        text-decoration: none;
+        border: none;
+        display: block;
+      }
+    }
   }
 }
 

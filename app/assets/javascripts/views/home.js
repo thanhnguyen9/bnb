@@ -73,7 +73,7 @@ PetBnB.Views.HomeView = Backbone.View.extend({
         url: query,
         type: 'get',
         success: function (resp) {
-          this._router._result = resp.results[0];
+          this._router._coords = resp.results[0].geometry.location;
           Backbone.history.navigate('results', { trigger: true });
         }.bind(this),
         error: function (resp) {

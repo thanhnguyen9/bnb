@@ -13,7 +13,7 @@
     <% if logged_in? %>
       <div class="intro-search">
         <form class="form-group form-inline search-bar"
-              action="/api/search" method="POST">
+              action="/api/search" method="GET">
           <%= auth_input %>
           <div class="input-group">
             <span class="input-group">
@@ -23,12 +23,14 @@
               <span class="errors"></span>
             </span>
             <span class="input-group">
-              <input type="date" class="form-control"
+              <input type="text" class="form-control"
+                     id="checkin"
                      name="search[checkin]"
                      placeholder="Check In">
             </span>
             <span class="input-group">
-              <input type="date" class="form-control"
+              <input type="text" class="form-control"
+                     id="checkout"
                      name="search[checkout]"
                      placeholder="Check Out">
             </span>
@@ -51,6 +53,10 @@
   $(document).unload(function () {
     $('body').removeClass('homepage');
   });
+  (function () {
+    $('#checkin').datepicker();
+    $('#checkout').datepicker();
+  })();
 </script>
 
 <!-- <video preload="auto" loop="loop" id="markov-video"

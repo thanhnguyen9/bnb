@@ -1,0 +1,42 @@
+<div class="col-md-7 search-container">
+  <div class="row search-details">
+    <div class="row dates">
+      Dates
+      <input type="text"
+             name="checkin"
+             id="checkin"
+             placeholder="Check In"
+             value="<%= checkin %>">
+      <input type="text"
+             name="checkout"
+             id="checkout"
+             placeholder="Check Out"
+             value="<%= checkout %>">
+    </div>
+    <div class="row price-range">
+      Price Range
+    </div>
+  </div>
+  <div class="row search-results">
+    Search Results
+    <ul class="list-group">
+      <% listings.forEach(function (listing) { %>
+        <li class="list-group-item">
+          <a href="#/listings/<%= listing.id %>">
+            <%= listing.escape('name') %>
+          </a>
+        </li>
+      <% }) %>
+    </ul>
+  </div>
+</div>
+<div class="col-md-5 search-map">
+  Map
+</div>
+
+<script charset="utf-8">
+  (function () {
+    $('#checkin').datepicker();
+    $('#checkout').datepicker();
+  })();
+</script>
