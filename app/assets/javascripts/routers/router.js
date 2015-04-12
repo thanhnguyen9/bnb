@@ -41,7 +41,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
     this.$rootEl.html(view.render().$el);
-    $('body').removeClass('homepage');
     this._currentView = view;
   }
 });

@@ -9,18 +9,23 @@
 User.create!(email: 'Guest', password: 'password')
 amy = User.create!(email: 'Amy', password: 'amyamyamy')
 
-listing1 = Listing.create!(user_id: amy.id,
-                          name: 'Cozy cat heaven in Noe Valley',
-                          description: 'Give your cat the royal treatment when you go on vacation by leaving him or her at my place :) I will make sure to love him or her as much (or even more than) you do!',
-                          latitude: 37.7502378,
-                          longitude: -122.4337029,
-                          price_daily: 10,
-                          price_weekly: 50)
+listing1 = amy.listings.create!(name: 'Cozy cat heaven in Noe Valley',
+                                description: 'Give your cat the royal treatment when you go on vacation by leaving him or her at my place :) I will make sure to love him or her as much (or even more than) you do!',
+                                latitude: 37.7502378,
+                                longitude: -122.4337029,
+                                price_daily: 10,
+                                price_weekly: 50)
 
-listing2 = Listing.create!(user_id: amy.id,
-                          name: "Your kitty's home away from home",
-                          description: "Your kitty will feel right at home here; I'm an experienced catsitter and have been doing this for more than 10 years. Go to http://www.yelp.com/biz/pets-love-amy-oakland to check out my reviews!",
-                          latitude: 37.8043637,
-                          longitude: -122.2711137,
-                          price_daily: 0,
-                          price_weekly: 0)
+listing2 = amy.listings.create!(name: "Your kitty's home away from home",
+                               description: "Your kitty will feel right at home here; I'm an experienced catsitter and have been doing this for more than 10 years. Go to http://www.yelp.com/biz/pets-love-amy-oakland to check out my reviews!",
+                               latitude: 37.8043637,
+                               longitude: -122.2711137,
+                               price_daily: 0,
+                               price_weekly: 0)
+
+listing1.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing1a.jpg')
+listing1.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing1b.jpg')
+listing1.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing1c.jpg')
+
+listing2.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing2a.jpg')
+listing2.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing2b.jpg')

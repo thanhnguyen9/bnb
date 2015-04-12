@@ -1,3 +1,67 @@
 // Place all the styles related to the Listings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Results Page */
+
+.results {
+  height: 100%;
+
+  * {
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  .row { margin: 0 }
+
+  .search-container, .search-map { height: 100%; }
+
+  .search-details, {
+    height: 30%;
+
+    .row { height: 50%; }
+  }
+
+  .search-results {
+    height: 70%;
+
+    li {
+      float: left;
+      width: 25%;
+      height: 0;
+      padding-bottom: 25%;
+
+      a {
+        text-decoration: none;
+        border: none;
+        display: block;
+      }
+    }
+  }
+}
+
+/* Show Page */
+
+.listing-show {
+  margin: 0;
+
+  .cover {
+    width: 100%;
+    height: 550px;
+    background-color: teal;
+  }
+
+  .summary {
+    margin-top: -40px;
+    padding-top: 40px;
+    height: 215px;
+    background-color: transparent;
+
+    & > .row {
+      margin: 0 20%;
+      padding: 0 25px;
+
+      .row-space-4 { padding: 25px 0; }
+    }
+  }
+}

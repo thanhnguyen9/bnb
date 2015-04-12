@@ -1,58 +1,51 @@
-<div class="container">
-  <div class="intro-wrapper">
-    <div class="intro-text">
-      VACATION HOMES FOR YOUR PET
-      <% if !logged_in? %>
-        <div class="welcome-text">
-          Welcome to PetBnB :)
-          <br>
-          Please login or sign up with the links on the top right!
-        </div>
-      <% end %>
-    </div>
-    <% if logged_in? %>
-      <div class="intro-search">
-        <form class="form-group form-inline search-bar"
-              action="/api/search" method="GET">
-          <%= auth_input %>
-          <div class="input-group">
-            <span class="input-group">
-              <input type="text" class="form-control search"
-                     name="search[location]"
-                     placeholder="Where does your pet want to go?">
-              <span class="errors"></span>
-            </span>
-            <span class="input-group">
-              <input type="text" class="form-control"
-                     id="checkin"
-                     name="search[checkin]"
-                     placeholder="Check In">
-            </span>
-            <span class="input-group">
-              <input type="text" class="form-control"
-                     id="checkout"
-                     name="search[checkout]"
-                     placeholder="Check Out">
-            </span>
-            <span class="input-group-btn">
-              <button class="btn btn-primary search">Search</button>
-            </span>
-          </div>
-        </form>
+<div class="intro-wrapper">
+  <div class="intro-text">
+    VACATION HOMES FOR YOUR PET
+    <% if !logged_in? %>
+      <div class="welcome-text">
+        Welcome to PetBnB :)
+        <br>
+        Please login or sign up with the links on the top right!
       </div>
     <% end %>
+  </div>
+  <% if logged_in? %>
+    <div class="intro-search">
+      <form class="form-group form-inline search-bar"
+            action="/api/search" method="GET">
+        <%= auth_input %>
+        <div class="input-group">
+          <span class="input-group">
+            <input type="text" class="form-control search"
+                   name="search[location]"
+                   placeholder="Where does your pet want to go?">
+            <span class="errors"></span>
+          </span>
+          <span class="input-group">
+            <input type="text" class="form-control"
+                   id="checkin"
+                   name="search[checkin]"
+                   placeholder="Check In">
+          </span>
+          <span class="input-group">
+            <input type="text" class="form-control"
+                   id="checkout"
+                   name="search[checkout]"
+                   placeholder="Check Out">
+          </span>
+          <span class="input-group-btn">
+            <button class="btn btn-primary search">Search</button>
+          </span>
+        </div>
+      </form>
+    </div>
+  <% end %>
+  <div class="intro-listings">
+
   </div>
 </div>
 
 <script charset="utf-8">
-  $(document).ready(function () {
-    if ($('body').find('.intro-text').length > 0) {
-      $('body').addClass('homepage');
-    }
-  });
-  $(document).unload(function () {
-    $('body').removeClass('homepage');
-  });
   (function () {
     $('#checkin').datepicker();
     $('#checkout').datepicker();

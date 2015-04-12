@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   before_action :redirect_if_logged_in, only: [:create]
-  before_filter :logged_in?, only: [:show]
 
   def create
     @user = User.new(user_params)
@@ -15,7 +14,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    if @user == current_user
+    if @user
       render :show
     else
       redirect_to :root

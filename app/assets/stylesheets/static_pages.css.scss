@@ -1,3 +1,87 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Home Page */
+
+// video {
+//   transform: scaleX(1.5) scaleY(0.5);
+//   z-index: -100;
+//   height: 500;
+// }
+
+.intro-wrapper {
+  height: 700px;
+  background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: 0 -150px;
+  
+  .intro-text {
+    position: relative;
+    top: 250px;
+    text-align: center;
+    font-size: 54px;
+    font-weight: 700;
+    color: white;
+
+    .welcome-text {
+      height: 100px;
+      background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
+      line-height: 50px;
+      font-size: 24px;
+      font-weight: 500;
+    }
+  }
+
+  .intro-search {
+    padding: 30px 0;
+    position: absolute;
+    top: 600px;
+    left: 0;
+    width: 100%;
+    background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
+    height: 100px;
+
+    form {
+      height: 60px;
+
+      div.input-group {
+        margin: 0 auto;
+        display: table;
+
+        * {
+          height: 40px;
+          float: left;
+          font-size: 16px;
+        }
+
+        input.search {
+          width: 280px;
+          border-top-left-radius: 4px;
+          border-bottom-left-radius: 4px;
+        }
+
+        input:not(.search) { width: 180px }
+
+        button.search { width: 100px; }
+
+        .errors {
+          position: absolute;
+          left: 0;
+          bottom: -20px;
+          width: 280px;
+          height: 20px;
+          padding: 3px 12px;
+          color: white;
+          font-size: 14px;
+        }
+
+        &::after { content: ""; }
+      }
+    }
+  }
+
+  .intro-listings {
+
+  }
+}

@@ -1,1 +1,42 @@
-<%= JSON.stringify(listing) %>
+<div class="cover">
+</div>
+<div class="summary">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row-space-4 row-space-top-4">
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <a href="/users/<%= listing.escape('user_id') %>">
+              <img src="https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" alt="user_icon" />
+            </a>
+          </div>
+          <div class="col-md-9">
+            <h1><%= listing.escape('name') %></h1>
+            <input type="hidden" id="lat" value=<%= listing.escape('latitude') %>>
+            <input type="hidden" id="lng" value=<%= listing.escape('longitude') %>>
+            <span class="address"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <%= JSON.stringify(listing) %> -->
+
+<script charset="utf-8">
+  $(document).ready(function () {
+    var lat = parseFloat(document.getElementById("lat").value);
+    var lng = parseFloat(document.getElementById("lng").value);
+    if (!isNaN(lat) && !isNaN(lng)) {
+      var latlng = new google.maps.LatLng(lat, lng);
+      var geocoder = geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[1]) {
+            $('.address').html(results[1].formatted_address);
+          }
+        }
+      });
+    }
+  })
+</script>

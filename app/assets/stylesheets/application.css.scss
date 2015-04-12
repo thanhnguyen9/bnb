@@ -49,6 +49,12 @@
   ul { list-style: none; }
 }
 
+html, body { height: 100%; }
+
+/* Content */
+
+#content { height: 100%; }
+
 /* Navbar */
 
 .navbar {
@@ -57,124 +63,13 @@
   border-color: transparent;
   background-color: transparent;
   background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/navbar_bg.png');
-}
 
-.navbar-header { width: 80px }
+  .navbar-header { width: 80px }
 
-.navbar-brand {
-  float: right;
-  padding: 0;
-  margin: 0 20px;
-}
-
-/* Content */
-
-#content {
-  height: 600px;
-  // padding: 0 20px;
-}
-
-/* Home Page */
-
-// video {
-//   transform: scaleX(1.5) scaleY(0.5);
-//   z-index: -100;
-//   height: 500;
-// }
-
-.homepage {
-  background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
-  background-repeat: no-repeat;
-  padding: 0;
-  .container {
-    width: 100%;
+  .navbar-brand {
+    float: right;
     padding: 0;
-    height: 700px;
-  }
-}
-
-.intro-wrapper { height: 100%; }
-
-.intro-text {
-  position: relative;
-  top: 250px;
-  text-align: center;
-  font-size: 54px;
-  font-weight: 700;
-  color: white;
-  .welcome-text {
-    height: 100px;
-    background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
-    line-height: 50px;
-    font-size: 24px;
-    font-weight: 500;
-  }
-}
-
-.intro-search {
-  padding: 30px 0;
-  position: absolute;
-  top: 600px;
-  left: 0;
-  width: 100%;
-  background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
-  height: 100px;
-  form {
-    height: 60px;
-    div.input-group {
-      margin: 0 auto;
-      display: table;
-      * {
-        height: 40px;
-        float: left;
-        font-size: 16px;
-      }
-      input.search {
-        width: 280px;
-        border-top-left-radius: 4px;
-        border-bottom-left-radius: 4px;
-      }
-      input:not(.search) { width: 180px }
-      button.search { width: 100px; }
-      .errors {
-        position: absolute;
-        left: 0;
-        bottom: -20px;
-        width: 280px;
-        height: 20px;
-        padding: 3px 12px;
-        color: white;
-        font-size: 14px;
-      }
-      &::after { content: ""; }
-    }
-  }
-}
-
-/* Results Page */
-
-.results {
-  height: 100%;
-  * {
-    text-align: center;
-    border: 1px solid black;
-  }
-  .row { margin: 0 }
-  .search-container, .search-map { height: 100%; }
-  .search-details, { height: 30%; }
-  .search-results {
-    height: 70%;
-    li {
-      float: left;
-      width: 25%;
-      height: 0;
-      padding-bottom: 25%;
-      a {
-        text-decoration: none;
-        border: none;
-        display: block;
-      }
-    }
+    margin: 0 20px;
   }
 }
 
@@ -187,6 +82,7 @@
 a {
   text-decoration: none;
   color: #FF5A5F;
+
   &:hover {
     text-decoration: underline;
     color: #FFA3A6;
@@ -196,5 +92,6 @@ a {
 .btn-primary:not(.btn-info) {
   border: none;
   background-color: #FF5A5F;
+
   &:active, &:hover { background-color: #FFA3A6; }
 }

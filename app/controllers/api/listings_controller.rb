@@ -7,9 +7,8 @@ module Api
 
     def show
       @listing = Listing.find(params[:id])
-      if @listing
-        render json: @listing
-      end
+      @images = @listing.images
+      render :show
     end
 
     private

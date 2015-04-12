@@ -1,6 +1,8 @@
 PetBnB.Views.ListingShowView = Backbone.View.extend({
   template: JST['listings/show'],
 
+  className: 'listing-show',
+
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
   },
