@@ -15,7 +15,7 @@
   background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
   background-repeat: no-repeat;
   background-position: 0 -150px;
-  
+
   .intro-text {
     position: relative;
     top: 250px;
@@ -60,8 +60,6 @@
           border-top-left-radius: 4px;
           border-bottom-left-radius: 4px;
         }
-
-        input:not(.search) { width: 180px }
 
         button.search { width: 100px; }
 

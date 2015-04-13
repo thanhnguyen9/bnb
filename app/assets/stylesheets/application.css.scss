@@ -80,7 +80,16 @@ html, body { height: 100%; }
 
 .modal { position: absolute; }
 
-/* Buttons & Links */
+/* Buttons & Icons & Links */
+
+.btn-primary:not(.btn-info) {
+  border: none;
+  background-color: #FF5A5F;
+
+  &:active, &:hover { background-color: #FFA3A6; }
+}
+
+i { margin-right: 4px; }
 
 a {
   text-decoration: none;
@@ -90,11 +99,4 @@ a {
     text-decoration: underline;
     color: #FFA3A6;
   }
-}
-
-.btn-primary:not(.btn-info) {
-  border: none;
-  background-color: #FF5A5F;
-
-  &:active, &:hover { background-color: #FFA3A6; }
 }

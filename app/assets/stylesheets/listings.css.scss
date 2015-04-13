@@ -19,7 +19,20 @@
   .search-details, {
     height: 30%;
 
-    .row { height: 50%; }
+    .row {
+      height: 50%;
+
+      div.input-group {
+        margin: 0 auto;
+        display: table;
+
+        * {
+          height: 40px;
+          float: left;
+          font-size: 16px;
+        }
+      }
+    }
   }
 
   .search-results {
@@ -72,25 +85,129 @@
 
         .user-email { padding-top: 18px; }
       }
+    }
 
-      .col-lg-4 {
-        .booking-form {
-          margin-top: -40px;
+    .booking-form {
+      position: absolute;
+      top: -40px;
 
-          .price-box {
-            height: 40px;
-            background-color: rgba(60, 63, 64, 0.901961);
-            * { color: white; }
+      .price-box {
+        height: 40px;
+        background-color: rgba(60, 63, 64, 0.901961);
+        * { color: white; }
 
-            .price {
-              margin: 0;
-              padding: 6px 20px;
-              font-size: 24px;
+        .price {
+          margin: 0;
+          padding: 6px 20px;
+          font-size: 24px;
+        }
+        .per-night {
+          padding: 0 20px;
+          font-size: 14px;
+          line-height: 40px;
+        }
+      }
+
+      .panel {
+        width: 315px;
+        border: 1px solid #DCE0E0;
+        border-radius: 0;
+
+        .panel-body {
+          padding: 20px;
+
+          .form-fields {
+
+            .row {
+              margin-bottom: 18.75px;
+              margin-left: -6.25px;
+              margin-right: -6.25px;
+
+              .col-sm-6 {
+                line-height: 2;
+
+                input { width: 100%; }
+              }
             }
-            .per-night {
-              padding: 0 20px;
-              font-size: 14px;
-              line-height: 40px;
+          }
+
+          .booking-details {
+            margin: 0 -20px;
+
+            table {
+              border: none;
+              margin-bottom: 15px;
+
+              td {
+                border: 1px solid #DCE0E0;
+                border-left: none;
+                border-right: none;
+              }
+
+              #cost-breakdown-2, #cost-breakdown-total {
+                border: 1px solid #DCE0E0;
+                border-right: none;
+              }
+            }
+
+            .booking-button {
+              width: 273px;
+              height: 43px;
+              margin: 0 auto;
+
+              button {
+                color: white;
+                font-size: 16px;
+                padding: 9px 27px;
+                border-radius: 2px;
+
+                .fa-bolt { color: #FFB400; }
+              }
+            }
+          }
+
+          #book-urgency-commitment {
+            margin-top: 25px;
+
+            .panel-body {
+              width: 273px;
+              background-color: #FFF8E5;
+              padding: 14px;
+              margin: 0 auto;
+
+              .icon {
+                height: 40px;
+                width: 28px;
+                background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/listings/hourglass.png') right bottom no-repeat;
+                margin-right: 15px;
+              }
+
+              .media-body {
+                padding-left: 5px;
+                font-size: 14px;
+              }
+            }
+          }
+
+          .wishlist-wrapper {
+            height: 42px;
+            width: 273px;
+            margin: 0 auto;
+            margin-top: 18.75px;
+
+            label {
+              border: 1px solid #C4C4C4;
+              border-radius: 2px;
+              color: #565A5C;
+
+              span {
+                line-height: 28px;
+                font-size: 16px;
+
+                .fa-heart-o { color: #CCC; }
+
+                .fa-heart { color: #FF5A5F; }
+              }
             }
           }
         }

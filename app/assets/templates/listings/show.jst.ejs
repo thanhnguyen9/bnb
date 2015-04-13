@@ -40,16 +40,12 @@
               <div class="form-fields">
                 <div class="row row-condensed">
                   <div class="col-sm-6">
-                    <label>
-                      Check In
-                      <input type="text" id="checkin" name="checkin" placeholder="mm/dd/yyyy">
-                    </label>
+                    Check In
+                    <input type="text" id="checkin" name="checkin" placeholder="mm/dd/yyyy">
                   </div>
                   <div class="col-sm-6">
-                    <label>
-                      Check Out
-                      <input type="text" id="checkout" name="checkout" placeholder="mm/dd/yyyy">
-                    </label>
+                    Check Out
+                    <input type="text" id="checkout" name="checkout" placeholder="mm/dd/yyyy">
                   </div>
                 </div>
               </div>
@@ -75,35 +71,32 @@
                 <div class="booking-button">
                   <button type="submit" class="btn btn-primary btn-large btn-block"
                           id="booking-button">
-                    <i class="fa fa-bolt"></i>
-                    Instant Book
+                    <i class="fa fa-bolt"></i>  Instant Book
                   </button>
                 </div>
               </div>
-            </div>
-            <div id="book-urgency-commitment">
-              <div class="panel-body">
-                <div class="media">
-                  <i class="icon icon-hourglass-color pull-left"></i>
-                  <div class="media-body">
-                    See yourself here? Book soon. <b>100</b> pet owners viewed
-                    <%= user %>'s place this week.
+              <div id="book-urgency-commitment">
+                <div class="panel-body">
+                  <div class="media">
+                    <i class="icon icon-hourglass-color pull-left"></i>
+                    <div class="media-body">
+                      See yourself here? Book soon. <b>100</b> pet owners viewed
+                      <%= user %>'s place this week.
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="wishlist-wrapper">
-              <label for="wishlist-button" class="btn btn-block btn-large">
-                <!-- toggle based on whether this is on user's wishlist -->
-                <!-- <span class="wishlist-toggle-checked">
-                  <i class="icon icon-heart icon-rausch"></i>
-                  Saved to Wish List
-                </span> -->
-                <span class="wishlist-toggle-unchecked">
-                  <i class="icon icon-heart-alt icon-light-gray"></i>
-                  Save to Wish List
-                </span>
-              </label>
+              <div class="wishlist-wrapper">
+                <label for="wishlist-button" class="btn btn-block btn-large">
+                  <!-- toggle based on whether this is on user's wishlist -->
+                  <!-- <span class="wishlist-toggle-checked">
+                    <i class="fa fa-heart"></i>   Saved to Wish List
+                  </span> -->
+                  <span class="wishlist-toggle-unchecked">
+                    <i class="fa fa-heart-o"></i>   Save to Wish List
+                  </span>
+                </label>
+              </div>
             </div>
           </div>
         </div>
