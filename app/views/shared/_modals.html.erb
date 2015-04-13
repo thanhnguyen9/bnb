@@ -9,9 +9,12 @@
 </div>
 
 <script charset="utf-8">
+  // focus on email field when modal pops up
   $('.modal').on('shown.bs.modal', function () {
     $('.modal.fade.in #email').focus();
   })
+
+  // correctly hide current modal's elements when showing other one
   $('#loginLink').click(function () {
     $('#signupModal').hide();
     $('body').removeClass('.modal-open');
@@ -23,22 +26,23 @@
     $('.modal-backdrop').remove();
   });
 
+  // click handlers for guest login, login, and signup buttons
   $('#guest-login').click(function (event) {
     event.preventDefault();
+    $('.modal.in .errors').html('');
     $('.modal.in button').prop('disabled', 'true');
 
     $('.modal.in').find('#email').val('Guest');
     $('.modal.in').find('input[type=password]').val('password');
-    // setTimeout(function () {
-      loginOrSignup({
-        action: '/session',
-        email: 'Guest',
-        password: 'password'
-      });
-    // }, 500);
+    loginOrSignup({
+      action: '/session',
+      email: 'Guest',
+      password: 'password'
+    });
   });
   $('#login').click(function (event) {
     event.preventDefault();
+    $('.modal.in .errors').html('');
     $('.modal.in button').prop('disabled', 'true');
 
     loginOrSignup({
@@ -49,6 +53,7 @@
   });
   $('#signup').click(function (event) {
     event.preventDefault();
+    $('.modal.in .errors').html('');
     $('.modal.in button').prop('disabled', 'true');
 
     loginOrSignup({
@@ -58,6 +63,7 @@
     });
   });
 
+  // create new user or session
   function loginOrSignup(options) {
     var userData = { user: { email: options.email,
                              password: options.password }};
