@@ -25,19 +25,21 @@
 
   $('#guest-login').click(function (event) {
     event.preventDefault();
+    $('.modal.in button').prop('disabled', 'true');
 
     $('.modal.in').find('#email').val('Guest');
     $('.modal.in').find('input[type=password]').val('password');
-    setTimeout(function () {
+    // setTimeout(function () {
       loginOrSignup({
         action: '/session',
         email: 'Guest',
         password: 'password'
       });
-    }, 1000);
+    // }, 500);
   });
   $('#login').click(function (event) {
     event.preventDefault();
+    $('.modal.in button').prop('disabled', 'true');
 
     loginOrSignup({
       action: '/session',
@@ -47,6 +49,7 @@
   });
   $('#signup').click(function (event) {
     event.preventDefault();
+    $('.modal.in button').prop('disabled', 'true');
 
     loginOrSignup({
       action: '/users',
@@ -77,6 +80,7 @@
           errors += 'Incorrect credentials<br>';
         }
         $('.modal.in .errors').html(errors);
+        $('.modal.in button').removeAttr('disabled');
       }
     });
   }
