@@ -55,7 +55,8 @@
                     <tbody>
                       <tr>
                         <td id="cost-breakdown-1">
-                          <%= listing.escape('price_daily') %> x 0 nights
+                          $<%= listing.escape('price_daily') %> x
+                          <span id="total-nights"></span> nights
                         </td>
                         <td id="cost-breakdown-2">
                           [result]
@@ -108,7 +109,13 @@
 <!-- <%= JSON.stringify(listing) %> -->
 
 <script charset="utf-8">
+  (function () {
+    $('#checkin').datepicker();
+    $('#checkout').datepicker();
+  })();
+
   $(document).ready(function () {
+    // find readable location based on lat and lng from listing data
     var lat = parseFloat(document.getElementById("lat").value);
     var lng = parseFloat(document.getElementById("lng").value);
     if (!isNaN(lat) && !isNaN(lng)) {
@@ -122,5 +129,15 @@
         }
       });
     }
-  })
+
+    var checkin = Date.parse($('#checkout').val()) / 1000 / 3600 / 24;
+    var checkout = Date.parse($('#checkin').val()) / 1000 / 3600 / 24;
+    if (!isNaN(checkin) && !isNaN(checkout)) {
+      if (checkout - checkin < 1) {
+
+      } else {
+        $('#total-nights').val(checkout - checkin);
+      }
+    }
+  });
 </script>

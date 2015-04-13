@@ -23,6 +23,8 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     });
     this.$el.html(content);
 
+    PetBnB.setDatepickers();
+
     return this;
   },
 

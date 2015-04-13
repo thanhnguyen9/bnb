@@ -24,6 +24,11 @@ window.PetBnB = {
       });
       Backbone.history.start();
     }
+  },
+
+  setDatepickers: function () {
+    $('#checkin').datepicker();
+    $('#checkout').datepicker();
   }
 };
 
