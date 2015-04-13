@@ -74,3 +74,14 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
 </nav>
+
+<script charset="utf-8">
+// capture input when enter key is pressed
+  $('.navbar-form input').keypress(function (event) {
+    if (event.keyCode === 13) {
+      event.preventDefault();
+      console.log($('.navbar-form input').val());
+      $('.navbar-form input').val('');
+    }
+  })
+</script>

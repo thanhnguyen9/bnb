@@ -4,7 +4,7 @@ window.PetBnB = {
   Views: {},
   Routers: {},
   initialize: function() {
-    console.log('Hello from PetBnB!');
+    // console.log('Hello from PetBnB!');
     // this.router = new PetBnB.Routers.DemoRouter({
     //   $rootEl: $('#content')
     // });
@@ -13,9 +13,9 @@ window.PetBnB = {
       var id = parseInt($('#logged_in').val());
       var currentUser = new PetBnB.Models.User({ id: id });
       currentUser.fetch({
-        success: function () {
-          console.log('finished fetching current user');
-        }
+        // success: function () {
+        //   console.log('finished fetching current user');
+        // }
       });
 
       this.router = new PetBnB.Routers.Router({

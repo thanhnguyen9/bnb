@@ -98,8 +98,8 @@
             }
 
             .booking-button {
-              button {
-                border-color: #FF5A5F;
+              #booking-button {
+                border: none;
                 color: white;
 
                 .fa-bolt { color: #FFB400; }
