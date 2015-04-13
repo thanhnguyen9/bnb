@@ -2,8 +2,7 @@ class Listing < ActiveRecord::Base
   belongs_to :user
   has_many :images
 
-  validates :name, :description, :price_daily, :price_weekly, :user_id,
-            presence: true
+  validates :name, :description, :price_daily, :user_id, presence: true
 
   def self.find_by_location(coords)
     # return Listing.all if coords[:location] == ""
