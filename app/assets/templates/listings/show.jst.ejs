@@ -115,21 +115,6 @@
   })();
 
   $(document).ready(function () {
-    // find readable location based on lat and lng from listing data
-    var lat = parseFloat(document.getElementById("lat").value);
-    var lng = parseFloat(document.getElementById("lng").value);
-    if (!isNaN(lat) && !isNaN(lng)) {
-      var latlng = new google.maps.LatLng(lat, lng);
-      var geocoder = geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (results[1]) {
-            $('.address').html(results[1].formatted_address);
-          }
-        }
-      });
-    }
-
     var checkin = Date.parse($('#checkout').val()) / 1000 / 3600 / 24;
     var checkout = Date.parse($('#checkin').val()) / 1000 / 3600 / 24;
     if (!isNaN(checkin) && !isNaN(checkout)) {
