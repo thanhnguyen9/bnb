@@ -111,6 +111,18 @@ html, body { height: 100%; }
   &:active, &:hover { background-color: #FFA3A6; }
 }
 
+.btn.btn-large.btn-block {
+  width: 273px;
+  height: 43px;
+  margin: 0 auto;
+  font-size: 16px;
+  padding: 9px 27px;
+  border: 1px solid #C4C4C4;
+  border-radius: 2px;
+
+  &:hover { border-color: #565A5C; }
+}
+
 i { margin-right: 4px; }
 
 a {

@@ -78,6 +78,7 @@
           }
 
           .booking-details {
+            display: none;
             margin: 0 -20px;
 
             table {
@@ -97,20 +98,30 @@
             }
 
             .booking-button {
-              width: 273px;
-              height: 43px;
-              margin: 0 auto;
-
               button {
+                border-color: #FF5A5F;
                 color: white;
-                font-size: 16px;
-                padding: 9px 27px;
-                border-radius: 2px;
 
                 .fa-bolt { color: #FFB400; }
               }
             }
           }
+
+          .booking-details.enabled { display: block; }
+
+          .booking-errors {
+            display: none;
+
+            .message {
+              margin: 0 auto 15px auto;
+              text-align: center;
+              color: #FF5A5F;
+            }
+
+            a#view_other_listings { color: #565A5C; }
+          }
+
+          .booking-errors.enabled { display: block; }
 
           #book-urgency-commitment {
             margin-top: 25px;
@@ -136,23 +147,18 @@
           }
 
           .wishlist-wrapper {
-            height: 42px;
-            width: 273px;
-            margin: 0 auto;
             margin-top: 18.75px;
 
             label {
-              border: 1px solid #C4C4C4;
-              border-radius: 2px;
-              color: #565A5C;
-
               span {
-                line-height: 28px;
-                font-size: 16px;
-
                 .fa-heart-o { color: #CCC; }
 
                 .fa-heart { color: #FF5A5F; }
+              }
+
+              span.wishlist-toggle-checked,
+              span.wishlist-toggle-unchecked {
+                color: #565A5C;
               }
             }
           }

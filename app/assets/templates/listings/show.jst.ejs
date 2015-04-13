@@ -76,6 +76,15 @@
                   </button>
                 </div>
               </div>
+              <div class="booking-errors enabled">
+                <div class="message">
+                  Those dates are not available
+                </div>
+                <a class="btn btn-large btn-block"
+                   id="view_other_listings">
+                  View Other Listings
+                </a>
+              </div>
               <div id="book-urgency-commitment">
                 <div class="panel-body">
                   <div class="media">
@@ -109,20 +118,6 @@
 <!-- <%= JSON.stringify(listing) %> -->
 
 <script charset="utf-8">
-  (function () {
-    $('#checkin').datepicker();
-    $('#checkout').datepicker();
-  })();
-
   $(document).ready(function () {
-    var checkin = Date.parse($('#checkout').val()) / 1000 / 3600 / 24;
-    var checkout = Date.parse($('#checkin').val()) / 1000 / 3600 / 24;
-    if (!isNaN(checkin) && !isNaN(checkout)) {
-      if (checkout - checkin < 1) {
-
-      } else {
-        $('#total-nights').val(checkout - checkin);
-      }
-    }
   });
 </script>
