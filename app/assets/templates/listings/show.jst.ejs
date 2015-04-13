@@ -1,3 +1,5 @@
+<% var user = listing.get('user') ? listing.get('user').email : "" %>
+
 <div class="cover">
 </div>
 <div class="summary">
@@ -9,18 +11,107 @@
             <a href="/users/<%= listing.escape('user_id') %>">
               <img src="https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" alt="user_icon" />
             </a>
+              <div class="user-email"><%= user %></div>
           </div>
           <div class="col-md-9">
             <h1><%= listing.escape('name') %></h1>
             <input type="hidden" id="lat" value=<%= listing.escape('latitude') %>>
             <input type="hidden" id="lng" value=<%= listing.escape('longitude') %>>
             <span class="address"></span>
+            <span class="reviews">[Reviews TBA]</span>
+            <div class="row row-condensed text-muted text-center">
+              <div class="col-sm-3">
+                <img src="https://s3-us-west-1.amazonaws.com/petbnb/images/listings/home_icon.png" alt="home" />
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="col-lg-4">
+      <form class="booking-form">
+        <div class="price-box">
+          <h5 class="price pull-left">$<%= listing.escape('price_daily') %></h5>
+          <span class="per-night pull-right">Per Night</span>
+        </div>
+        <div class="booking-box">
+          <div class="panel">
+            <div class="panel-body panel-light">
+              <div class="form-fields">
+                <div class="row row-condensed">
+                  <div class="col-sm-6">
+                    <label>
+                      Check In
+                      <input type="text" id="checkin" name="checkin" placeholder="mm/dd/yyyy">
+                    </label>
+                  </div>
+                  <div class="col-sm-6">
+                    <label>
+                      Check Out
+                      <input type="text" id="checkout" name="checkout" placeholder="mm/dd/yyyy">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="booking-details">
+                <div class="panel-padding-fit">
+                  <table class="table table-bordered table-breakdown">
+                    <tbody>
+                      <tr>
+                        <td id="cost-breakdown-1">
+                          <%= listing.escape('price_daily') %> x 0 nights
+                        </td>
+                        <td id="cost-breakdown-2">
+                          [result]
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>Total</td>
+                        <td id="cost-breakdown-total">[total]</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="booking-button">
+                  <button type="submit" class="btn btn-primary btn-large btn-block"
+                          id="booking-button">
+                    <i class="fa fa-bolt"></i>
+                    Instant Book
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div id="book-urgency-commitment">
+              <div class="panel-body">
+                <div class="media">
+                  <i class="icon icon-hourglass-color pull-left"></i>
+                  <div class="media-body">
+                    See yourself here? Book soon. <b>100</b> pet owners viewed
+                    <%= user %>'s place this week.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="wishlist-wrapper">
+              <label for="wishlist-button" class="btn btn-block btn-large">
+                <!-- toggle based on whether this is on user's wishlist -->
+                <!-- <span class="wishlist-toggle-checked">
+                  <i class="icon icon-heart icon-rausch"></i>
+                  Saved to Wish List
+                </span> -->
+                <span class="wishlist-toggle-unchecked">
+                  <i class="icon icon-heart-alt icon-light-gray"></i>
+                  Save to Wish List
+                </span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
+
 <!-- <%= JSON.stringify(listing) %> -->
 
 <script charset="utf-8">

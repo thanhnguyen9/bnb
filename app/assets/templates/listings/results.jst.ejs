@@ -21,7 +21,7 @@
     Search Results
     <ul class="list-group">
       <% listings.forEach(function (listing) { %>
-        <li class="list-group-item">
+        <li class="list-group-item pull-left">
           <a href="#/listings/<%= listing.id %>">
             <%= listing.escape('name') %>
           </a>

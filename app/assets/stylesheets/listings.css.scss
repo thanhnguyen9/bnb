@@ -26,7 +26,6 @@
     height: 70%;
 
     li {
-      float: left;
       width: 25%;
       height: 0;
       padding-bottom: 25%;
@@ -45,6 +44,13 @@
 .listing-show {
   margin: 0;
 
+  * { color: #82888A; }
+
+  h1 {
+    color: #565A5C;
+    margin-top: 0;
+  }
+
   .cover {
     width: 100%;
     height: 550px;
@@ -61,7 +67,34 @@
       margin: 0 20%;
       padding: 0 25px;
 
-      .row-space-4 { padding: 25px 0; }
+      .row-space-4 {
+        padding: 25px 0;
+
+        .user-email { padding-top: 18px; }
+      }
+
+      .col-lg-4 {
+        .booking-form {
+          margin-top: -40px;
+
+          .price-box {
+            height: 40px;
+            background-color: rgba(60, 63, 64, 0.901961);
+            * { color: white; }
+
+            .price {
+              margin: 0;
+              padding: 6px 20px;
+              font-size: 24px;
+            }
+            .per-night {
+              padding: 0 20px;
+              font-size: 14px;
+              line-height: 40px;
+            }
+          }
+        }
+      }
     }
   }
 }

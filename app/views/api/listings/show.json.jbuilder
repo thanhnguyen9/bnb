@@ -7,3 +7,5 @@ unless @images.nil?
     json.(image, :listing_id, :url)
   end
 end
+
+json.user(@user, :email)
