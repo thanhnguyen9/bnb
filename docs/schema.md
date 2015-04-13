@@ -24,7 +24,6 @@ description     | string    | not null
 latitude        | decimal   | not null
 longitude       | decimal   | not null
 price_daily     | integer   | not null
-price_weekly    | integer   | not null
 booked          | boolean   | not null, default: false
 
 ## images
