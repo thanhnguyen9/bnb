@@ -8,11 +8,10 @@
                       alt: 'logo') %>
       </a>
     </div>
-    <div class="input-group input-group-sm">
-     <span class="input-group-addon" id="sizing-addon3"><i class="glyphicon glyphicon-search"></i></span>
-     <input type="text" class="form-control" placeholder="Where is your pet going?"
-            aria-describedby="sizing-addon3">
-   </div>
+    <form class="navbar-form navbar-left" role="search">
+      <input type="text" class="form-control"
+             placeholder="Where is your pet going?">
+    </form>
     <button type="button" class="navbar-toggle collapsed"
             data-toggle="collapse"
             data-target="#navbar"
@@ -26,6 +25,7 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
+          <input type="hidden" id="logged_in" value="<%= current_user.id %>">
           <li class="dropdown">
             <a href="#" class="dropdown-toggle"
                         data-toggle="dropdown"
@@ -35,7 +35,7 @@
             </a>
             <ul class="dropdown-menu" role="menu">
               <li>
-                <a href="/users/<%= current_user.id %>">
+                <a href="#/users/<%= current_user.id %>">
                   View Profile
                 </a>
               </li>

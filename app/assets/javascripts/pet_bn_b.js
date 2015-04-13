@@ -8,10 +8,22 @@ window.PetBnB = {
     // this.router = new PetBnB.Routers.DemoRouter({
     //   $rootEl: $('#content')
     // });
-    this.router = new PetBnB.Routers.Router({
-      $rootEl: $('#content')
-    });
-    Backbone.history.start();
+
+    if ($('#logged_in').length) {
+      var id = parseInt($('#logged_in').val());
+      var currentUser = new PetBnB.Models.User({ id: id });
+      currentUser.fetch({
+        success: function () {
+          console.log('finished fetching current user');
+        }
+      });
+
+      this.router = new PetBnB.Routers.Router({
+        $rootEl: $('#content'),
+        currentUser: currentUser
+      });
+      Backbone.history.start();
+    }
   }
 };
 

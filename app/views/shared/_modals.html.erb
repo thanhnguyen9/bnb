@@ -22,4 +22,63 @@
     $('body').removeClass('.modal-open');
     $('.modal-backdrop').remove();
   });
+
+  $('#guest-login').click(function (event) {
+    event.preventDefault();
+
+    $('.modal.in').find('#email').val('Guest');
+    $('.modal.in').find('input[type=password]').val('password');
+    setTimeout(function () {
+      loginOrSignup({
+        action: '/session',
+        email: 'Guest',
+        password: 'password'
+      });
+    }, 1000);
+  });
+  $('#login').click(function (event) {
+    event.preventDefault();
+
+    loginOrSignup({
+      action: '/session',
+      email: $('.modal.in').find('#email').val(),
+      password: $('.modal.in').find('input[type=password]').val()
+    });
+  });
+  $('#signup').click(function (event) {
+    event.preventDefault();
+
+    loginOrSignup({
+      action: '/users',
+      email: $('.modal.in').find('#email').val(),
+      password: $('.modal.in').find('input[type=password]').val()
+    });
+  });
+
+  function loginOrSignup(options) {
+    var userData = { user: { email: options.email,
+                             password: options.password }};
+    $.ajax({
+      url: options.action,
+      type: 'POST',
+      data: userData,
+      success: function () {
+        window.location.replace('');
+      },
+      error: function (response) {
+        var errors = '';
+        if (options.action === '/users') {
+          if (response.responseJSON) {
+            response.responseJSON.forEach(function (error) {
+              errors += (error + '<br>');
+            });
+          }
+        } else {
+          errors += 'Incorrect credentials<br>';
+        }
+        $('.modal.in .errors').html(errors);
+      }
+    });
+  }
+
 </script>

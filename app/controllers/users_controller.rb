@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render :show
+      render json: @user
     else
       redirect_to :root
     end
