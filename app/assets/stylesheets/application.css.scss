@@ -92,6 +92,8 @@ html, body { height: 90%; }
       border-radius: 2px;
       color: #565A5C;
       background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/search_icon.png') no-repeat;
+      background-size: contain;
+      background-position-x: 2%;
     }
   }
 

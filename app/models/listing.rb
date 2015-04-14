@@ -1,11 +1,10 @@
 class Listing < ActiveRecord::Base
   belongs_to :user
-  has_many :images
+  has_many :images, -> { order "url ASC"}
 
   validates :name, :description, :price_daily, :user_id, presence: true
 
   def self.find_by_location(coords)
-    # return Listing.all if coords[:location] == ""
     lat, ltg = coords['latitude'].to_f, coords['longitude'].to_f
     range = 10 / 69.0
     lat_min, lat_max = [lat - range, lat + range]

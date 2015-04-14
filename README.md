@@ -13,20 +13,20 @@ PetBnB is AirBnB for pets, built on Rails and Backbone. Users can:
 - [x] Create sessions (log in); guest login
 - [ ] Browse home page for sample listings
 - [x] Search by location
-- [ ] See search results:
+- [x] See search results:
   - [ ] As "previews" with images and prices
   - [ ] On a map with pins next to the results
-- [ ] See listing details on its own page:
+- [x] See listing details on its own page:
   - [ ] Multiple images
   - [x] Brief owner's info
   - [ ] Description
   - [ ] Dates to book
   - [ ] Reviews
 - [ ] Leave reviews on listings and user profiles
-- [ ] Save listings to a wishlist
 - [ ] See other users' profiles with:
   - [ ] Listings
   - [ ] Reviews
+- [ ] Create new listings
 
 ## Design Docs
 * [View Wireframes][views]
@@ -66,8 +66,6 @@ I will be replacing the buttons on the home page with actual images that
 link to sample listings. These will be populated in the database.
 I will modify the listing detail pages with more information, mimicking
 the AirBnB listing detail page.
-Users will be able to favorite listings from the detail page or the
-search results page.
 
 [Details][phase-three]
 
@@ -100,9 +98,9 @@ need styling, and standardize the format across the whole site.
 - [ ] Messaging between users
 - [ ] Notifications when another user respond to your message
 - [ ] Suggest hosts near user's location on home page
-- [ ] Create new listings
-- [ ] Save the five most recent searches
-- [ ] Show listing's location on a map on bottom of listing detail page
+- [ ] Save listings to a wishlist
+  - [ ] From listing search results page
+  - [ ] From listing details page
 - [ ] Sharing listings via email or social networks
 
 [phase-one]: ./docs/phases/phase1.md

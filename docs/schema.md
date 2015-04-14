@@ -6,6 +6,7 @@ column name     | data type | details
 id              | integer   | not null, pk
 email           | string    | not null, unique
 password_digest | string    | not null
+avatar_url      | string    | not null
 
 ## sessions
 column name     | data type | details
@@ -20,7 +21,7 @@ column name     | data type | details
 id              | integer   | not null, pk
 user_id         | integer   | not null, fk (ref users)
 name            | string    | not null
-description     | string    | not null
+description     | text      | not null
 latitude        | decimal   | not null
 longitude       | decimal   | not null
 price_daily     | integer   | not null

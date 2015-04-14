@@ -6,9 +6,14 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-guest = User.create!(email: 'Guest', password: 'password')
-amy = User.create!(email: 'Amy', password: 'amyamyamy')
-shibo = User.create!(email: 'shibo.fang@gmail.com', password: 'shibofang')
+guest = User.create!(email: 'Guest', password: 'password',
+                     avatar_url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/male_avatar.png')
+
+amy = User.create!(email: 'Amy', password: 'amyamyamy',
+                   avatar_url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/female_avatar.png')
+
+shibo = User.create!(email: 'shibo.fang@gmail.com', password: 'shibofang',
+                     avatar_url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/female_avatar.png')
 
 listing1 = amy.listings.create!(name: 'Cozy cat heaven in Noe Valley',
                                 description: 'Give your cat the royal treatment when you go on vacation by leaving him or her at my place :) I will make sure to love him or her as much (or even more than) you do!',

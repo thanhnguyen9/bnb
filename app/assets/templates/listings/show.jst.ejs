@@ -1,17 +1,24 @@
-<% var user = listing.get('user') ? listing.get('user').email : "" %>
+<% var email = "" %>
+<% var iconUrl = "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" %>
+<% if (listing.get('user')) { %>
+  <% email = listing.get('user').email %>
+  <% iconUrl = listing.get('user').avatar_url %>
+<% } %>
 
-<div class="cover">
+<div id="cover">
+  <img src="<%= listing.get('images')[0].url %>" alt="" />
 </div>
-<div class="summary">
+<div id="summary">
   <div class="row">
     <div class="col-lg-8">
       <div class="row-space-4 row-space-top-4">
         <div class="row">
           <div class="col-md-3 text-center">
-            <a href="/users/<%= listing.escape('user_id') %>">
-              <img src="https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" alt="user_icon" />
+            <a href="/users/<%= listing.escape('user_id') %>"
+               class="user-icon">
+              <img src="<%= iconUrl %>" alt="user_icon" />
             </a>
-              <div class="user-email"><%= user %></div>
+            <div class="user-email"><%= email %></div>
           </div>
           <div class="col-md-9">
             <h1><%= listing.escape('name') %></h1>
@@ -59,31 +66,31 @@
                           <span id="total-nights"></span> nights
                         </td>
                         <td id="cost-breakdown-2">
-                          [result]
                         </td>
                       </tr>
                       <tr>
                         <td>Total</td>
-                        <td id="cost-breakdown-total">[total]</td>
+                        <td id="cost-breakdown-total">
+                        </td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
-                <div class="booking-button">
+                <div class="booking-button enabled">
                   <button type="button" class="btn btn-primary btn-large btn-block"
                           id="booking-button">
                     <i class="fa fa-bolt"></i>  Instant Book
                   </button>
                 </div>
-              </div>
-              <div class="booking-errors enabled">
-                <div class="message">
-                  Those dates are not available
+                <div class="booking-errors">
+                  <div class="message">
+                    Those dates are not available
+                  </div>
+                  <a class="btn btn-large btn-block"
+                     id="view_other_listings">
+                    View Other Listings
+                  </a>
                 </div>
-                <a class="btn btn-large btn-block"
-                   id="view_other_listings">
-                  View Other Listings
-                </a>
               </div>
               <div id="book-urgency-commitment">
                 <div class="panel-body">
@@ -91,26 +98,24 @@
                     <i class="icon icon-hourglass-color pull-left"></i>
                     <div class="media-body">
                       See yourself here? Book soon. <b>100</b> pet owners viewed
-                      <%= user %>'s place this week.
+                      <%= email %>'s place this week.
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="wishlist-wrapper">
-                <label for="wishlist-button" class="btn btn-block btn-large">
-                  <!-- toggle based on whether this is on user's wishlist -->
-                  <!-- <span class="wishlist-toggle-checked">
-                    <i class="fa fa-heart"></i>   Saved to Wish List
-                  </span> -->
-                  <span class="wishlist-toggle-unchecked">
-                    <i class="fa fa-heart-o"></i>   Save to Wish List
-                  </span>
-                </label>
               </div>
             </div>
           </div>
         </div>
       </form>
+    </div>
+  </div>
+</div>
+<div id="details">
+  <div class="row">
+    <div class="col-lg-8" id="details-column">
+      <div class="row-space-8 row-space-top-8">
+
+      </div>
     </div>
   </div>
 </div>

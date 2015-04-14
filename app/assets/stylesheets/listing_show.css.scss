@@ -10,24 +10,33 @@
     margin-top: 0;
   }
 
-  .cover {
+  #cover {
     width: 100%;
     height: 550px;
-    background-color: teal;
+    overflow: hidden;
+
+    img {
+      margin: -20% auto;
+      width: 100%;
+      display: block;
+    }
   }
 
-  .summary {
+  #summary {
     margin-top: -40px;
     padding-top: 40px;
-    height: 215px;
+    border: 1px solid #DCE0E0;
+    border-top: none;
     background-color: transparent;
 
     & > .row {
-      margin: 0 20%;
+      margin: 0 10%;
       padding: 0 25px;
 
       .row-space-4 {
-        padding: 25px 0;
+        margin: 25px auto;
+
+        a.user-icon img { height: 90px; }
 
         .user-email { padding-top: 18px; }
       }
@@ -78,26 +87,33 @@
           }
 
           .booking-details {
-            display: none;
             margin: 0 -20px;
 
-            table {
-              border: none;
-              margin-bottom: 15px;
+            .panel-padding-fit {
+              display: none;
 
-              td {
-                border: 1px solid #DCE0E0;
-                border-left: none;
-                border-right: none;
-              }
+              table {
+                border: none;
+                margin-bottom: 15px;
 
-              #cost-breakdown-2, #cost-breakdown-total {
-                border: 1px solid #DCE0E0;
-                border-right: none;
+                td {
+                  border: 1px solid #DCE0E0;
+                  border-left: none;
+                  border-right: none;
+                }
+
+                #cost-breakdown-2, #cost-breakdown-total {
+                  border: 1px solid #DCE0E0;
+                  border-right: none;
+                }
               }
             }
 
+            .panel-padding-fit.enabled { display: block; }
+
             .booking-button {
+              display: none;
+
               #booking-button {
                 border: none;
                 color: white;
@@ -105,9 +121,9 @@
                 .fa-bolt { color: #FFB400; }
               }
             }
-          }
 
-          .booking-details.enabled { display: block; }
+            .booking-button.enabled { display: block; }
+          }
 
           .booking-errors {
             display: none;
@@ -163,6 +179,17 @@
             }
           }
         }
+      }
+    }
+  }
+
+  #details {
+    & > .row {
+      margin: 0 10%;
+      padding: 0 25px;
+
+      .row-space-8 {
+        margin: 50px auto;
       }
     }
   }

@@ -23,9 +23,7 @@
       <% listings.each(function (listing) { %>
         <li class="list-group-item pull-left">
           <a href="#/listings/<%= listing.id %>">
-            <% if (listing.get('images')) { %>
-              <img src="<%= listing.get('images')[0].url %>" alt="" />
-            <% } %>
+            <img src="<%= listing.get('images')[0].url %>" alt="" />
           </a>
           <a href="#/listings/<%= listing.id %>">
             <%= listing.escape('name') %>

@@ -5,7 +5,8 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
 
   events: {
     'change #checkin': 'getTotalNights',
-    'change #checkout': 'getTotalNights'
+    'change #checkout': 'getTotalNights',
+    'click #booking-button': 'instantBook'
   },
 
   initialize: function (options) {
@@ -56,16 +57,33 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       var checkoutDate = Date.parse(checkout) / 1000 / 3600 / 24;
       if (checkoutDate - checkinDate > 0) {
         $('.booking-errors').removeClass('enabled');
-        $('.booking-details').addClass('enabled');
-        $('#total-nights').html(checkoutDate - checkinDate);
+        $('.panel-padding-fit').addClass('enabled');
+        $('.booking-button').addClass('enabled');
 
+        var totalNights = checkoutDate - checkinDate;
+        var priceDaily = parseInt(this.model.get('price_daily'));
+        $('#total-nights').html(totalNights);
+        $('#cost-breakdown-2').html('$' + priceDaily * totalNights);
+        $('#cost-breakdown-total').html($('#cost-breakdown-2').html());
       } else {
-        $('.booking-details').removeClass('enabled');
+        $('.panel-padding-fit').removeClass('enabled');
+        $('.booking-button').removeClass('enabled');
         $('.booking-errors').addClass('enabled');
       }
     } else {
-      $('.booking-details').removeClass('enabled');
-      $('.booking-errors').addClass('enabled');
+      $('.panel-padding-fit').removeClass('enabled');
+      $('.booking-errors').removeClass('enabled');
+      $('.booking-button').addClass('enabled');
+    }
+  },
+
+  instantBook: function (event) {
+    if ($('#checkin').val() === "") {
+      $('#checkin').focus();
+    } else if ($('#checkout').val() === "") {
+      $('#checkout').focus();
+    } else {
+      // actually send request to book listing
     }
   }
 });
