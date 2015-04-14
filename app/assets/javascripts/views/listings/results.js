@@ -8,18 +8,18 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     this._checkout = options.checkout;
     this._location = options.location;
     this._coords = options.coords;
-    this._listings = new PetBnB.Collections.Listings();
+    this.listings = options.listings;
 
     this.findListings();
 
-    this.listenTo(this._listings, 'add', this.render);
+    this.listenTo(this.listings, 'add sync', this.render);
   },
 
   render: function () {
     var content = this.template({
       checkin: this._checkin,
       checkout: this._checkout,
-      listings: this._listings
+      listings: this.listings
     });
     this.$el.html(content);
 
@@ -37,13 +37,9 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
       Backbone.history.navigate('', { trigger: true });
       return;
     }
-    $.ajax({
-      url: '/api/search',
-      type: 'get',
+
+    this.listings.fetch({
       data: { search: search },
-      success: function (resp) {
-        this._listings.add(resp);
-      }.bind(this),
       error: function (resp) {
         console.log("Something went wrong while getting results");
       }

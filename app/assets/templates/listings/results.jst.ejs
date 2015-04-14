@@ -20,10 +20,13 @@
   <div class="row search-results">
     Search Results
     <ul class="list-group">
-      <% listings.forEach(function (listing) { %>
+      <% listings.each(function (listing) { %>
         <li class="list-group-item pull-left">
           <a href="#/listings/<%= listing.id %>">
             <%= listing.escape('name') %>
+            <% if (listing.get('images')) { %>
+              <img src="<%= listing.get('images')[0].url %>" alt="" />
+            <% } %>
           </a>
         </li>
       <% }) %>

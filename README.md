@@ -13,7 +13,7 @@ PetBnB is AirBnB for pets, built on Rails and Backbone. Users can:
 - [x] Create sessions (log in); guest login
 - [ ] Browse home page for sample listings
 - [x] Search by location
-- [] See search results:
+- [ ] See search results:
   - [ ] As "previews" with images and prices
   - [ ] On a map with pins next to the results
 - [ ] See listing details on its own page:

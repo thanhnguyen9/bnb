@@ -2,7 +2,7 @@ module Api
   class ListingsController < ApplicationController
     def search
       @listings = Listing.find_by_location(search_params)
-      render json: @listings
+      render :search
     end
 
     def show

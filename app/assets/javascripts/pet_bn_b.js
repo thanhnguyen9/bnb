@@ -18,9 +18,12 @@ window.PetBnB = {
         // }
       });
 
+      PetBnB.listingResults = new PetBnB.Collections.Listings();
+
       this.router = new PetBnB.Routers.Router({
         $rootEl: $('#content'),
-        currentUser: currentUser
+        currentUser: currentUser,
+        listings: PetBnB.listingResults
       });
       Backbone.history.start();
     }
