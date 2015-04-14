@@ -5,9 +5,6 @@ window.PetBnB = {
   Routers: {},
   initialize: function() {
     // console.log('Hello from PetBnB!');
-    // this.router = new PetBnB.Routers.DemoRouter({
-    //   $rootEl: $('#content')
-    // });
 
     if ($('#logged_in').length) {
       var id = parseInt($('#logged_in').val());

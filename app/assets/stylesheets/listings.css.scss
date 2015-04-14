@@ -14,7 +14,7 @@
 
   .row { margin: 0 }
 
-  .search-container, .search-map { height: 100%; }
+  .search-container { height: 100%; }
 
   .search-details, {
     height: 30%;
@@ -37,6 +37,8 @@
 
   .search-results {
     height: 70%;
+    overflow-x: hidden;
+    overflow-y: scroll;
 
     li {
       width: 25%;
@@ -47,7 +49,17 @@
         text-decoration: none;
         border: none;
         display: block;
+
+        img { width: 100%; }
       }
     }
+  }
+
+  .search-map {
+    height: 100%;
+
+    * { border: none; }
+
+    #map-canvas { height: 100%; }
   }
 }

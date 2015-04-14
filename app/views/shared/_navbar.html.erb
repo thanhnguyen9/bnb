@@ -80,7 +80,8 @@
   $('.navbar-form input').keypress(function (event) {
     if (event.keyCode === 13) {
       event.preventDefault();
-      console.log($('.navbar-form input').val());
+
+      var searchTerm = $('.navbar-form input').val();
       $('.navbar-form input').val('');
     }
   })

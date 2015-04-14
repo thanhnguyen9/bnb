@@ -49,9 +49,16 @@ PetBnB.Routers.Router = Backbone.Router.extend({
     this._swapView(userShowView);
   },
 
+  mapShow: function () {
+    var view = new PetBnB.Views.MapShowView();
+    this._swapView(view);
+    view.initMap();
+  },
+
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.$el);
     this._currentView = view;
+    view.render();
   }
 });
