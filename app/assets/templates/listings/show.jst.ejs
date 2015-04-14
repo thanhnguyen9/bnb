@@ -114,7 +114,122 @@
   <div class="row">
     <div class="col-lg-8" id="details-column">
       <div class="row-space-8 row-space-top-8">
+        <h4 class="row-space-4 text-center-sm">About This Listing</h4>
+        <div class="panel panel-dark row-space-4">
+          <div class="panel-body">
+            With PetBnB, you can find unique accommodations for your pets—from houses and apartments, to tree houses and igloos. The listing details below explain what you'll find in this space. If you have any questions, you can contact the host directly.
+          </div>
+          <p class="text-center-sm">
+            <a href="#" id="contact-host-link">
+              <strong>Contact Host</strong>
+            </a>
+          </p>
+          <div class="row-space-4 row-space-top-4 inline-photo">
+            <a href="#" class="photo-trigger" data-index="1">
+              <% if (listing.get('images').length > 1) { %>
+                <img src="<%= listing.get('images')[1].url %>" alt="" />
+              <% } %>
+            </a>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-3 text-muted">
+              The Space
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-6">
+                  <div>Pets Accepted: <strong>Dogs, Cats</strong></div>
+                  <div>Property Type: <strong>Apartment</strong></div>
+                  <div>Accomodates: <strong>2</strong></div>
+                </div>
+                <div class="col-md-6">
+                  <div>Bed Type: <strong>Fluffy Pet Bed</strong></div>
+                  <div>Beds: <strong>2</strong></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <hr>
+          <div class="row description">
+            <div class="col-md-3 text-muted">
+              Description
+            </div>
+            <div class="col-md-9">
+              <%= listing.get('description') %>
+            </div>
+          </div>
+          <hr>
+          <div class="row">
+            <div class="col-md-3 text-muted">
+              Availability
+            </div>
+            <div class="col-md-9">
+              <div class="row">
+                <div class="col-md-6">
+                  <strong>2 nights</strong> minimum stay
+                </div>
+                <div class="col-md-6">
+                  <a href="#" id="calendar">
+                    <strong>View Calendar</strong>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row-space-4 row-space-top-4 inline-photo">
+            <a href="#" class="photo-trigger" data-index="1">
+              <% if (listing.get('images').length > 2) { %>
+                <img src="<%= listing.get('images')[2].url %>" alt="" />
+              <% } %>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="reviews">
+  <div class="panel">
+    <div class="row">
+      <div class="col-lg-8">
+        <div class="row-space-8 row-space-top-8">
 
+        </div>
+        <div class="review-content">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="host-profile">
+  <div class="row">
+    <div class="col-lg-8">
+      <div class="row-space-8 row-space-top-8">
+        <h4>About the Host, <%= email %></h4>
+        <div class="row">
+          <div class="col-md-3 text-center">
+            <a href="/users/<%= listing.escape('user_id') %>"
+               class="user-icon">
+              <img src="<%= iconUrl %>" alt="user_icon" />
+            </a>
+          </div>
+          <div class="col-md-9">
+            <div class="row-space-2" id="user-description">
+              [user description]
+            </div>
+            <div class="row-space-2" id="u">
+              [more user description]
+            </div>
+            <div class="contact-wrapper">
+              <button class="btn btn-small btn-primary"
+                      id="host-profile-contact-btn">
+                Contact Host
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
