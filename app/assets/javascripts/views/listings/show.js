@@ -34,11 +34,15 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       var geocoder = geocoder = new google.maps.Geocoder();
       geocoder.geocode({ 'latLng': latlng }, function (results, status) {
         if (status == google.maps.GeocoderStatus.OK) {
-          if (results[1]) {
-            $('.address').html(results[1].formatted_address);
+          if (results[0]) {
+            var city = results[0].formatted_address.split(', ')[1];
+            var title = this.model.get('name') + ' in ' + city;
+            var addr = results[0].formatted_address.split(', ').slice(1).join(', ');
+            $('.address').html(addr);
+            $(document).attr('title', title);
           }
         }
-      });
+      }.bind(this));
     }
   },
 
