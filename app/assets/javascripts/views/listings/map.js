@@ -16,6 +16,8 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
 
     this.listenTo(PetBnB.listings, 'add', this.addMarker);
     this.listenTo(PetBnB.listings, 'remove', this.removeMarker);
+
+    this.initMap();
   },
 
   initMap: function () {
@@ -53,9 +55,6 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   search: function () {
-    // This method will re-fetch the map's collection, using the
-    // map's current bounds as constraints on latitude/longitude.
-
     var mapBounds = PetBnB.map.getBounds();
     var ne = mapBounds.getNorthEast();
     var sw = mapBounds.getSouthWest();
@@ -77,7 +76,6 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
                                              coords.lng());
       PetBnB.map.setCenter(coords);
       PetBnB.map.setZoom(13);
-      this.search();
     }
   },
 
