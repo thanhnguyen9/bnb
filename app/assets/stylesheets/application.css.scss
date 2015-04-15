@@ -97,7 +97,6 @@ hr { border-top: 1px solid #dce0e0; }
   }
 
   form.navbar-form {
-    display: none;
     width: 265px;
     height: 30px;
     padding: 0;
@@ -115,8 +114,6 @@ hr { border-top: 1px solid #dce0e0; }
       background-position-x: 2%;
     }
   }
-
-  form.navbar-form.active { display: block; }
 }
 
 /* Modals */

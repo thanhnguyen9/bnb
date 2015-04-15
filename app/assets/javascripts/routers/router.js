@@ -29,6 +29,9 @@ PetBnB.Routers.Router = Backbone.Router.extend({
       listings: this.listings
     });
     this._swapView(resultsView);
+
+    var navbarSearchView = new PetBnB.Views.NavbarSearchView();
+    $('.collapse.navbar-collapse').prepend(navbarSearchView.render().$el);
   },
 
   listingShow: function (id) {
@@ -37,6 +40,9 @@ PetBnB.Routers.Router = Backbone.Router.extend({
       model: listing
     });
     this._swapView(listingShowView);
+
+    var navbarSearchView = new PetBnB.Views.NavbarSearchView();
+    $('.collapse.navbar-collapse').prepend(navbarSearchView.render().$el);
   },
 
   userShow: function (id) {

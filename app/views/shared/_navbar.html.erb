@@ -17,26 +17,7 @@
       </button>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left active" role="search">
-        <input type="text" class="form-control"
-               placeholder="Where is your pet going?">
-      </form>
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle"
-                      data-toggle="dropdown"
-                      role="button"
-                      aria-expanded="false">
-            Browse<span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Popular</a></li>
-            <li><a href="#">Friends</a></li>
-            <li><a href="#">Neighborhoods</a></li>
-            <li><a href="#">Groups</a></li>
-          </ul>
-        </li>
-      </ul>
+      <!-- prepend search bar and browse dropdown here-->
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
           <input type="hidden" id="logged_in" value="<%= current_user.id %>">
@@ -75,12 +56,12 @@
 
 <script charset="utf-8">
 // capture input when enter key is pressed
-  $('.navbar-form input').keypress(function (event) {
-    if (event.keyCode === 13) {
-      event.preventDefault();
-
-      var searchTerm = $('.navbar-form input').val();
-      $('.navbar-form input').val('');
-    }
-  })
+  // $('.navbar-form input').keypress(function (event) {
+  //   if (event.keyCode === 13) {
+  //     event.preventDefault();
+  //
+  //     var searchTerm = $('.navbar-form input').val();
+  //     $('.navbar-form input').val('');
+  //   }
+  // })
 </script>
