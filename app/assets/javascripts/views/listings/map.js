@@ -3,11 +3,14 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     id: 'map-canvas'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    var center = (options.center.lat) ? options.center :
+                                        { lat: 37.7577, lng: -122.4376 };
     var mapOptions = {
-      center: { lat: 37.7577, lng: -122.4376 },
+      center: center,
       zoom: 12
     };
+
     this._map = new google.maps.Map(this.el, mapOptions);
     this._markers = {};
 
@@ -22,36 +25,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
 
   attachMapListeners: function () {
     google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
-    google.maps.event.addListener(this._map, 'click', this.createListing.bind(this));
-  },
-
-  search: function (event) {
-    debugger
-    event.preventDefault();
-
-    // var $target = $(event.currentTarget);
-    // var search_params = $('.search-bar').serializeJSON().search;
-    // if (search_params.location === "") {
-    //   $('.errors').html("Please enter a search term");
-    // } else {
-    //   this._router._checkin = search_params.checkin;
-    //   this._router._checkout = search_params.checkout;
-    //   this._router._location = search_params.location;
-    //   var query = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-    //   query += search_params.location;
-    //   query += "&key=AIzaSyBFim-M4UMUmjfmk1y5ss_Kd7B_3ooi9iM";
-    //   $.ajax({
-    //     url: query,
-    //     type: 'get',
-    //     success: function (resp) {
-    //       this._router._coords = resp.results[0].geometry.location;
-    //       Backbone.history.navigate('results', { trigger: true });
-    //     }.bind(this),
-    //     error: function (resp) {
-    //       console.log("Something went wrong while querying Geocoding");
-    //     }
-    //   });
-    // }
+    // google.maps.event.addListener(this._map, 'click', this.createListing.bind(this));
   },
 
   // Event handlers
@@ -63,7 +37,9 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
       position: { lat: parseFloat(listing.get('latitude')),
                   lng: parseFloat(listing.get('longitude')) },
       map: this._map,
-      title: listing.get('name')
+      title: listing.get('name'),
+      images: listing.images(),
+      price: listing.get('price_daily')
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
@@ -71,6 +47,24 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     });
 
     this._markers[listing.id] = marker;
+  },
+
+  search: function () {
+    // This method will re-fetch the map's collection, using the
+    // map's current bounds as constraints on latitude/longitude.
+
+    var mapBounds = this._map.getBounds();
+    var ne = mapBounds.getNorthEast();
+    var sw = mapBounds.getSouthWest();
+
+    var searchData = {
+      lat: [sw.lat(), ne.lat()],
+      lng: [sw.lng(), ne.lng()]
+    };
+
+    this.collection.fetch({
+      data: { search: searchData }
+    });
   },
 
   createListing: function (event) {
@@ -86,24 +80,6 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     });
   },
 
-  search: function () {
-    // This method will re-fetch the map's collection, using the
-    // map's current bounds as constraints on latitude/longitude.
-
-    var mapBounds = this._map.getBounds();
-    var ne = mapBounds.getNorthEast();
-    var sw = mapBounds.getSouthWest();
-
-    var filterData = {
-      lat: [sw.lat(), ne.lat()],
-      lng: [sw.lng(), ne.lng()]
-    };
-
-    this.collection.fetch({
-      data: { filter_data: filterData }
-    });
-  },
-
   removeMarker: function (listing) {
     var marker = this._markers[listing.id];
     marker.setMap(null);
@@ -111,11 +87,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   showMarkerInfo: function (event, marker) {
-    // This event will be triggered when a marker is clicked. Right now it
-    // simply opens an info window with the title of the marker. However, you
-    // could get fancier if you wanted (maybe use a template for the content of
-    // the window?)
-
+    // make template for this (marker has title, first image, and price)
     var infoWindow = new google.maps.InfoWindow({
       content: marker.title
     });

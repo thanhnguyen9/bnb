@@ -9,5 +9,10 @@ module Api
                      status: :unprocessable_entity
       end
     end
+
+    def show
+      @image = Image.find(params[:id])
+      render: show
+    end
   end
 end

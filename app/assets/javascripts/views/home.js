@@ -4,8 +4,7 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   events: {
     'change #checkin': 'checkDates',
     'change #checkout': 'checkDates',
-    'click .btn.search': 'search',
-    'keypress .navbar-search input': 'refreshResults'
+    'click .btn.search': 'search'
   },
 
   initialize: function (options) {
@@ -40,32 +39,39 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   search: function (event) {
     event.preventDefault();
 
+    var router = this._router;
     var $target = $(event.currentTarget);
     var search_params = $('.search-bar').serializeJSON().search;
     if (search_params.location === "") {
       $('.errors').html("Please enter a search term");
     } else {
-      this._router._checkin = search_params.checkin;
-      this._router._checkout = search_params.checkout;
-      this._router._location = search_params.location;
-      var query = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-      query += search_params.location;
-      query += "&key=AIzaSyBFim-M4UMUmjfmk1y5ss_Kd7B_3ooi9iM";
-      $.ajax({
-        url: query,
-        type: 'get',
-        success: function (resp) {
-          this._router._coords = resp.results[0].geometry.location;
+      router._checkin = search_params.checkin;
+      router._checkout = search_params.checkout;
+      var address = search_params.location;
+      var geocoder = new google.maps.Geocoder();
+      geocoder.geocode( { 'address': address }, function(results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          router._coords = results[0].geometry.location;
           Backbone.history.navigate('results', { trigger: true });
-        }.bind(this),
-        error: function (resp) {
-          console.log("Something went wrong while querying Geocoding");
+        } else {
+          alert("Geocode was not successful for the following reason: " + status);
         }
       });
+      //
+      // var query = "https://maps.googleapis.com/maps/api/geocode/json?address=";
+      // query += search_params.location;
+      // query += "&key=AIzaSyBFim-M4UMUmjfmk1y5ss_Kd7B_3ooi9iM";
+      // $.ajax({
+      //   url: query,
+      //   type: 'get',
+      //   success: function (resp) {
+      //     this._router._coords = resp.results[0].geometry.location;
+      //
+      //   }.bind(this),
+      //   error: function (resp) {
+      //     console.log("Something went wrong while querying Geocoding");
+      //   }
+      // });
     }
-  },
-
-  refreshResults: function (event) {
-    debugger
   }
 });

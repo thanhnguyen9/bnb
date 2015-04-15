@@ -11,7 +11,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
     this._currentUser = options.currentUser;
     this._checkin = "";
     this._checkout = "";
-    this._location = "";
     this._coords = {};
     this.listings = options.listings;
   },
@@ -24,7 +23,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
 
   results: function () {
     var resultsView = new PetBnB.Views.ResultsView({
-      location: this._location,
       coords: this._coords,
       listings: this.listings
     });
@@ -51,12 +49,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
       model: user
     });
     this._swapView(userShowView);
-  },
-
-  mapShow: function () {
-    var view = new PetBnB.Views.MapShowView();
-    this._swapView(view);
-    view.initMap();
   },
 
   _swapView: function (view) {

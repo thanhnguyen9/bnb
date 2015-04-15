@@ -6,19 +6,19 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   events: {
     'change #checkin': 'checkDates',
     'change #checkout': 'checkDates',
-    'click a.remove-listing': 'destroyListing',
-    'click a.listing-name': 'panToListing',
-    'mouseenter .listing': 'startBounce',
-    'mouseleave .listing': 'stopBounce'
+    // 'click a.remove-listing': 'destroyListing',
+    // 'click a.listing-name': 'panToListing',
+    // 'mouseenter .listing': 'startBounce',
+    // 'mouseleave .listing': 'stopBounce'
   },
 
   initialize: function (options) {
-    this._location = options.location;
     this._coords = options.coords;
     this.collection = options.listings;
 
     this.mapView = new PetBnB.Views.MapShowView({
-      collection: this.collection
+      collection: this.collection,
+      center: options.coords
     });
 
     // should probably abstract listings index into its own view
@@ -26,7 +26,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     //   collection: this.collection
     // });
 
-    this.findListings();
+    // this.findListings();
 
     this.listenTo(this.collection, 'add sync', this.render);
   },
@@ -70,27 +70,27 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     // resuse code from home.js
   },
 
-  startBounce: function (event) {
-    var listingId = $(event.currentTarget).children('a').data('listing-id');
-    this.mapView.startBounce(listingId);
-  },
-
-  stopBounce: function (event) {
-    var listingId = $(event.currentTarget).children('a').data('listing-id');
-    this.mapView.stopBounce(listingId);
-  },
-
-  destroyListing: function (event) {
-    var listingId = $(event.currentTarget).data('listing-id');
-    var listing = this.collection.get(listingId);
-    listing.destroy();
-  },
-
-  panToListing: function (event) {
-    var listingId = $(event.currentTarget).data('listing-id');
-    var marker = this.mapView._markers[listingId];
-    this.mapView._map.panTo(marker.getPosition());
-  },
+  // startBounce: function (event) {
+  //   var listingId = $(event.currentTarget).children('a').data('listing-id');
+  //   this.mapView.startBounce(listingId);
+  // },
+  //
+  // stopBounce: function (event) {
+  //   var listingId = $(event.currentTarget).children('a').data('listing-id');
+  //   this.mapView.stopBounce(listingId);
+  // },
+  //
+  // destroyListing: function (event) {
+  //   var listingId = $(event.currentTarget).data('listing-id');
+  //   var listing = this.collection.get(listingId);
+  //   listing.destroy();
+  // },
+  //
+  // panToListing: function (event) {
+  //   var listingId = $(event.currentTarget).data('listing-id');
+  //   var marker = this.mapView._markers[listingId];
+  //   this.mapView._map.panTo(marker.getPosition());
+  // },
 
   remove: function () {
     Backbone.View.prototype.remove.call(this);

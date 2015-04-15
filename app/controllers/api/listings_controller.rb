@@ -13,7 +13,7 @@ module Api
     private
 
     def search_params
-      params.require(:search).permit(:latitude, :longitude)
+      params.require(:search).permit(:lat => [], :lng => [])
     end
   end
 end

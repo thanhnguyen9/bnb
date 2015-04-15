@@ -5,10 +5,10 @@ class Listing < ActiveRecord::Base
   validates :name, :description, :price_daily, :user_id, presence: true
 
   def self.find_by_location(coords)
-    lat, ltg = coords['latitude'].to_f, coords['longitude'].to_f
-    range = 10 / 69.0
-    lat_min, lat_max = [lat - range, lat + range]
-    ltg_min, ltg_max = [ltg - range, ltg + range]
+    return [] if coords.empty?
+
+    lat_min, lat_max = coords[:lat]
+    lng_min, lng_max = coords[:lng]
     listings = Listing.find_by_sql(<<-SQL)
       SELECT
         *
@@ -17,7 +17,7 @@ class Listing < ActiveRecord::Base
       WHERE
         latitude BETWEEN #{lat_min} AND #{lat_max}
       AND
-        longitude BETWEEN #{ltg_min} AND #{ltg_max}
+        longitude BETWEEN #{lng_min} AND #{lng_max}
       AND
         booked = FALSE
     SQL
