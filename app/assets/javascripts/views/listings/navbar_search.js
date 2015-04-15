@@ -1,6 +1,10 @@
 PetBnB.Views.NavbarSearchView = Backbone.View.extend({
   template: JST['listings/navbar_search'],
 
+  events: {
+
+  },
+
   initialize: function () {
     var content = this.template();
     this.$el.html(content);

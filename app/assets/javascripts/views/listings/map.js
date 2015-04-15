@@ -11,21 +11,21 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
       zoom: 12
     };
 
-    this._map = new google.maps.Map(this.el, mapOptions);
+    PetBnB.map = new google.maps.Map(this.el, mapOptions);
     this._markers = {};
 
-    this.listenTo(this.collection, 'add', this.addMarker);
-    this.listenTo(this.collection, 'remove', this.removeMarker);
+    this.listenTo(PetBnB.listings, 'add', this.addMarker);
+    this.listenTo(PetBnB.listings, 'remove', this.removeMarker);
   },
 
   initMap: function () {
-    this.collection.each(this.addMarker.bind(this));
+    PetBnB.listings.each(this.addMarker.bind(this));
     this.attachMapListeners();
   },
 
   attachMapListeners: function () {
-    google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
-    // google.maps.event.addListener(this._map, 'click', this.createListing.bind(this));
+    google.maps.event.addListener(PetBnB.map, 'idle', this.search.bind(this));
+    // google.maps.event.addListener(PetBnB.map, 'click', this.createListing.bind(this));
   },
 
   // Event handlers
@@ -36,7 +36,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     var marker = new google.maps.Marker({
       position: { lat: parseFloat(listing.get('latitude')),
                   lng: parseFloat(listing.get('longitude')) },
-      map: this._map,
+      map: PetBnB.map,
       title: listing.get('name'),
       images: listing.images(),
       price: listing.get('price_daily')
@@ -53,7 +53,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     // This method will re-fetch the map's collection, using the
     // map's current bounds as constraints on latitude/longitude.
 
-    var mapBounds = this._map.getBounds();
+    var mapBounds = PetBnB.map.getBounds();
     var ne = mapBounds.getNorthEast();
     var sw = mapBounds.getSouthWest();
 
@@ -62,7 +62,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
       lng: [sw.lng(), ne.lng()]
     };
 
-    this.collection.fetch({
+    PetBnB.listings.fetch({
       data: { search: searchData }
     });
   },
@@ -75,7 +75,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
 
     listing.save({}, {
       success: function () {
-        this.collection.add(listing);
+        PetBnB.listings.add(listing);
       }.bind(this)
     });
   },
@@ -92,7 +92,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
       content: marker.title
     });
 
-    infoWindow.open(this._map, marker);
+    infoWindow.open(PetBnB.map, marker);
   },
 
   startBounce: function (id) {

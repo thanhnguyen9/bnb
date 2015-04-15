@@ -14,26 +14,22 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   initialize: function (options) {
     this._coords = options.coords;
-    this.collection = options.listings;
 
     this.mapView = new PetBnB.Views.MapShowView({
-      collection: this.collection,
       center: options.coords
     });
 
     // should probably abstract listings index into its own view
-    // this.listingsIndex = new PetBnB.Views.ListingsIndex({
-    //   collection: this.collection
-    // });
+    // this.listingsIndex = new PetBnB.Views.ListingsIndex();
 
     // this.findListings();
 
-    this.listenTo(this.collection, 'add sync', this.render);
+    this.listenTo(PetBnB.listings, 'add sync', this.render);
   },
 
   render: function () {
     var content = this.template({
-      listings: this.collection
+      listings: PetBnB.listings
     });
     this.$el.html(content);
 
@@ -53,7 +49,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
       longitude: this._coords.lng
     };
     if (search.latitude || search.longitude) {
-      this.collection.fetch({
+      PetBnB.listings.fetch({
         data: { search: search },
         error: function (resp) {
           console.log("Something went wrong while getting results");

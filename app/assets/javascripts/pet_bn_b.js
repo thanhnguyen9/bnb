@@ -15,12 +15,11 @@ window.PetBnB = {
         // }
       });
 
-      PetBnB.listingResults = new PetBnB.Collections.Listings();
+      PetBnB.listings = new PetBnB.Collections.Listings();
 
       this.router = new PetBnB.Routers.Router({
         $rootEl: $('#content'),
-        currentUser: currentUser,
-        listings: PetBnB.listingResults
+        currentUser: currentUser
       });
       Backbone.history.start();
     }

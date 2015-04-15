@@ -10,9 +10,18 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   initialize: function (options) {
     this.$el = $('body');
     this._router = options.router;
+
+    this.setupAutocomplete();
   },
 
-  // responds intelligently when user inputs incorrect date
+  setupAutocomplete: function () {
+    var input = document.getElementById('homepage-searchbar');
+    this._searchBox = new google.maps.places.SearchBox(input);
+    google.maps.event.addListener(this._searchBox, 'places_changed',
+                                 this.search.bind(this));
+  },
+
+  // event listeners
   checkDates: function () {
     var checkin = $('#checkin').val();
     var checkout = $('#checkout').val();
@@ -24,10 +33,12 @@ PetBnB.Views.HomeView = Backbone.View.extend({
         var year = nextDay.getFullYear().toString();
         var month = this.padDate((nextDay.getMonth() + 1).toString());
         var day = this.padDate(nextDay.getDate().toString());
-        var newCheckoutDate = [month, day, year].join('/');
-        $('#checkout').val(newCheckoutDate);
+        checkout = [month, day, year].join('/');
+        $('#checkout').val(checkout);
       }
     }
+    this._router._checkin = checkin;
+    this._router._checkout = checkout;
   },
 
   padDate: function (date) {
@@ -37,41 +48,33 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   },
 
   search: function (event) {
-    event.preventDefault();
+    event && event.preventDefault();
 
-    var router = this._router;
-    var $target = $(event.currentTarget);
+    var self = this;
     var search_params = $('.search-bar').serializeJSON().search;
-    if (search_params.location === "") {
-      $('.errors').html("Please enter a search term");
+
+    if (self._searchBox.getPlaces()) {
+      // if using autocomplete
+      var loc = self._searchBox.getPlaces()[0].geometry.location;
+      self._router._coords.lat = loc.lat();
+      self._router._coords.lng = loc.lng();
+      Backbone.history.navigate('results', { trigger: true });
     } else {
-      router._checkin = search_params.checkin;
-      router._checkout = search_params.checkout;
-      var address = search_params.location;
-      var geocoder = new google.maps.Geocoder();
-      geocoder.geocode( { 'address': address }, function(results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          router._coords = results[0].geometry.location;
-          Backbone.history.navigate('results', { trigger: true });
-        } else {
-          alert("Geocode was not successful for the following reason: " + status);
-        }
-      });
-      //
-      // var query = "https://maps.googleapis.com/maps/api/geocode/json?address=";
-      // query += search_params.location;
-      // query += "&key=AIzaSyBFim-M4UMUmjfmk1y5ss_Kd7B_3ooi9iM";
-      // $.ajax({
-      //   url: query,
-      //   type: 'get',
-      //   success: function (resp) {
-      //     this._router._coords = resp.results[0].geometry.location;
-      //
-      //   }.bind(this),
-      //   error: function (resp) {
-      //     console.log("Something went wrong while querying Geocoding");
-      //   }
-      // });
+      if (search_params.location === "") {
+        $('.errors').html("Please enter a search term");
+      } else {
+        // if just typing in address
+        var address = search_params.location;
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': address }, function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+            self._router._coords = results[0].geometry.location;
+            Backbone.history.navigate('results', { trigger: true });
+          } else {
+            alert("Geocode was not successful for the following reason: " + status);
+          }
+        });
+      }
     }
   }
 });
