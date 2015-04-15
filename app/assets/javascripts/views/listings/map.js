@@ -48,7 +48,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     });
 
     google.maps.event.addListener(marker, 'click', function (event) {
-      view.showMarkerInfo(event, marker);
+      view.toggleMarkerInfo(event, marker);
     });
 
     this._markers[listing.id] = marker;
@@ -89,13 +89,14 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     delete this._markers[listing.id];
   },
 
-  showMarkerInfo: function (event, marker) {
+  toggleMarkerInfo: function (event, marker) {
+    this._currentInfoWindow && this._currentInfoWindow.close();
     // make template for this (marker has title, first image, and price)
-    var infoWindow = new google.maps.InfoWindow({
+    this._currentInfoWindow = new google.maps.InfoWindow({
       content: marker.title
     });
 
-    infoWindow.open(PetBnB.map, marker);
+    this._currentInfoWindow.open(PetBnB.map, marker);
   },
 
   startBounce: function (id) {
