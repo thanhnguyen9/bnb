@@ -15,45 +15,62 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
+@import url("http://fonts.googleapis.com/css?family=Nunito:400,300,700");
 
-@font-face {
-  font-family: Airglyphs;
-  src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.eot");
-  src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.eot") format("eot"),
-  url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.woff") format("woff"),
-  url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/airglyphs.ttf") format("truetype");
-  font-weight:normal;
-  font-style:normal
-}
 @font-face {
   font-family: Circular;
   src: url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-book.eot");
   src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-book.eot") format("eot"),
   url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-book.woff") format("woff");
-  font-weight:normal;
-  font-style:normal}
+  font-weight: normal;
+  font-style: normal;
+}
 
 @font-face{
   font-family:Circular;
   src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.eot");
   src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.eot") format("eot"),
   url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.woff") format("woff");
-  font-weight:normal;
-  font-style:italic
+  font-weight: bold;
+  font-style: normal;
 }
 
 /* General */
 
 * {
-  font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: Circular, Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
   ul { list-style: none; }
 }
 
 html, body { height: 90%; }
 
+hr { border-top: 1px solid #dce0e0; }
+
 .pull-left { float: left; }
 
 .pull-right { float: right; }
+
+.row-condensed {
+  margin-left: -6.25px;
+  margin-right: -6.25px;
+}
+
+.row-space-2 { margin-bottom: 12.5px; }
+
+.row-space-top-2 { margin-top: 12.5px; }
+
+.row-space-4 { margin-bottom: 25px; }
+
+.row-space-top-4 { margin-top: 25px; }
+
+.row-space-8 { margin-bottom: 50px; }
+
+.row-space-top-8 { margin-top: 50px; }
+
+.container-responsive {
+  margin: 0 10%;
+  padding: 0 25px;
+}
 
 /* Content */
 
