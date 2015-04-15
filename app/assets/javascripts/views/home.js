@@ -2,6 +2,8 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   template: _.template(''),
 
   events: {
+    'change #checkin': 'checkDates',
+    'change #checkout': 'checkDates',
     'click .btn.search': 'search',
     'keypress .navbar-search input': 'refreshResults'
   },
@@ -9,6 +11,30 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   initialize: function (options) {
     this.$el = $('body');
     this._router = options.router;
+  },
+
+  // responds intelligently when user inputs incorrect date
+  checkDates: function () {
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
+    if (checkin !== "" && checkout !== "") {
+      var checkinDate = Date.parse(checkin);
+      var checkoutDate = Date.parse(checkout);
+      if (checkoutDate - checkinDate < 1) {
+        var nextDay = new Date(checkinDate + 86400 * 1000);
+        var year = nextDay.getFullYear().toString();
+        var month = this.padDate((nextDay.getMonth() + 1).toString());
+        var day = this.padDate(nextDay.getDate().toString());
+        var newCheckoutDate = [month, day, year].join('/');
+        $('#checkout').val(newCheckoutDate);
+      }
+    }
+  },
+
+  padDate: function (date) {
+    var newDate = (date.length === 1) ? ('0' + date) : date;
+
+    return newDate;
   },
 
   search: function (event) {

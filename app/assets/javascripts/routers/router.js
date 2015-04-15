@@ -24,8 +24,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
 
   results: function () {
     var resultsView = new PetBnB.Views.ResultsView({
-      checkin: this._checkIn,
-      checkout: this._checkOut,
       location: this._location,
       coords: this._coords,
       listings: this.listings

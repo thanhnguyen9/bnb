@@ -4,6 +4,8 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   className: 'results',
 
   events: {
+    'change #checkin': 'checkDates',
+    'change #checkout': 'checkDates',
     'click a.remove-listing': 'destroyListing',
     'click a.listing-name': 'panToListing',
     'mouseenter .listing': 'startBounce',
@@ -11,8 +13,6 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this._checkin = options.checkin;
-    this._checkout = options.checkout;
     this._location = options.location;
     this._coords = options.coords;
     this.collection = options.listings;
@@ -33,8 +33,6 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   render: function () {
     var content = this.template({
-      checkin: this._checkin,
-      checkout: this._checkout,
       listings: this.collection
     });
     this.$el.html(content);
@@ -67,7 +65,11 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     }
   },
 
-    // Event handlers
+  // Event handlers
+  checkDates: function () {
+    // resuse code from home.js
+  },
+
   startBounce: function (event) {
     var listingId = $(event.currentTarget).children('a').data('listing-id');
     this.mapView.startBounce(listingId);
