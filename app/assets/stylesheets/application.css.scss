@@ -42,7 +42,7 @@
   ul { list-style: none; }
 }
 
-html, body { height: 90%; }
+html, body { height: 100%; }
 
 hr { border-top: 1px solid #dce0e0; }
 
@@ -76,7 +76,7 @@ hr { border-top: 1px solid #dce0e0; }
 
 /* Content */
 
-#content { height: 100%; }
+#content { height: calc(100% - 55px); }
 
 /* Navbar */
 

@@ -18918,25 +18918,46 @@ window.PetBnB = {
   Views: {},
   Routers: {},
   initialize: function() {
-    console.log('Hello from PetBnB!');
-    // this.router = new PetBnB.Routers.DemoRouter({
-    //   $rootEl: $('#content')
-    // });
-    this.router = new PetBnB.Routers.Router({
-      $rootEl: $('#content')
-    });
-    Backbone.history.start();
+    // console.log('Hello from PetBnB!');
+
+    if ($('#logged_in').length) {
+      var id = parseInt($('#logged_in').val());
+      var currentUser = new PetBnB.Models.User({ id: id });
+      currentUser.fetch({
+        // success: function () {
+        //   console.log('finished fetching current user');
+        // }
+      });
+
+      PetBnB.listingResults = new PetBnB.Collections.Listings();
+
+      this.router = new PetBnB.Routers.Router({
+        $rootEl: $('#content'),
+        currentUser: currentUser,
+        listings: PetBnB.listingResults
+      });
+      Backbone.history.start();
+    }
+  },
+
+  setDatepickers: function () {
+    $('#checkin').datepicker();
+    $('#checkout').datepicker();
   }
 };
 
 $(document).ready(function(){
   PetBnB.initialize();
 });
-(function() { this.JST || (this.JST = {}); this.JST["listings/results"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="col-md-7 search-container">\n  <div class="row search-details">\n    <div class="row dates">\n      Dates\n      <input type="text"\n             name="checkin"\n             id="checkin"\n             placeholder="Check In"\n             value="',  checkin ,'">\n      <input type="text"\n             name="checkout"\n             id="checkout"\n             placeholder="Check Out"\n             value="',  checkout ,'">\n    </div>\n    <div class="row price-range">\n      Price Range\n    </div>\n  </div>\n  <div class="row search-results">\n    Search Results\n    <ul class="list-group">\n      ');  listings.forEach(function (listing) { ; __p.push('\n        <li class="list-group-item">\n          <a href="#/listings/',  listing.id ,'">\n            ',  listing.escape('name') ,'\n          </a>\n        </li>\n      ');  }) ; __p.push('\n    </ul>\n  </div>\n</div>\n<div class="col-md-5 search-map">\n  Map\n</div>\n\n<script charset="utf-8">\n  (function () {\n    $(\'#checkin\').datepicker();\n    $(\'#checkout\').datepicker();\n  })();\n</script>\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["listings/bonus"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<!-- nested under panel-body panel-light -->\n<div class="wishlist-wrapper">\n  <label for="wishlist-button" class="btn btn-block btn-large">\n    <!-- toggle based on whether this is on user\'s wishlist -->\n    <span class="wishlist-toggle-checked">\n      <i class="fa fa-heart"></i>   Saved to Wish List\n    </span>\n    <span class="wishlist-toggle-unchecked">\n      <i class="fa fa-heart-o"></i>   Save to Wish List\n    </span>\n  </label>\n</div>\n');}return __p.join('');};
 }).call(this);
-(function() { this.JST || (this.JST = {}); this.JST["listings/show"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('',  JSON.stringify(listing) ,'\n');}return __p.join('');};
+(function() { this.JST || (this.JST = {}); this.JST["listings/results"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('<div class="col-md-7 search-container">\n  <div class="row search-details">\n    <div class="row dates">\n      Dates\n      <input type="text"\n             name="checkin"\n             id="checkin"\n             placeholder="Check In"\n             value="',  PetBnB.router._checkin ,'">\n      <input type="text"\n             name="checkout"\n             id="checkout"\n             placeholder="Check Out"\n             value="',  PetBnB.router._checkout ,'">\n    </div>\n    <div class="row price-range">\n      Price Range\n    </div>\n  </div>\n  <div class="row search-results">\n    Search Results\n    <ul class="list-group">\n      ');  listings.each(function (listing) { ; __p.push('\n        <li class="list-group-item pull-left">\n          <a href="#/listings/',  listing.id ,'">\n            <img src="',  listing.get('images')[0].url ,'" alt="" />\n          </a>\n          <a href="#/listings/',  listing.id ,'">\n            ',  listing.escape('name') ,'\n          </a>\n        </li>\n      ');  }) ; __p.push('\n    </ul>\n  </div>\n</div>\n<div class="col-md-5 search-map">\n  Map\n</div>\n');}return __p.join('');};
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["listings/show"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('');  var email = "" ; __p.push('\n');  var iconUrl = "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" ; __p.push('\n');  if (listing.get('user')) { ; __p.push('\n  ');  email = listing.get('user').email ; __p.push('\n  ');  iconUrl = listing.get('user').avatar_url ; __p.push('\n');  } ; __p.push('\n');  if (listing.get('images')) { ; __p.push('\n  ');  var images = listing.get('images') ; __p.push('\n');  } ; __p.push('\n\n<div id="cover">\n  ');  debugger ; __p.push('\n  ');  if (images) { ; __p.push('\n    <img src="',  images[0].url ,'" alt="" />\n  ');  } ; __p.push('\n</div>\n<div id="summary">\n  <div class="row container-responsive">\n    <div class="col-lg-8">\n      <div class="row-space-4 row-space-top-4">\n        <div class="row">\n          <div class="col-md-3 text-center">\n            <a href="/users/',  listing.escape('user_id') ,'"\n               class="user-icon">\n              <img src="',  iconUrl ,'" alt="user_icon" />\n            </a>\n            <div class="user-email">',  email ,'</div>\n          </div>\n          <div class="col-md-9">\n            <h1>',  listing.escape('name') ,'</h1>\n            <input type="hidden" id="lat" value=',  listing.escape('latitude') ,'>\n            <input type="hidden" id="lng" value=',  listing.escape('longitude') ,'>\n            <span class="address"></span>\n            <span class="reviews">[Reviews TBA]</span>\n            <div class="row row-condensed text-muted">\n              <div class="col-sm-3">\n                <img src="https://s3-us-west-1.amazonaws.com/petbnb/images/listings/home_icon.png" alt="home" />\n              </div>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n    <div class="col-lg-4">\n      <form class="booking-form">\n        <div class="price-box">\n          <h5 class="price pull-left">$',  listing.escape('price_daily') ,'</h5>\n          <span class="per-night pull-right">Per Night</span>\n        </div>\n        <div class="booking-box">\n          <div class="panel">\n            <div class="panel-body panel-light">\n              <div class="form-fields">\n                <div class="row row-condensed">\n                  <div class="col-sm-6">\n                    Check In\n                    <input type="text" id="checkin" name="checkin" placeholder="mm/dd/yyyy">\n                  </div>\n                  <div class="col-sm-6">\n                    Check Out\n                    <input type="text" id="checkout" name="checkout" placeholder="mm/dd/yyyy">\n                  </div>\n                </div>\n              </div>\n              <div class="booking-details">\n                <div class="panel-padding-fit">\n                  <table class="table table-bordered table-breakdown">\n                    <tbody>\n                      <tr>\n                        <td id="cost-breakdown-1">\n                          $',  listing.escape('price_daily') ,' x\n                          <span id="total-nights"></span> nights\n                        </td>\n                        <td id="cost-breakdown-2">\n                        </td>\n                      </tr>\n                      <tr>\n                        <td>Total</td>\n                        <td id="cost-breakdown-total">\n                        </td>\n                      </tr>\n                    </tbody>\n                  </table>\n                </div>\n                <div class="booking-button enabled">\n                  <button type="button" class="btn btn-primary btn-large btn-block"\n                          id="booking-button">\n                    <i class="fa fa-bolt"></i>  Instant Book\n                  </button>\n                </div>\n                <div class="booking-errors">\n                  <div class="message">\n                    Those dates are not available\n                  </div>\n                  <a class="btn btn-large btn-block"\n                     id="view_other_listings">\n                    View Other Listings\n                  </a>\n                </div>\n              </div>\n              <div id="book-urgency-commitment">\n                <div class="panel-body">\n                  <div class="media">\n                    <i class="icon icon-hourglass-color pull-left"></i>\n                    <div class="media-body">\n                      See yourself here? Book soon. <b>100</b> pet owners viewed\n                      ',  email ,'\'s place this week.\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          </div>\n        </div>\n      </form>\n    </div>\n  </div>\n</div>\n<div id="details">\n  <div class="row container-responsive">\n    <div class="col-lg-8" id="details-column">\n      <div class="row-space-8 row-space-top-8">\n        <h4 class="row-space-4">About This Listing</h4>\n        <div class="panel panel-dark row-space-4">\n          <div class="panel-body">\n            With PetBnB, you can find unique accommodations for your pets—from houses and apartments, to tree houses and igloos. The listing details below explain what you\'ll find in this space. If you have any questions, you can contact the host directly.\n          </div>\n        </div>\n        <p>\n          <a href="#" id="contact-host-link">\n            <strong>Contact Host</strong>\n          </a>\n        </p>\n        <div class="row-space-4 row-space-top-4 inline-photo">\n          <a href="#" class="photo-trigger" data-index="1">\n            ');  if (images && images.length > 1) { ; __p.push('\n              <img src="',  images[1].url ,'" alt="" />\n            ');  } ; __p.push('\n          </a>\n        </div>\n        <hr>\n        <div class="row">\n          <div class="col-md-3 text-muted">\n            The Space\n          </div>\n          <div class="col-md-9">\n            <div class="row">\n              <div class="col-md-6">\n                <div>Pets Accepted: <strong>Dogs, Cats</strong></div>\n                <div>Property Type: <strong>Apartment</strong></div>\n                <div>Accomodates: <strong>2</strong></div>\n              </div>\n              <div class="col-md-6">\n                <div>Bed Type: <strong>Fluffy Pet Bed</strong></div>\n                <div>Beds: <strong>2</strong></div>\n              </div>\n            </div>\n          </div>\n        </div>\n        <hr>\n        <div class="row description">\n          <div class="col-md-3 text-muted">\n            Description\n          </div>\n          <div class="col-md-9">\n            ',  listing.get('description') ,'\n          </div>\n        </div>\n        <hr>\n        <div class="row">\n          <div class="col-md-3 text-muted">\n            Availability\n          </div>\n          <div class="col-md-9">\n            <div class="row">\n              <div class="col-md-6">\n                <strong>2 nights</strong> minimum stay\n              </div>\n              <div class="col-md-6">\n                <a href="#" id="calendar">\n                  <strong>View Calendar</strong>\n                </a>\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class="row-space-4 row-space-top-4 inline-photo">\n          <a href="#" class="photo-trigger" data-index="1">\n            ');  if (images && images.length > 2) { ; __p.push('\n              <img src="',  images[2].url ,'" alt="" />\n            ');  } ; __p.push('\n          </a>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div id="reviews">\n  <div class="panel">\n    <div class="row container-responsive">\n      <div class="col-lg-8">\n        <div class="row-space-8 row-space-top-8">\n          [reviewers]\n        </div>\n        <div class="review-content">\n          [review details]\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n<div id="host-profile">\n  <div class="row container-responsive">\n    <div class="col-lg-8">\n      <div class="row-space-8 row-space-top-8">\n        <h4>About the Host, ',  email ,'</h4>\n        <div class="row">\n          <div class="col-md-3 text-center">\n            <a href="/users/',  listing.escape('user_id') ,'"\n               class="user-icon">\n              <img src="',  iconUrl ,'" alt="user_icon" />\n            </a>\n          </div>\n          <div class="col-md-9">\n            <div class="row-space-2" id="user-description">\n              [user description]\n            </div>\n            <div class="row-space-2" id="u">\n              [more user description]\n            </div>\n            <div class="contact-wrapper">\n              <button class="btn btn-small btn-primary"\n                      id="host-profile-contact-btn">\n                Contact Host\n              </button>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </div>\n</div>\n\n<!-- ',  JSON.stringify(listing) ,' -->\n\n<script charset="utf-8">\n  $(document).ready(function () {\n  });\n</script>\n');}return __p.join('');};
 }).call(this);
 (function() { this.JST || (this.JST = {}); this.JST["profile"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('\n');}return __p.join('');};
+}).call(this);
+(function() { this.JST || (this.JST = {}); this.JST["users/show"] = function(obj){var __p=[],print=function(){__p.push.apply(__p,arguments);};with(obj||{}){__p.push('',  user.escape('email') ,'\'s profile\n');}return __p.join('');};
 }).call(this);
 PetBnB.Models.Image = Backbone.Model.extend({
   urlRoot: 'api/images'
@@ -19020,8 +19041,10 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   template: _.template(''),
 
   events: {
-    'click .btn:not(.search)': 'submit',
-    'click .btn.search': 'search'
+    'change #checkin': 'checkDates',
+    'change #checkout': 'checkDates',
+    'click .btn.search': 'search',
+    'keypress .navbar-search input': 'refreshResults'
   },
 
   initialize: function (options) {
@@ -19029,48 +19052,28 @@ PetBnB.Views.HomeView = Backbone.View.extend({
     this._router = options.router;
   },
 
-  submit: function (event) {
-    event.preventDefault();
-
-    var $target = $(event.currentTarget);
-    var $form, button = $.trim($target.text());
-    if (button === 'Sign up') {
-      $form = $('#signupModal form');
-    } else {
-      $form = $('#loginModal form');
-    }
-
-    var userData, model;
-    if (button === 'Guest login') {
-      userData = { user: { email: 'Guest',
-                           password: 'password' }};
-    } else {
-      userData = $form.serializeJSON();
-    }
-
-    if (button === 'Sign up') {
-      model = new PetBnB.Models.User(userData);
-    } else {
-      model = new PetBnB.Models.Session(userData);
-    }
-    model.save({}, {
-      success: function () {
-        window.location.replace('');
-      },
-      error: function (models, response) {
-        var errors = '';
-        if (button === 'Sign up') {
-          if (response.responseJSON) {
-            response.responseJSON.forEach(function (error) {
-              errors += (error + '<br>');
-            });
-          }
-        } else {
-          errors += 'Incorrect credentials<br>';
-        }
-        $form.find('.errors').html(errors);
+  // responds intelligently when user inputs incorrect date
+  checkDates: function () {
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
+    if (checkin !== "" && checkout !== "") {
+      var checkinDate = Date.parse(checkin);
+      var checkoutDate = Date.parse(checkout);
+      if (checkoutDate - checkinDate < 1) {
+        var nextDay = new Date(checkinDate + 86400 * 1000);
+        var year = nextDay.getFullYear().toString();
+        var month = this.padDate((nextDay.getMonth() + 1).toString());
+        var day = this.padDate(nextDay.getDate().toString());
+        var newCheckoutDate = [month, day, year].join('/');
+        $('#checkout').val(newCheckoutDate);
       }
-    });
+    }
+  },
+
+  padDate: function (date) {
+    var newDate = (date.length === 1) ? ('0' + date) : date;
+
+    return newDate;
   },
 
   search: function (event) {
@@ -19099,6 +19102,116 @@ PetBnB.Views.HomeView = Backbone.View.extend({
         }
       });
     }
+  },
+
+  refreshResults: function (event) {
+    debugger
+  }
+});
+PetBnB.Views.MapShowView = Backbone.View.extend({
+  attributes: {
+    id: 'map-canvas'
+  },
+
+  initialize: function () {
+    var mapOptions = {
+      center: { lat: 37.7577, lng: -122.4376 },
+      zoom: 12
+    };
+    this._map = new google.maps.Map(this.el, mapOptions);
+    this._markers = {};
+
+    this.listenTo(this.collection, 'add', this.addMarker);
+    this.listenTo(this.collection, 'remove', this.removeMarker);
+  },
+
+  initMap: function () {
+    this.collection.each(this.addMarker.bind(this));
+    this.attachMapListeners();
+  },
+
+  attachMapListeners: function () {
+    google.maps.event.addListener(this._map, 'idle', this.search.bind(this));
+    google.maps.event.addListener(this._map, 'click', this.createListing.bind(this));
+  },
+
+  // Event handlers
+  addMarker: function (listing) {
+    if (this._markers[listing.id]) { return };
+    var view = this;
+
+    var marker = new google.maps.Marker({
+      position: { lat: parseFloat(listing.get('latitude')),
+                  lng: parseFloat(listing.get('longitude')) },
+      map: this._map,
+      title: listing.get('name')
+    });
+
+    google.maps.event.addListener(marker, 'click', function (event) {
+      view.showMarkerInfo(event, marker);
+    });
+
+    this._markers[listing.id] = marker;
+  },
+
+  createListing: function (event) {
+    var listing = new PetBnB.Models.Listing({
+      latitude: event.latLng.lat(),
+      longtidue: event.latLng.lng()
+    });
+
+    listing.save({}, {
+      success: function () {
+        this.collection.add(listing);
+      }.bind(this)
+    });
+  },
+
+  search: function () {
+    // This method will re-fetch the map's collection, using the
+    // map's current bounds as constraints on latitude/longitude.
+
+    var mapBounds = this._map.getBounds();
+    var ne = mapBounds.getNorthEast();
+    var sw = mapBounds.getSouthWest();
+
+    var filterData = {
+      lat: [sw.lat(), ne.lat()],
+      lng: [sw.lng(), ne.lng()]
+    };
+
+    this.collection.fetch({
+      data: { filter_data: filterData }
+    });
+  },
+
+  removeMarker: function (listing) {
+    var marker = this._markers[listing.id];
+    marker.setMap(null);
+    delete this._markers[listing.id];
+  },
+
+  showMarkerInfo: function (event, marker) {
+    // This event will be triggered when a marker is clicked. Right now it
+    // simply opens an info window with the title of the marker. However, you
+    // could get fancier if you wanted (maybe use a template for the content of
+    // the window?)
+
+    var infoWindow = new google.maps.InfoWindow({
+      content: marker.title
+    });
+
+    infoWindow.open(this._map, marker);
+  },
+
+  startBounce: function (id) {
+    var marker = this._markers[id];
+    marker.setAnimation(google.maps.Animation.BOUNCE);
+  },
+
+  stopBounce: function (id) {
+    var marker = this._markers[id];
+    marker.setAnimation(null);
   }
 });
 PetBnB.Views.ResultsView = Backbone.View.extend({
@@ -19106,25 +19219,46 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   className: 'results',
 
+  events: {
+    'change #checkin': 'checkDates',
+    'change #checkout': 'checkDates',
+    'click a.remove-listing': 'destroyListing',
+    'click a.listing-name': 'panToListing',
+    'mouseenter .listing': 'startBounce',
+    'mouseleave .listing': 'stopBounce'
+  },
+
   initialize: function (options) {
-    this._checkin = options.checkin;
-    this._checkout = options.checkout;
     this._location = options.location;
     this._coords = options.coords;
-    this._listings = new PetBnB.Collections.Listings();
+    this.collection = options.listings;
+
+    this.mapView = new PetBnB.Views.MapShowView({
+      collection: this.collection
+    });
+
+    // should probably abstract listings index into its own view
+    // this.listingsIndex = new PetBnB.Views.ListingsIndex({
+    //   collection: this.collection
+    // });
 
     this.findListings();
 
-    this.listenTo(this._listings, 'add', this.render);
+    this.listenTo(this.collection, 'add sync', this.render);
   },
 
   render: function () {
     var content = this.template({
-      checkin: this._checkin,
-      checkout: this._checkout,
-      listings: this._listings
+      listings: this.collection
     });
     this.$el.html(content);
+
+    // do this later
+    // this.$('.search-container').html(this.listingsIndex.render().$el);
+    this.$('.search-map').html(this.mapView.$el);
+    this.mapView.initMap();
+
+    PetBnB.setDatepickers();
 
     return this;
   },
@@ -19134,25 +19268,62 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
       latitude: this._coords.lat,
       longitude: this._coords.lng
     };
-    if (!search.latitude || !search.longitude) {
-      Backbone.history.navigate('', { trigger: true });
-      return;
+    if (search.latitude || search.longitude) {
+      this.collection.fetch({
+        data: { search: search },
+        error: function (resp) {
+          console.log("Something went wrong while getting results");
+        }
+      });
+    } else {
+      // Backbone.history.navigate('', { trigger: true });
+      // return;
     }
-    $.ajax({
-      url: '/api/search',
-      type: 'get',
-      data: { search: search },
-      success: function (resp) {
-        this._listings.add(resp);
-      }.bind(this),
-      error: function (resp) {
-        console.log("Something went wrong while getting results");
-      }
-    });
+  },
+
+  // Event handlers
+  checkDates: function () {
+    // resuse code from home.js
+  },
+
+  startBounce: function (event) {
+    var listingId = $(event.currentTarget).children('a').data('listing-id');
+    this.mapView.startBounce(listingId);
+  },
+
+  stopBounce: function (event) {
+    var listingId = $(event.currentTarget).children('a').data('listing-id');
+    this.mapView.stopBounce(listingId);
+  },
+
+  destroyListing: function (event) {
+    var listingId = $(event.currentTarget).data('listing-id');
+    var listing = this.collection.get(listingId);
+    listing.destroy();
+  },
+
+  panToListing: function (event) {
+    var listingId = $(event.currentTarget).data('listing-id');
+    var marker = this.mapView._markers[listingId];
+    this.mapView._map.panTo(marker.getPosition());
+  },
+
+  remove: function () {
+    Backbone.View.prototype.remove.call(this);
+    this.mapView.remove();
+    // this.listingsIndex.remove();
   }
 });
 PetBnB.Views.ListingShowView = Backbone.View.extend({
   template: JST['listings/show'],
+
+  className: 'listing-show',
+
+  events: {
+    'change #checkin': 'getTotalNights',
+    'change #checkout': 'getTotalNights',
+    'click #booking-button': 'instantBook'
+  },
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
@@ -19164,7 +19335,72 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
     });
     this.$el.html(content);
 
+    PetBnB.setDatepickers();
+    this.getAddress();
+    this.getTotalNights();
+
     return this;
+  },
+
+  // find readable location based on lat and lng from listing data
+  getAddress: function () {
+    var lat = parseFloat(this.model.get('latitude'));
+    var lng = parseFloat(this.model.get('longitude'));
+    if (lat && lng) {
+      var latlng = new google.maps.LatLng(lat, lng);
+      var geocoder = geocoder = new google.maps.Geocoder();
+      geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (results[0]) {
+            var city = results[0].formatted_address.split(', ')[1];
+            var title = this.model.get('name') + ' in ' + city;
+            var addr = results[0].formatted_address.split(', ').slice(1).join(', ');
+            $('.address').html(addr);
+            $(document).attr('title', title);
+          }
+        }
+      }.bind(this));
+    }
+  },
+
+  // calculates number of nights based on checkin and checkout dates
+  // responds to erroneous input
+  getTotalNights: function () {
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
+    if (checkin !== "" && checkout !== "") {
+      var checkinDate = Date.parse(checkin) / 1000 / 3600 / 24;
+      var checkoutDate = Date.parse(checkout) / 1000 / 3600 / 24;
+      if (checkoutDate - checkinDate > 0) {
+        $('.booking-errors').removeClass('enabled');
+        $('.panel-padding-fit').addClass('enabled');
+        $('.booking-button').addClass('enabled');
+
+        var totalNights = checkoutDate - checkinDate;
+        var priceDaily = parseInt(this.model.get('price_daily'));
+        $('#total-nights').html(totalNights);
+        $('#cost-breakdown-2').html('$' + priceDaily * totalNights);
+        $('#cost-breakdown-total').html($('#cost-breakdown-2').html());
+      } else {
+        $('.panel-padding-fit').removeClass('enabled');
+        $('.booking-button').removeClass('enabled');
+        $('.booking-errors').addClass('enabled');
+      }
+    } else {
+      $('.panel-padding-fit').removeClass('enabled');
+      $('.booking-errors').removeClass('enabled');
+      $('.booking-button').addClass('enabled');
+    }
+  },
+
+  instantBook: function (event) {
+    if ($('#checkin').val() === "") {
+      $('#checkin').focus();
+    } else if ($('#checkout').val() === "") {
+      $('#checkout').focus();
+    } else {
+      // actually send request to book listing
+    }
   }
 });
 PetBnB.Views.ProfileView = Backbone.View.extend({
@@ -19186,43 +19422,40 @@ PetBnB.Views.ProfileView = Backbone.View.extend({
     return this;
   }
 });
-PetBnB.Routers.DemoRouter = Backbone.Router.extend({
+PetBnB.Views.UserShowView = Backbone.View.extend({
+  template: JST['users/show'],
+
+  className: 'user-show',
+
   initialize: function (options) {
-    this.$rootEl = $(options.rootEl);
+    this.listenTo(this.model, 'sync', this.render);
   },
 
-  routes: {
-    '': 'demo'
-  },
+  render: function () {
+    var content = this.template({
+      user: this.model
+    });
+    this.$el.html(content);
 
-  demo: function () {
-    var view = new PetBnB.Views.DemoMap();
-    this._swapView(view);
-  },
-
-  _swapView: function () {
-    // 2 lines
-    // must insert $el before initializing maps object; beware of this
-    //in any views that contain a map subview
-    this.$rootEl.html(view.$el);
-    view.render();
+    return this;
   }
-})
-;
+});
 PetBnB.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'results': 'results',
-    'listings/:id': 'listingShow'
+    'listings/:id': 'listingShow',
+    'users/:id': 'userShow'
   },
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
+    this._currentUser = options.currentUser;
     this._checkin = "";
     this._checkout = "";
     this._location = "";
     this._coords = {};
-    this.listings = new PetBnB.Collections.Listings();
+    this.listings = options.listings;
   },
 
   home: function () {
@@ -19233,10 +19466,9 @@ PetBnB.Routers.Router = Backbone.Router.extend({
 
   results: function () {
     var resultsView = new PetBnB.Views.ResultsView({
-      checkin: this._checkIn,
-      checkout: this._checkOut,
       location: this._location,
-      coords: this._coords
+      coords: this._coords,
+      listings: this.listings
     });
     this._swapView(resultsView);
   },
@@ -19249,10 +19481,25 @@ PetBnB.Routers.Router = Backbone.Router.extend({
     this._swapView(listingShowView);
   },
 
+  userShow: function (id) {
+    var user = this._currentUser;
+    var userShowView = new PetBnB.Views.UserShowView({
+      model: user
+    });
+    this._swapView(userShowView);
+  },
+
+  mapShow: function () {
+    var view = new PetBnB.Views.MapShowView();
+    this._swapView(view);
+    view.initMap();
+  },
+
   _swapView: function (view) {
     this._currentView && this._currentView.remove();
-    this.$rootEl.html(view.render().$el);
+    this.$rootEl.html(view.$el);
     this._currentView = view;
+    view.render();
   }
 });
 (function() {

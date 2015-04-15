@@ -1,12 +1,13 @@
-<% var email = "" %>
-<% var iconUrl = "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" %>
-<% if (listing.get('user')) { %>
-  <% email = listing.get('user').email %>
-  <% iconUrl = listing.get('user').avatar_url %>
-<% } %>
+<% var userName = user ? user.get('email') : ''; %>
+<% var iconUrl = user ? user.get('avatar_url') : "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png"; %>
+<% var coverImg = images ? images.at(0).get('url') : '' %>
+<% var detailImgTop = (images && images.length > 1) ? images.at(1).get('url') : '' %>
+<% var detailImgBottom = (images && images.length > 2) ? images.at(2).get('url') : '' %>
 
 <div id="cover">
-  <img src="<%= listing.get('images')[0].url %>" alt="" />
+  <% if (images) { %>
+    <img src="<%= coverImg %>" alt="" />
+  <% } %>
 </div>
 <div id="summary">
   <div class="row container-responsive">
@@ -18,7 +19,7 @@
                class="user-icon">
               <img src="<%= iconUrl %>" alt="user_icon" />
             </a>
-            <div class="user-email"><%= email %></div>
+            <div class="user-name"><%= userName %></div>
           </div>
           <div class="col-md-9">
             <h1><%= listing.escape('name') %></h1>
@@ -98,7 +99,7 @@
                     <i class="icon icon-hourglass-color pull-left"></i>
                     <div class="media-body">
                       See yourself here? Book soon. <b>100</b> pet owners viewed
-                      <%= email %>'s place this week.
+                      <%= userName %>'s place this week.
                     </div>
                   </div>
                 </div>
@@ -127,9 +128,7 @@
         </p>
         <div class="row-space-4 row-space-top-4 inline-photo">
           <a href="#" class="photo-trigger" data-index="1">
-            <% if (listing.get('images').length > 1) { %>
-              <img src="<%= listing.get('images')[1].url %>" alt="" />
-            <% } %>
+            <img src="<%= detailImgTop %>" alt="" />
           </a>
         </div>
         <hr>
@@ -180,9 +179,7 @@
         </div>
         <div class="row-space-4 row-space-top-4 inline-photo">
           <a href="#" class="photo-trigger" data-index="1">
-            <% if (listing.get('images').length > 2) { %>
-              <img src="<%= listing.get('images')[2].url %>" alt="" />
-            <% } %>
+            <img src="<%= detailImgBottom %>" alt="" />
           </a>
         </div>
       </div>
@@ -207,7 +204,7 @@
   <div class="row container-responsive">
     <div class="col-lg-8">
       <div class="row-space-8 row-space-top-8">
-        <h4>About the Host, <%= email %></h4>
+        <h4>About the Host, <%= userName %></h4>
         <div class="row">
           <div class="col-md-3 text-center">
             <a href="/users/<%= listing.escape('user_id') %>"

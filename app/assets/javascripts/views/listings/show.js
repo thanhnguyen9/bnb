@@ -14,8 +14,11 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
   },
 
   render: function () {
+    debugger
     var content = this.template({
-      listing: this.model
+      listing: this.model,
+      images: this.model.images(),
+      user: this.model.user()
     });
     this.$el.html(content);
 
