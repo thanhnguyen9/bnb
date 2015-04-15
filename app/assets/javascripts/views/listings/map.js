@@ -24,8 +24,11 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   attachMapListeners: function () {
-    google.maps.event.addListener(PetBnB.map, 'idle', this.search.bind(this));
-    // google.maps.event.addListener(PetBnB.map, 'click', this.createListing.bind(this));
+    google.maps.event.addListener(PetBnB.map, 'idle', this.search);
+    google.maps.event.addListener(PetBnB.map, 'bounds_changed',
+                                  this.setSearchBoxBounds);
+    google.maps.event.addListener(PetBnB.navbarSearch, 'places_changed',
+                                  this.refreshMap.bind(this));
   },
 
   // Event handlers
@@ -67,17 +70,19 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     });
   },
 
-  createListing: function (event) {
-    var listing = new PetBnB.Models.Listing({
-      latitude: event.latLng.lat(),
-      longtidue: event.latLng.lng()
-    });
+  refreshMap: function () {
+    if (PetBnB.navbarSearch.getPlaces()) {
+      var coords = PetBnB.navbarSearch.getPlaces()[0].geometry.location;
+      var newBounds = new google.maps.LatLng(coords.lat(),
+                                             coords.lng());
+      PetBnB.map.setCenter(coords);
+      PetBnB.map.setZoom(13);
+      this.search();
+    }
+  },
 
-    listing.save({}, {
-      success: function () {
-        PetBnB.listings.add(listing);
-      }.bind(this)
-    });
+  setSearchBoxBounds: function () {
+    PetBnB.navbarSearch.setBounds(PetBnB.map.getBounds());
   },
 
   removeMarker: function (listing) {

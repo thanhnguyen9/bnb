@@ -16,6 +16,8 @@ window.PetBnB = {
       });
 
       PetBnB.listings = new PetBnB.Collections.Listings();
+      var input = $('#navbar-search-container input')[0];
+      PetBnB.navbarSearch = new google.maps.places.SearchBox(input);
 
       this.router = new PetBnB.Routers.Router({
         $rootEl: $('#content'),

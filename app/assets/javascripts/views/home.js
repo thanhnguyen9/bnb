@@ -15,7 +15,7 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   },
 
   setupAutocomplete: function () {
-    var input = document.getElementById('homepage-searchbar');
+    var input = $('#homepage-searchbox')[0];
     this._searchBox = new google.maps.places.SearchBox(input);
     google.maps.event.addListener(this._searchBox, 'places_changed',
                                  this.search.bind(this));

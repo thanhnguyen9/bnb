@@ -15,7 +15,8 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   initialize: function (options) {
     this._coords = options.coords;
 
-    this.mapView = new PetBnB.Views.MapShowView({
+    // PetBnB.mapView && PetBnB.mapView.remove();
+    PetBnB.mapView = new PetBnB.Views.MapShowView({
       center: options.coords
     });
 
@@ -35,8 +36,8 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
     // do this later
     // this.$('.search-container').html(this.listingsIndex.render().$el);
-    this.$('.search-map').html(this.mapView.$el);
-    this.mapView.initMap();
+    this.$('.search-map').html(PetBnB.mapView.$el);
+    PetBnB.mapView.initMap();
 
     PetBnB.setDatepickers();
 
@@ -68,12 +69,12 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   // startBounce: function (event) {
   //   var listingId = $(event.currentTarget).children('a').data('listing-id');
-  //   this.mapView.startBounce(listingId);
+  //   PetBnB.mapView.startBounce(listingId);
   // },
   //
   // stopBounce: function (event) {
   //   var listingId = $(event.currentTarget).children('a').data('listing-id');
-  //   this.mapView.stopBounce(listingId);
+  //   PetBnB.mapView.stopBounce(listingId);
   // },
   //
   // destroyListing: function (event) {
@@ -84,13 +85,13 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   //
   // panToListing: function (event) {
   //   var listingId = $(event.currentTarget).data('listing-id');
-  //   var marker = this.mapView._markers[listingId];
-  //   this.mapView._map.panTo(marker.getPosition());
+  //   var marker = PetBnB.mapView._markers[listingId];
+  //   PetBnB.mapView._map.panTo(marker.getPosition());
   // },
 
   remove: function () {
     Backbone.View.prototype.remove.call(this);
-    this.mapView.remove();
+    PetBnB.mapView.remove();
     // this.listingsIndex.remove();
   }
 });

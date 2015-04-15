@@ -96,6 +96,10 @@ hr { border-top: 1px solid #dce0e0; }
     }
   }
 
+  #navbar-search-container { display: none; }
+
+  .active#navbar-search-container { display: block; }
+
   form.navbar-form {
     width: 265px;
     height: 30px;
