@@ -1,0 +1,36 @@
+<div class="outer-container">
+  <div class="row listings-container">
+    <% listings.each(function (listing) { %>
+      <div class="listing-container row-space-2 pull-left">
+        <div class="panel-img listing-img">
+          <a href="#/listings/<%= listing.id %>">
+            <img src="<%= listing.images().first().escape('url') %>" alt="" />
+          </a>
+          <div class="listing-price">
+            $<%= listing.escape('price_daily') %>
+            <i class="fa fa-bolt"></i>
+          </div>
+        </div>
+        <div class="panel-body">
+          <a href="#/users/<%= listing.escape('user_id') %>">
+            <img src="<%= listing.user().escape('avatar_url') %>" alt="" />
+          </a>
+          <a href="#/listings/<%= listing.id %>">
+            <h3 class="row-space-top-1">
+              <%= listing.escape('name') %>
+            </h3>
+          </a>
+          <a href="#/listings/<%= listing.id %>" class="listing-snippet">
+            Entire place ~ [num] reviews ~ [neighborhood]
+          </a>
+        </div>
+      </div>
+    <% }); %>
+  </div>
+</div>
+<div class="results-footer">
+  <div class="pagination-container">
+    <div class="pagination">
+    </div>
+  </div>
+</div>

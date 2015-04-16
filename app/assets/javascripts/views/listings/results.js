@@ -15,15 +15,12 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   initialize: function (options) {
     this._coords = options.coords;
 
-    // PetBnB.mapView && PetBnB.mapView.remove();
     PetBnB.mapView = new PetBnB.Views.MapShowView({
       center: options.coords
     });
+    this._resultsSubview = new PetBnB.Views.resultsSubview();
 
-    // should probably abstract listings index into its own view
-    // this.listingsIndex = new PetBnB.Views.ListingsIndex();
-
-    this.listenTo(PetBnB.listings, 'add sync', this.render);
+    this.listenToOnce(PetBnB.listings, 'sync', this.render);
   },
 
   render: function () {
@@ -31,13 +28,10 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
       listings: PetBnB.listings
     });
     this.$el.html(content);
-
     this.addSlider();
-    // do this later
-    // this.$('.search-container').html(this.listingsIndex.render().$el);
-    this.$('.search-map').html(PetBnB.mapView.$el);
-
     PetBnB.setDatepickers();
+    this.$('.search-map').html(PetBnB.mapView.$el);
+    this.$('.search-container').append(this._resultsSubview.render().$el);
 
     return this;
   },
@@ -106,6 +100,6 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   remove: function () {
     Backbone.View.prototype.remove.call(this);
     PetBnB.mapView.remove();
-    // this.listingsIndex.remove();
+    this._resultsSubview.remove();
   }
 });
