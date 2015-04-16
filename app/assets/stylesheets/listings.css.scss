@@ -41,6 +41,7 @@
 
         #slider {
           height: 5px;
+          top: -5px;
           border: none;
           background: none;
           background-color: #dce0e0;
@@ -55,19 +56,21 @@
             border-radius: 15px;
             height: 30px;
             width: 30px;
-            background-color: white;
 
-            &:hover {
-              cursor: pointer;
-              background-color: white;
-            }
+            &:hover { cursor: pointer;}
+          }
+
+          .ui-state-default, .ui-state-focus, .ui-state-hover,
+          .ui-state-active {
+            background: white;
+            border: 1px solid #d3d3d3;
           }
         }
 
         .row {
           position: relative;
-          top: 15px;
-          padding-left: 12px;
+          top: 10px;
+          padding: 0 12px;
         }
       }
     }
