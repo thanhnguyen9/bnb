@@ -1,36 +1,80 @@
 <div class="col-md-7 search-container">
   <div class="row search-details">
-    <div class="row dates">
-      Dates
-      <input type="text"
-             name="checkin"
-             id="checkin"
-             placeholder="Check In"
-             value="<%= PetBnB.router._checkin %>">
-      <input type="text"
-             name="checkout"
-             id="checkout"
-             placeholder="Check Out"
-             value="<%= PetBnB.router._checkout %>">
+    <div class="row dates panel-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <label>Dates</label>
+        </div>
+        <div class="col-lg-8">
+          <div class="row row-condensed">
+            <div class="col-md-4">
+              <input type="text"
+                     name="checkin"
+                     id="checkin"
+                     placeholder="Check In"
+                     value="<%= PetBnB.router._checkin %>">
+            </div>
+            <div class="col-md-4">
+              <input type="text"
+                     name="checkout"
+                     id="checkout"
+                     placeholder="Check Out"
+                     value="<%= PetBnB.router._checkout %>">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="row price-range">
-      Price Range
+    <div class="row price-range panel-body">
+      <div class="row">
+        <div class="col-lg-4">
+          <label>Price Range</label>
+        </div>
+        <div class="col-lg-8">
+          <div class="slider">
+            jQuery slider?
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="row search-results">
-    Search Results
-    <ul class="list-group">
-      <% listings.each(function (listing) { %>
-        <li class="list-group-item pull-left">
-          <a href="#/listings/<%= listing.id %>">
-            <img src="<%= listing.images().first().get('url') %>" alt="" />
-          </a>
-          <a href="#/listings/<%= listing.id %>">
-            <%= listing.escape('name') %>
-          </a>
-        </li>
-      <% }) %>
-    </ul>
+    <div class="outer-container">
+      <div class="row listings-container">
+        <% listings.each(function (listing) { %>
+          <div class="listing-container row-space-2 pull-left">
+            <div class="panel-img listing-img">
+              <a href="#/listings/<%= listing.id %>">
+                <img src="<%= listing.images().first().escape('url') %>" alt="" />
+              </a>
+              <div class="listing-price">
+                $<%= listing.escape('price_daily') %>
+                <i class="fa fa-bolt"></i>
+              </div>
+            </div>
+            <div class="panel-body">
+              <a href="#/users/<%= listing.escape('user_id') %>">
+                <img src="<%= listing.user().escape('avatar_url') %>" alt="" />
+              </a>
+              <a href="#/listings/<%= listing.id %>">
+                <h3 class="row-space-top-1">
+                  <%= listing.escape('name') %>
+                </h3>
+              </a>
+              <a href="#/listings/<%= listing.id %>" class="listing-snippet">
+                Entire place ~ [num] reviews ~ [neighborhood]
+              </a>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    </div>
+    <div class="results-footer">
+      <div class="pagination-container">
+        <div class="pagination">
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="col-md-5 search-map">

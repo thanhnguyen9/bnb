@@ -12,10 +12,10 @@
  *= require_tree .
  */
 
+@import url('http://fonts.googleapis.com/css?family=Raleway:300,500,700');
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "font-awesome";
-@import url("http://fonts.googleapis.com/css?family=Nunito:400,300,700");
 
 @font-face {
   font-family: Circular;
@@ -31,14 +31,17 @@
   src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.eot");
   src:url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.eot") format("eot"),
   url("https://s3-us-west-1.amazonaws.com/petbnb/fonts/circular-air-bold.woff") format("woff");
-  font-weight: bold;
+  font-weight: normal;
   font-style: normal;
 }
 
 /* General */
 
 * {
-  font-family: Circular, Nunito, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: 'Raleway', "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size:16px;
+  font-weight: normal;
+
   ul { list-style: none; }
 }
 
@@ -51,6 +54,11 @@ hr { border-top: 1px solid #dce0e0; }
 .pull-left { float: left; }
 
 .pull-right { float: right; }
+
+.row {
+  margin-left: -12.5px;
+  margin-right: -12.5px;
+}
 
 .row-condensed {
   margin-left: -6.25px;
@@ -74,6 +82,8 @@ hr { border-top: 1px solid #dce0e0; }
   padding: 0 25px;
 }
 
+.panel-body { padding: 15px 20px; }
+
 /* Content */
 
 #content { height: calc(100% - 55px); }
@@ -84,6 +94,7 @@ hr { border-top: 1px solid #dce0e0; }
   margin: 0;
   border-radius: 0;
   border-color: transparent;
+  border-bottom: 1px solid #dce0e0;
   background-color: transparent;
   background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/navbar_bg.png');
 
@@ -146,6 +157,8 @@ hr { border-top: 1px solid #dce0e0; }
 }
 
 i { margin-right: 4px; }
+
+i.fa.fa-bolt { color: #FFB400; }
 
 a {
   text-decoration: none;

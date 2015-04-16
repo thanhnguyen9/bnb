@@ -1,8 +1,8 @@
-<% var userName = user ? user.get('email') : ''; %>
-<% var iconUrl = user ? user.get('avatar_url') : "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png"; %>
-<% var coverImg = images ? images.at(0).get('url') : '' %>
-<% var detailImgTop = (images && images.length > 1) ? images.at(1).get('url') : '' %>
-<% var detailImgBottom = (images && images.length > 2) ? images.at(2).get('url') : '' %>
+<% var userName = user ? user.escape('email') : ''; %>
+<% var iconUrl = user ? user.escape('avatar_url') : "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png"; %>
+<% var coverImg = images ? images.at(0).escape('url') : '' %>
+<% var detailImgTop = (images && images.length > 1) ? images.at(1).escape('url') : '' %>
+<% var detailImgBottom = (images && images.length > 2) ? images.at(2).escape('url') : '' %>
 
 <div id="cover">
   <% if (images) { %>
@@ -15,7 +15,7 @@
       <div class="row-space-4 row-space-top-4">
         <div class="row">
           <div class="col-md-3 text-center">
-            <a href="/users/<%= listing.escape('user_id') %>"
+            <a href="#/users/<%= listing.escape('user_id') %>"
                class="user-icon">
               <img src="<%= iconUrl %>" alt="user_icon" />
             </a>
@@ -156,7 +156,7 @@
             Description
           </div>
           <div class="col-md-9">
-            <%= listing.get('description') %>
+            <%= listing.escape('description') %>
           </div>
         </div>
         <hr>
