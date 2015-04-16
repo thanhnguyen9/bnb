@@ -17,9 +17,9 @@ window.PetBnB.checkDates = function () {
       checkout = [month, day, year].join('/');
       $('#checkout').val(checkout);
     }
+    PetBnB.checkin = checkin;
+    PetBnB.checkout = checkout;
   }
-
-  return { checkin: checkin, checkout: checkout };
 };
 
 window.PetBnB.padDate = function (date) {

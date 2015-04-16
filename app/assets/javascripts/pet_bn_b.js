@@ -6,6 +6,9 @@ window.PetBnB = {
   initialize: function() {
     // console.log('Hello from PetBnB!');
 
+    this.checkin = "";
+    this.checkout = "";
+
     if ($('#logged_in').length) {
       var id = parseInt($('#logged_in').val());
       var currentUser = new PetBnB.Models.User({ id: id });

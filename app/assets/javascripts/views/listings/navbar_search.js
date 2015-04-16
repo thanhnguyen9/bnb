@@ -12,6 +12,7 @@ PetBnB.Views.NavbarSearchView = Backbone.View.extend({
 
   refreshMap: function (event) {
     event && event.preventDefault();
+    debugger
 
     if (this._navbarSearch.getPlaces()) {
       var coords = this._navbarSearch.getPlaces()[0].geometry.location;

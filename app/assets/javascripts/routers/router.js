@@ -9,8 +9,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this._currentUser = options.currentUser;
-    this._checkin = "";
-    this._checkout = "";
     this._coords = {};
   },
 

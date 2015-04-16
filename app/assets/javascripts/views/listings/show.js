@@ -52,16 +52,19 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
   // calculates number of nights based on checkin and checkout dates
   // responds to erroneous input
   getTotalNights: function () {
-    var checkin = $('#checkin').val();
-    var checkout = $('#checkout').val();
+    PetBnB.checkDates();
+    // var checkin = $('#checkin').val();
+    // var checkout = $('#checkout').val();
+    var checkin = PetBnB.checkin;
+    var checkout = PetBnB.checkout;
     if (checkin !== "" && checkout !== "") {
       var checkinDate = Date.parse(checkin) / 1000 / 3600 / 24;
       var checkoutDate = Date.parse(checkout) / 1000 / 3600 / 24;
       if (checkoutDate - checkinDate > 0) {
-        $('.booking-errors').removeClass('enabled');
+        // $('.booking-errors').removeClass('enabled');
         $('.panel-padding-fit').addClass('enabled');
         $('.booking-button').addClass('enabled');
-
+        //
         var totalNights = checkoutDate - checkinDate;
         var priceDaily = parseInt(this.model.get('price_daily'));
         $('#total-nights').html(totalNights);
@@ -70,13 +73,14 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       } else {
         $('.panel-padding-fit').removeClass('enabled');
         $('.booking-button').removeClass('enabled');
-        $('.booking-errors').addClass('enabled');
+        // $('.booking-errors').addClass('enabled');
       }
-    } else {
-      $('.panel-padding-fit').removeClass('enabled');
-      $('.booking-errors').removeClass('enabled');
-      $('.booking-button').addClass('enabled');
     }
+    // else {
+    //   $('.panel-padding-fit').removeClass('enabled');
+    //   $('.booking-errors').removeClass('enabled');
+    //   $('.booking-button').addClass('enabled');
+    // }
   },
 
   instantBook: function (event) {

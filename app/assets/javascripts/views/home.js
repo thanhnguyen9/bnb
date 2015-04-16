@@ -23,9 +23,7 @@ PetBnB.Views.HomeView = Backbone.View.extend({
 
   // event handlers
   checkDates: function () {
-    var dates = PetBnB.checkDates();
-    this._router._checkin = dates.checkin;
-    this._router._checkout = dates.checkout;
+    PetBnB.checkDates();
   },
 
   search: function (event) {

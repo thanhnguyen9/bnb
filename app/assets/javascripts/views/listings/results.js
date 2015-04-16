@@ -66,9 +66,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   // Event handlers
   checkDates: function () {
-    var dates = PetBnB.checkDates();
-    this._router._checkin = dates.checkin;
-    this._router._checkout = dates.checkout;
+    PetBnB.checkDates();
   },
 
   // startBounce: function (event) {
