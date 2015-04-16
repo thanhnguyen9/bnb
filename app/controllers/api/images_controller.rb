@@ -12,7 +12,7 @@ module Api
 
     def show
       @image = Image.find(params[:id])
-      render: show
+      render :show
     end
   end
 end
