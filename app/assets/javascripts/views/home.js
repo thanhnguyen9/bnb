@@ -21,30 +21,11 @@ PetBnB.Views.HomeView = Backbone.View.extend({
                                  this.search.bind(this));
   },
 
-  // event listeners
+  // event handlers
   checkDates: function () {
-    var checkin = $('#checkin').val();
-    var checkout = $('#checkout').val();
-    if (checkin !== "" && checkout !== "") {
-      var checkinDate = Date.parse(checkin);
-      var checkoutDate = Date.parse(checkout);
-      if (checkoutDate - checkinDate < 1) {
-        var nextDay = new Date(checkinDate + 86400 * 1000);
-        var year = nextDay.getFullYear().toString();
-        var month = this.padDate((nextDay.getMonth() + 1).toString());
-        var day = this.padDate(nextDay.getDate().toString());
-        checkout = [month, day, year].join('/');
-        $('#checkout').val(checkout);
-      }
-    }
-    this._router._checkin = checkin;
-    this._router._checkout = checkout;
-  },
-
-  padDate: function (date) {
-    var newDate = (date.length === 1) ? ('0' + date) : date;
-
-    return newDate;
+    var dates = PetBnB.checkDates();
+    this._router._checkin = dates.checkin;
+    this._router._checkout = dates.checkout;
   },
 
   search: function (event) {

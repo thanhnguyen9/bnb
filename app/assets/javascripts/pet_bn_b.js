@@ -26,30 +26,6 @@ window.PetBnB = {
       Backbone.history.start();
     }
   },
-
-  setDatepickers: function () {
-    $('#checkin').datepicker();
-    $('#checkout').datepicker();
-  },
-
-  search: function (options) {
-    var mapBounds = PetBnB.map.getBounds();
-    var ne = mapBounds.getNorthEast();
-    var sw = mapBounds.getSouthWest();
-    var minPrice = options.min;
-    var maxPrice = options.max;
-
-    var searchData = {
-      lat: [sw.lat(), ne.lat()],
-      lng: [sw.lng(), ne.lng()],
-      min: minPrice,
-      max: maxPrice
-    };
-
-    PetBnB.listings.fetch({
-      data: { search: searchData }
-    });
-  }
 };
 
 $(document).ready(function(){

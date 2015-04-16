@@ -49,11 +49,15 @@
                 <div class="row row-condensed">
                   <div class="col-sm-6">
                     Check In
-                    <input type="text" id="checkin" name="checkin" placeholder="mm/dd/yyyy">
+                    <input type="text" id="checkin" name="checkin"
+                           placeholder="mm/dd/yyyy"
+                           value="<%= PetBnB.router._checkin %>">
                   </div>
                   <div class="col-sm-6">
                     Check Out
-                    <input type="text" id="checkout" name="checkout" placeholder="mm/dd/yyyy">
+                    <input type="text" id="checkout" name="checkout"
+                           placeholder="mm/dd/yyyy"
+                           value="<%= PetBnB.router._checkout %>">
                   </div>
                 </div>
               </div>
