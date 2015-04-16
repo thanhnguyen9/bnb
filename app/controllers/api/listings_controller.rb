@@ -24,20 +24,6 @@ module Api
       if price_min != "-1"
         listings = listings.where(price_daily: price_min..price_max)
       end
-      # listings = Listing.find_by_sql(<<-SQL)
-      #   SELECT
-      #     *
-      #   FROM
-      #     listings
-      #   WHERE
-      #     latitude BETWEEN #{lat_min} AND #{lat_max}
-      #   AND
-      #     longitude BETWEEN #{lng_min} AND #{lng_max}
-      #   AND
-      #     price_daily BETWEEN #{price_min} AND #{price_max}
-      #   AND
-      #     booked = FALSE
-      # SQL
 
       listings
     end

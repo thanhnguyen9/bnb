@@ -52,11 +52,9 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
   // calculates number of nights based on checkin and checkout dates
   // responds to erroneous input
   getTotalNights: function () {
-    PetBnB.checkDates();
-    // var checkin = $('#checkin').val();
-    // var checkout = $('#checkout').val();
-    var checkin = PetBnB.checkin;
-    var checkout = PetBnB.checkout;
+    PetBnB.checkDates(); // save dates for later reference
+    var checkin = $('#checkin').val();
+    var checkout = $('#checkout').val();
     if (checkin !== "" && checkout !== "") {
       var checkinDate = Date.parse(checkin) / 1000 / 3600 / 24;
       var checkoutDate = Date.parse(checkout) / 1000 / 3600 / 24;
@@ -75,12 +73,11 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
         $('.booking-button').removeClass('enabled');
         // $('.booking-errors').addClass('enabled');
       }
+    } else {
+      $('.panel-padding-fit').removeClass('enabled');
+      // $('.booking-errors').removeClass('enabled');
+      $('.booking-button').addClass('enabled');
     }
-    // else {
-    //   $('.panel-padding-fit').removeClass('enabled');
-    //   $('.booking-errors').removeClass('enabled');
-    //   $('.booking-button').addClass('enabled');
-    // }
   },
 
   instantBook: function (event) {

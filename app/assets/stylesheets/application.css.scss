@@ -106,29 +106,33 @@ hr { border-top: 1px solid #dce0e0; }
     .navbar-brand {
       padding: 0;
       margin: 0 20px;
+      height: 50px;
+      width: 50px;
     }
   }
 
-  #navbar-search-container { display: none; }
+  #navbar-search-container {
+    display: none;
 
-  .active#navbar-search-container { display: block; }
+    &.active { display: block; }
 
-  form.navbar-form {
-    width: 265px;
-    height: 30px;
-    padding: 0;
-    margin: 10px auto;
+    form.navbar-form {
+      width: 265px;
+      height: 30px;
+      padding: 0;
+      margin: 10px auto;
 
-    input {
-      padding-left: 30px;
-      width: 100%;
-      height: 100%;
-      border: 1px solid #C4C4C4;
-      border-radius: 2px;
-      color: #565A5C;
-      background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/search_icon.png') no-repeat;
-      background-size: contain;
-      background-position-x: 2%;
+      input {
+        padding-left: 30px;
+        width: 100%;
+        height: 100%;
+        border: 1px solid #C4C4C4;
+        border-radius: 2px;
+        color: #565A5C;
+        background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/search_icon.png') no-repeat;
+        background-size: contain;
+        background-position-x: 2%;
+      }
     }
   }
 }

@@ -28,6 +28,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
       listings: PetBnB.listings
     });
     this.$el.html(content);
+
     this.addSlider();
     PetBnB.setDatepickers();
     this.$('.search-map').html(PetBnB.mapView.$el);

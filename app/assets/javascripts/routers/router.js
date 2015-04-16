@@ -46,5 +46,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
     this.$rootEl.html(view.$el);
     this._currentView = view;
     view.render();
+    $('#navbar-search-container').addClass('active');
   }
 });
