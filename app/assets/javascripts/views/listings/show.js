@@ -11,6 +11,8 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
 
   initialize: function (options) {
     this.listenTo(this.model, 'sync', this.render);
+    google.maps.event.addListener(PetBnB.searchBox, 'places_changed',
+                                  this.goToResults);
   },
 
   render: function () {
@@ -87,6 +89,14 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       $('#checkout').focus();
     } else {
       // actually send request to book listing
+    }
+  },
+
+  goToResults: function () {
+    if (PetBnB.searchBox.getPlaces()) {
+      PetBnB.goToResults({
+        searchBox: PetBnB.searchBox
+      });
     }
   }
 });

@@ -5,7 +5,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   events: {
     'change #checkin': 'checkDates',
-    'change #checkout': 'checkDates',
+    'change #checkout': 'checkDates'
     // 'click a.remove-listing': 'destroyListing',
     // 'click a.listing-name': 'panToListing',
     // 'mouseenter .listing': 'startBounce',
@@ -13,11 +13,16 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    this._coords = options.coords;
-
+    var center = (options.coords.lat) ? options.coords :
+                                        { lat: 0, lng: 0 };
+    var mapOptions = {
+      center: center,
+      zoom: 13
+    };
     PetBnB.mapView = new PetBnB.Views.MapShowView({
-      center: options.coords
+      mapOptions: mapOptions
     });
+
     this._resultsSubview = new PetBnB.Views.resultsSubview();
 
     this.listenToOnce(PetBnB.listings, 'sync', this.render);
@@ -31,23 +36,27 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
     this.addSlider();
     PetBnB.setDatepickers();
+
     this.$('.search-map').html(PetBnB.mapView.$el);
+    google.maps.event.trigger(PetBnB.map, 'resize');
+    google.maps.event.trigger(PetBnB.map, 'idle');
+
     this.$('.search-container').append(this._resultsSubview.render().$el);
 
     return this;
   },
 
   addSlider: function () {
-    var minMax = PetBnB.listings.getMinMaxPrices();
-    var prices = { min: minMax[0], max: minMax[1] };
+    // var minMax = PetBnB.listings.getMinMaxPrices();
+    var prices = { min: 0, max: 500 };
     this.updateSliderPrices(prices);
 
     $('#slider').slider({
       range: true,
       animate: true,
-      min: prices.min,
-      max: prices.max,
-      values: [prices.min, prices.max],
+      min: 0,
+      max: 500,
+      values: [0, 500],
       change: function (event, ui) {
         var prices = { min: ui.values[0], max: ui.values[1] };
         this.filterListings(prices);

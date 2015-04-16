@@ -30,19 +30,29 @@ window.PetBnB.padDate = function (date) {
 
 window.PetBnB.search = function (options) {
   var mapBounds = PetBnB.map.getBounds();
-  var ne = mapBounds.getNorthEast();
-  var sw = mapBounds.getSouthWest();
-  var minPrice = options.min;
-  var maxPrice = options.max;
+  if (mapBounds) {
+    var ne = mapBounds.getNorthEast();
+    var sw = mapBounds.getSouthWest();
+    var minPrice = options.min;
+    var maxPrice = options.max;
 
-  var searchData = {
-    lat: [sw.lat(), ne.lat()],
-    lng: [sw.lng(), ne.lng()],
-    min: minPrice,
-    max: maxPrice
-  };
+    var searchData = {
+      lat: [sw.lat(), ne.lat()],
+      lng: [sw.lng(), ne.lng()],
+      min: minPrice,
+      max: maxPrice
+    };
 
-  PetBnB.listings.fetch({
-    data: { search: searchData }
-  });
+    PetBnB.listings.fetch({
+      data: { search: searchData }
+    });
+  }
+};
+
+window.PetBnB.goToResults = function (options) {
+  var searchBox = options.searchBox;
+  var loc = searchBox.getPlaces()[0].geometry.location;
+  this.router._coords.lat = loc.lat();
+  this.router._coords.lng = loc.lng();
+  Backbone.history.navigate('results', { trigger: true });
 };

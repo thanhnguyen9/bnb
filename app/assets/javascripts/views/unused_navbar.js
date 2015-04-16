@@ -17,7 +17,7 @@ PetBnB.Views.NavbarView = Backbone.View.extend({
     var input = this.$('#navbar-search-container input')[0];
     if (input) {
       debugger
-      PetBnB.navbarSearch = new google.maps.places.SearchBox(input);
+      PetBnB.searchBox = new google.maps.places.SearchBox(input);
     }
 
     return this;

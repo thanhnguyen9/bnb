@@ -4,14 +4,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    var center = (options.center.lat) ? options.center :
-                                        { lat: 37.7577, lng: -122.4376 };
-    var mapOptions = {
-      center: center,
-      zoom: 12
-    };
-
-    PetBnB.map = new google.maps.Map(this.el, mapOptions);
+    PetBnB.map = new google.maps.Map(this.el, options.mapOptions);
     this._markers = {};
 
     this.listenTo(PetBnB.listings, 'add', this.addMarker);
@@ -29,8 +22,8 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     google.maps.event.addListener(PetBnB.map, 'idle', this.search);
     google.maps.event.addListener(PetBnB.map, 'bounds_changed',
                                   this.setSearchBoxBounds);
-    google.maps.event.addListener(PetBnB.navbarSearch, 'places_changed',
-                                  this.refreshMap.bind(this));
+    google.maps.event.addListener(PetBnB.searchBox, 'places_changed',
+                                  this.refreshMap);
   },
 
   // Event handlers
@@ -63,8 +56,8 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   refreshMap: function () {
-    if (PetBnB.navbarSearch.getPlaces()) {
-      var coords = PetBnB.navbarSearch.getPlaces()[0].geometry.location;
+    if (PetBnB.searchBox.getPlaces()) {
+      var coords = PetBnB.searchBox.getPlaces()[0].geometry.location;
       var newBounds = new google.maps.LatLng(coords.lat(),
                                              coords.lng());
       PetBnB.map.setCenter(coords);
@@ -73,7 +66,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   setSearchBoxBounds: function () {
-    PetBnB.navbarSearch.setBounds(PetBnB.map.getBounds());
+    PetBnB.searchBox.setBounds(PetBnB.map.getBounds());
   },
 
   removeMarker: function (listing) {

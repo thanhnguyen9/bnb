@@ -11,17 +11,16 @@ window.PetBnB = {
 
     if ($('#logged_in').length) {
       var id = parseInt($('#logged_in').val());
-      PetBnB.currentUser = new PetBnB.Models.User({ id: id });
-      PetBnB.currentUser.fetch({
+      this.currentUser = new PetBnB.Models.User({ id: id });
+      this.currentUser.fetch({
         // success: function () {
         //   console.log('finished fetching current user');
         // }
       });
 
-      PetBnB.listings = new PetBnB.Collections.Listings();
-
+      this.listings = new PetBnB.Collections.Listings();
       var input = $('#navbar-search-container input')[0];
-      PetBnB.navbarSearch = new google.maps.places.SearchBox(input);
+      this.searchBox = new google.maps.places.SearchBox(input);
 
       this.router = new PetBnB.Routers.Router({
         $rootEl: $('#content'),
