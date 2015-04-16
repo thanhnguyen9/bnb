@@ -4,11 +4,13 @@ class Listing < ActiveRecord::Base
 
   validates :name, :description, :price_daily, :user_id, presence: true
 
-  def self.find_by_location(coords)
-    return [] if coords.empty?
+  def self.filter(params)
+    return [] if (params[:lat].empty? || params[:lng].empty?)
 
-    lat_min, lat_max = coords[:lat]
-    lng_min, lng_max = coords[:lng]
+    price_min = params[:min]
+    price_max = params[:max]
+    lat_min, lat_max = params[:lat]
+    lng_min, lng_max = params[:lng]
     listings = Listing.find_by_sql(<<-SQL)
       SELECT
         *
@@ -19,23 +21,6 @@ class Listing < ActiveRecord::Base
       AND
         longitude BETWEEN #{lng_min} AND #{lng_max}
       AND
-        booked = FALSE
-    SQL
-
-    listings
-  end
-
-  def self.find_by_price(prices)
-    # return [] if coords.empty?
-
-    price_min = prices[:min]
-    price_max = prices[:max]
-    listings = Listing.find_by_sql(<<-SQL)
-      SELECT
-        *
-      FROM
-        listings
-      WHERE
         price_daily BETWEEN #{price_min} AND #{price_max}
       AND
         booked = FALSE

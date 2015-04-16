@@ -61,13 +61,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
 
   filterListings: function (prices) {
     this.updateSliderPrices(prices);
-    PetBnB.listings.fetch({
-      url: 'api/filter',
-      data: { search: prices },
-      error: function () {
-        console.log('Error fetching listings within price range');
-      }
-    });
+    PetBnB.search({ min: prices.min, max: prices.max });
   },
 
   // Event handlers

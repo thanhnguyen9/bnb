@@ -55,18 +55,11 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   search: function () {
-    var mapBounds = PetBnB.map.getBounds();
-    var ne = mapBounds.getNorthEast();
-    var sw = mapBounds.getSouthWest();
-
-    var searchData = {
-      lat: [sw.lat(), ne.lat()],
-      lng: [sw.lng(), ne.lng()]
-    };
-
-    PetBnB.listings.fetch({
-      data: { search: searchData }
-    });
+    var minMax = PetBnB.listings.getMinMaxPrices();
+    if (minMax[1] === 0) {
+      minMax = [-1, -1];
+    }
+    PetBnB.search({ min: minMax[0], max: minMax[1] });
   },
 
   refreshMap: function () {

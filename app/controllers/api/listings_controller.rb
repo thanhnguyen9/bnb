@@ -1,16 +1,7 @@
 module Api
   class ListingsController < ApplicationController
-    def search_by_location
-      location = { lat: search_params[:lat],
-                   lng: search_params[:lng] }
-      @listings = Listing.find_by_location(location)
-      render :search
-    end
-
-    def search_by_price
-      prices = { min: search_params[:min],
-                 max: search_params[:max] }
-      @listings = Listing.find_by_price(prices)
+    def search
+      @listings = filter(search_params)
       render :search
     end
 
@@ -21,11 +12,38 @@ module Api
 
     private
 
+    def filter(params)
+      return [] if (params[:lat].empty? || params[:lng].empty?)
+
+      price_min = params[:min]
+      price_max = params[:max]
+      lat_min, lat_max = params[:lat]
+      lng_min, lng_max = params[:lng]
+      listings = Listing.where(latitude: lat_min..lat_max)
+                        .where(longitude: lng_min..lng_max)
+      if price_min != "-1"
+        listings = listings.where(price_daily: price_min..price_max)
+      end
+      # listings = Listing.find_by_sql(<<-SQL)
+      #   SELECT
+      #     *
+      #   FROM
+      #     listings
+      #   WHERE
+      #     latitude BETWEEN #{lat_min} AND #{lat_max}
+      #   AND
+      #     longitude BETWEEN #{lng_min} AND #{lng_max}
+      #   AND
+      #     price_daily BETWEEN #{price_min} AND #{price_max}
+      #   AND
+      #     booked = FALSE
+      # SQL
+
+      listings
+    end
+
     def search_params
-      params.require(:search).permit(:min,
-                                     :max,
-                                     :lat => [],
-                                     :lng => [])
+      params.require(:search).permit(:min, :max, :lat => [], :lng => [])
     end
   end
 end
