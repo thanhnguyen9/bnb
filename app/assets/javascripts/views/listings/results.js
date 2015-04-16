@@ -23,8 +23,6 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     // should probably abstract listings index into its own view
     // this.listingsIndex = new PetBnB.Views.ListingsIndex();
 
-    // this.findListings();
-
     this.listenTo(PetBnB.listings, 'add sync', this.render);
   },
 
@@ -34,6 +32,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     });
     this.$el.html(content);
 
+    this.addSlider();
     // do this later
     // this.$('.search-container').html(this.listingsIndex.render().$el);
     this.$('.search-map').html(PetBnB.mapView.$el);
@@ -43,22 +42,38 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     return this;
   },
 
-  findListings: function () {
-    var search = {
-      latitude: this._coords.lat,
-      longitude: this._coords.lng
-    };
-    if (search.latitude || search.longitude) {
-      PetBnB.listings.fetch({
-        data: { search: search },
-        error: function (resp) {
-          console.log("Something went wrong while getting results");
-        }
-      });
-    } else {
-      // Backbone.history.navigate('', { trigger: true });
-      // return;
-    }
+  addSlider: function () {
+    var minMax = PetBnB.listings.getMinMaxPrices();
+    var prices = { min: minMax[0], max: minMax[1] };
+    this.updateSliderPrices(prices);
+
+    $('#slider').slider({
+      range: true,
+      animate: true,
+      min: prices.min,
+      max: prices.max,
+      values: [prices.min, prices.max],
+      change: function (event, ui) {
+        var prices = { min: ui.values[0], max: ui.values[1] };
+        this.filterListings(prices);
+      }.bind(this)
+    });
+  },
+
+  updateSliderPrices: function (prices) {
+    $('#slider-min').html('$' + prices.min);
+    $('#slider-max').html('$' + prices.max);
+  },
+
+  filterListings: function (prices) {
+    this.updateSliderPrices(prices);
+    PetBnB.listings.fetch({
+      url: 'api/filter',
+      data: { search: prices },
+      error: function () {
+        console.log('Error fetching listings within price range');
+      }
+    });
   },
 
   // Event handlers

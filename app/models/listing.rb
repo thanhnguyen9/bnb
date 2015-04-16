@@ -25,4 +25,22 @@ class Listing < ActiveRecord::Base
     listings
   end
 
+  def self.find_by_price(prices)
+    # return [] if coords.empty?
+
+    price_min = prices[:min]
+    price_max = prices[:max]
+    listings = Listing.find_by_sql(<<-SQL)
+      SELECT
+        *
+      FROM
+        listings
+      WHERE
+        price_daily BETWEEN #{price_min} AND #{price_max}
+      AND
+        booked = FALSE
+    SQL
+
+    listings
+  end
 end

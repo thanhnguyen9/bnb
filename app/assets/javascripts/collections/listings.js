@@ -17,5 +17,20 @@ PetBnB.Collections.Listings = Backbone.Collection.extend({
     }
 
     return listing;
+  },
+
+  getMinMaxPrices: function () {
+    var min = 1000, max = 0;
+    this.each(function (listing) {
+      var price = listing.get('price_daily');
+      if (price < min) {
+        min = price;
+      }
+      if (price > max) {
+        max = price;
+      }
+    });
+
+    return [min, max];
   }
 });

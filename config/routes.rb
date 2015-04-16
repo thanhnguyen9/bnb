@@ -6,7 +6,8 @@ PetBnB::Application.routes.draw do
 
   namespace :api, defaults: { format: :json } do
     resources :listings, only: [:show]
-    get '/search' => 'listings#search'
+    get '/search' => 'listings#search_by_location'
+    get '/filter' => 'listings#search_by_price'
     resources :images, only: [:create]
   end
 end
