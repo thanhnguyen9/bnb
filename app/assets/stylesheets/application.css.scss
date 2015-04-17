@@ -75,6 +75,8 @@ hr { border-top: 1px solid #dce0e0; }
 
 .row-space-top-4 { margin-top: 25px; }
 
+// .row-space-6 { margin-bottom: 37.5px; }
+
 .row-space-8 { margin-bottom: 50px; }
 
 .row-space-top-8 { margin-top: 50px; }
@@ -85,6 +87,12 @@ hr { border-top: 1px solid #dce0e0; }
 }
 
 .panel-body { padding: 15px 20px; }
+
+.panel-dark {
+  border: 1px solid #dce0e0;
+  border-radius: 0;
+  background-color: #edefed;
+}
 
 /* Content */
 

@@ -177,14 +177,8 @@
 
     h4 { font-weight: bold; }
 
-    .panel-dark {
-      border: 1px solid #dce0e0;
-      border-radius: 0;
-      background-color: #edefed;
-
-      .panel-body {
-        padding: 20px;
-      }
+    .panel-body {
+      padding: 20px;
     }
 
     a#contact-host-link *, a#calendar * { color: #ff5a5f; }
