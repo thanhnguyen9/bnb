@@ -48,11 +48,9 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   search: function () {
-    var minMax = PetBnB.listings.getMinMaxPrices();
-    if (minMax[1] === 0) {
-      minMax = [-1, -1];
-    }
-    PetBnB.search({ min: minMax[0], max: minMax[1] });
+    var min = $('#slider-min').html().slice(1);
+    var max = $('#slider-max').html().slice(1);
+    PetBnB.search({ min: min, max: max });
   },
 
   refreshMap: function () {

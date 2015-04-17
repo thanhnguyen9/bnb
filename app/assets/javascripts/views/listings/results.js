@@ -33,6 +33,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
       listings: PetBnB.listings
     });
     this.$el.html(content);
+    $('#navbar-search-container').addClass('active');
 
     this.addSlider();
     PetBnB.setDatepickers();
@@ -47,16 +48,16 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   },
 
   addSlider: function () {
-    // var minMax = PetBnB.listings.getMinMaxPrices();
-    var prices = { min: 0, max: 500 };
-    this.updateSliderPrices(prices);
+    var min = 0;
+    var max = PetBnB.listings.getMaxPrice();
+    this.updateSliderPrices({ min: min, max: max });
 
     $('#slider').slider({
       range: true,
       animate: true,
-      min: 0,
-      max: 500,
-      values: [0, 500],
+      min: min,
+      max: max,
+      values: [min, max],
       change: function (event, ui) {
         var prices = { min: ui.values[0], max: ui.values[1] };
         this.filterListings(prices);
