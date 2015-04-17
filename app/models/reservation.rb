@@ -4,4 +4,22 @@ class Reservation < ActiveRecord::Base
 
   validates :booker_id, :listing_id, :start_date, :end_date,
             presence: true
+  # validates :no_overlapping_reservations
+
+  def try_booking
+    listing = Listing.find(listing_id)
+    if listing.booked && listing.has_overlaps?(self)
+      errors[:listing] = 'is already booked on those dates'
+      return false
+    else
+      self.save!
+      listing.update(booked: true)
+    end
+
+    return true
+  end
+
+  def overlaps?(other_res)
+    start_date < other_res.end_date && other_res.start_date < end_date
+  end
 end

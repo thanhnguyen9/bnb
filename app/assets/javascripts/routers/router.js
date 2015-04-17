@@ -8,7 +8,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
 
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
-    this._currentUser = options.currentUser;
     this._coords = {};
   },
 
@@ -34,7 +33,7 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   },
 
   // userShow: function (id) {
-  //   var user = this._currentUser;
+  //   var user = PetBnB.currentUser;
   //   var userShowView = new PetBnB.Views.UserShowView({
   //     model: user
   //   });

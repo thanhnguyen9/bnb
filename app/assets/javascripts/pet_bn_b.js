@@ -13,9 +13,9 @@ window.PetBnB = {
       var id = parseInt($('#logged_in').val());
       this.currentUser = new PetBnB.Models.User({ id: id });
       this.currentUser.fetch({
-        // success: function () {
-        //   console.log('finished fetching current user');
-        // }
+        success: function () {
+          // console.log('finished fetching current user');
+        }
       });
 
       this.listings = new PetBnB.Collections.Listings();
@@ -23,8 +23,7 @@ window.PetBnB = {
       this.searchBox = new google.maps.places.SearchBox(input);
 
       this.router = new PetBnB.Routers.Router({
-        $rootEl: $('#content'),
-        currentUser: PetBnB.currentUser
+        $rootEl: $('#content')
       });
       Backbone.history.start();
     }

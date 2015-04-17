@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :sessions
   has_many :listings
+  has_many :reservations, foreign_key: :booker_id
 
   validates :email, :password_digest, presence: true
   validates :email, uniqueness: true

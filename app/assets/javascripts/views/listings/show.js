@@ -58,13 +58,13 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
     var checkin = $('#checkin').val();
     var checkout = $('#checkout').val();
     if (checkin !== "" && checkout !== "") {
-      var checkinDate = Date.parse(checkin) / 1000 / 3600 / 24;
-      var checkoutDate = Date.parse(checkout) / 1000 / 3600 / 24;
-      if (checkoutDate - checkinDate > 0) {
+      if (checkout > checkin) {
         // $('.booking-errors').removeClass('enabled');
         $('.panel-padding-fit').addClass('enabled');
         $('.booking-button').addClass('enabled');
-        //
+
+        var checkinDate = Date.parse(checkin) / 1000 / 3600 / 24;
+        var checkoutDate = Date.parse(checkout) / 1000 / 3600 / 24;
         var totalNights = checkoutDate - checkinDate;
         var priceDaily = parseInt(this.model.get('price_daily'));
         $('#total-nights').html(totalNights);
@@ -88,7 +88,23 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
     } else if ($('#checkout').val() === "") {
       $('#checkout').focus();
     } else {
-      // actually send request to book listing
+      var checkin = $('#checkin').val();
+      var checkout = $('#checkout').val();
+      var reservationData = {
+        listing_id: this.model.id,
+        start_date: checkin,
+        end_date: checkout
+      };
+      var reservation = new PetBnB.Models.Reservation();
+      reservation.save({ reservation: reservationData }, {
+        success: function () {
+          PetBnB.currentUser.reservations().add(reservation);
+          debugger
+        },
+        error: function () {
+          debugger
+        }
+      });
     }
   },
 

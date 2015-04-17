@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       login!(@user)
-      render json: @user
+      render :show
     else
       render json: @user.errors.full_messages,
                    status: :unprocessable_entity
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     if @user
-      render json: @user
+      render :show
     else
       redirect_to :root
     end
