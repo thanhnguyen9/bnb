@@ -207,3 +207,7 @@
     border-radius: 2px;
   }
 }
+
+#bookingSuccessModal, #bookingFailureModal {
+  h4.modal-title { color: #FF5A5F; }
+}

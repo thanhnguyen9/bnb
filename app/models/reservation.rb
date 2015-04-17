@@ -4,7 +4,6 @@ class Reservation < ActiveRecord::Base
 
   validates :booker_id, :listing_id, :start_date, :end_date,
             presence: true
-  # validates :no_overlapping_reservations
 
   def try_booking
     listing = Listing.find(listing_id)

@@ -6,7 +6,7 @@ module Api
         render json: @reservation
       else
         render json: @reservation.errors.full_messages,
-                        status: :unprocessable_entity
+                     status: :unprocessable_entity
       end
     end
 

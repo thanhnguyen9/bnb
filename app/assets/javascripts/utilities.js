@@ -1,6 +1,6 @@
 window.PetBnB.setDatepickers = function () {
-  $('#checkin').datepicker();
-  $('#checkout').datepicker();
+  $('#checkin').datepicker({ minDate: 1 });
+  $('#checkout').datepicker({ minDate: 1 });
 };
 
 window.PetBnB.checkDates = function () {

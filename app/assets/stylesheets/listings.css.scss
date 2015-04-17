@@ -7,11 +7,12 @@
 .results {
   height: 100%;
 
-  // * { text-align: center; }
+  & > * { padding: 0; }
 
   .search-container { height: 100%; }
 
   .search-details, {
+    padding-left: 20px;
     height: 30%;
 
     & > .row {
@@ -33,8 +34,17 @@
     }
 
     .price-range {
-      border-top: 1px solid #dce0e0;
-      margin-right: 30px;
+      margin-right: 50px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 14%;
+        height: 1px;
+        width: 96%;
+        left: 2%;
+        border-top: 1px solid #dce0e0;
+      }
 
       .col-lg-9 {
         padding: 15px 30px;
@@ -78,7 +88,7 @@
 
   .search-results {
     padding-top: 20px;
-    margin-left: -30px;
+    margin: 0;
     height: 70%;
     overflow-x: hidden;
     overflow-y: scroll;

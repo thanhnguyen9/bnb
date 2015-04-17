@@ -139,7 +139,13 @@ hr { border-top: 1px solid #dce0e0; }
 
 /* Modals */
 
-.modal { position: absolute; }
+.modal-open { overflow: visible; }
+
+.modal-dialog {
+  top: 30vh;
+
+  &.modal-sm { top: 20vh; }
+}
 
 /* Buttons & Icons & Links */
 
@@ -177,4 +183,5 @@ a {
 }
 
 /* Datepickers */
-.ui-datepicker { z-index: 2; }
+
+#ui-datepicker-div { z-index: 2 !important; }

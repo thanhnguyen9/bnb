@@ -70,10 +70,6 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
         $('#total-nights').html(totalNights);
         $('#cost-breakdown-2').html('$' + priceDaily * totalNights);
         $('#cost-breakdown-total').html($('#cost-breakdown-2').html());
-      } else {
-        $('.panel-padding-fit').removeClass('enabled');
-        $('.booking-button').removeClass('enabled');
-        // $('.booking-errors').addClass('enabled');
       }
     } else {
       $('.panel-padding-fit').removeClass('enabled');
@@ -99,12 +95,20 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       reservation.save({ reservation: reservationData }, {
         success: function () {
           PetBnB.currentUser.reservations().add(reservation);
-          debugger
+          var successMsg = 'You have successfully booked this listing ';
+          successMsg += 'from ' + checkin + ' to ' + checkout + ' :)';
+          successMsg += '<br/>';
+          successMsg += 'Please go to your account to view it!';
+          $('#bookingSuccessModal .modal-body').html(successMsg);
+          $('#bookingSuccessModal').modal();
         },
-        error: function () {
-          debugger
+        error: function (models, resp) {
+          var failureMsg = resp.responseJSON;
+          $('#bookingFailureModal .modal-body').html(failureMsg);
+          $('#bookingFailureModal').modal();
         }
       });
+      $('.panel-padding-fit').removeClass('enabled');
     }
   },
 
