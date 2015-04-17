@@ -11,7 +11,7 @@
 // }
 
 .intro-wrapper {
-  height: 700px;
+  height: 600px;
   background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
   background-repeat: no-repeat;
   background-position: 0 -150px;
@@ -78,8 +78,34 @@
       }
     }
   }
+}
 
-  .intro-listings {
+.intro-listings {
+  .discovery-container {
+    padding: 0 25px;
+    margin: 0 25%;
 
+    .discovery-tiles {
+      .col-md-6, .col-sm-12 { padding: 20px; }
+
+      .discovery-tile {
+        height: 300px;
+        background-repeat: no-repeat;
+
+        a {
+          text-decoration: none;
+          color: white;
+          line-height: 300px;
+
+          .va-middle { font-size: 24px; }
+        }
+      }
+    }
+
+    .discovery-footer {
+      margin-top: 10px;
+
+      button { background-color: white; }
+    }
   }
 }
