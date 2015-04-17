@@ -42,9 +42,9 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
         if (status == google.maps.GeocoderStatus.OK) {
           if (results[0]) {
             var city = results[0].formatted_address.split(', ')[1];
-            var title = this.model.get('name') + ' in ' + city;
             var addr = results[0].formatted_address.split(', ').slice(1).join(', ');
             $('.address').html(addr);
+            var title = this.model.get('name') + ' in ' + city + ' | PetBnB';
             $(document).attr('title', title);
           }
         }
