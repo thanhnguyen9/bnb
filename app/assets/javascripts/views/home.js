@@ -4,12 +4,12 @@ PetBnB.Views.HomeView = Backbone.View.extend({
   events: {
     'change #checkin': 'checkDates',
     'change #checkout': 'checkDates',
-    'click .btn.search': 'search'
+    'click .btn.search': 'search',
+    'click .btn.listings': 'allListings'
   },
 
-  initialize: function (options) {
+  initialize: function () {
     this.$el = $('body');
-    this._router = options.router;
 
     this.setupAutocomplete();
   },
@@ -39,5 +39,11 @@ PetBnB.Views.HomeView = Backbone.View.extend({
         $('.errors').html("Please enter a search term");
       }
     }
+  },
+
+  allListings: function () {
+    PetBnB.router._coords.lat = 37.77;
+    PetBnB.router._coords.lng = -122.42;
+    Backbone.history.navigate('results', { trigger: true });
   }
 });

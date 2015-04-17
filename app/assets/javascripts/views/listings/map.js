@@ -4,7 +4,11 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   initialize: function (options) {
-    PetBnB.map = new google.maps.Map(this.el, options.mapOptions);
+    var mapOptions = {
+      center: options.center,
+      zoom: 13
+    };
+    PetBnB.map = new google.maps.Map(this.el, mapOptions);
     this._markers = {};
 
     this.listenTo(PetBnB.listings, 'add', this.addMarker);

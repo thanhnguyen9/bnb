@@ -96,7 +96,9 @@ hr { border-top: 1px solid #dce0e0; }
 
 /* Content */
 
-#content { height: calc(100% - 55px); }
+/* navbar is 52px, footer is 50px */
+
+#content { height: calc(100% - 92px); }
 
 /* Navbar */
 

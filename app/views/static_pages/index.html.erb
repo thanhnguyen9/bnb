@@ -41,42 +41,43 @@
     </div>
   <% end %>
 </div>
-<div class="intro-listings">
-  <div class="panel panel-dark">
-    <div class="discovery-container">
-      <div class="discovery-text text-center row-space-6 row-space-top-8">
-        <h2>Friendly hosts</h2>
-        <p>Pamper your pet while you travel</p>
-      </div>
-      <div class="discovery-tiles row">
-        <div class="col-md-6 col-sm-12">
-          <div class="discovery-tile" style="background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing1b.jpg');">
-            <a href="#/listings/1">
-              <div class="va-middle text-center">Noe Valley</div>
-            </a>
+<% if logged_in? %>
+  <div class="intro-listings">
+    <div class="panel panel-dark">
+      <div class="discovery-container">
+        <div class="discovery-text text-center row-space-6 row-space-top-8">
+          <h2>Friendly hosts</h2>
+          <p>Pamper your pet while you travel</p>
+        </div>
+        <div class="discovery-tiles row">
+          <div class="col-md-6 col-sm-12">
+            <div class="discovery-tile" style="background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing1b.jpg');">
+              <a href="#/listings/1">
+                <div class="va-middle text-center">Noe Valley</div>
+              </a>
+            </div>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="discovery-tile" style="background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing4a.jpg');">
+              <a href="#/listings/4">
+                <div class="va-middle text-center">SOMA</div>
+              </a>
+            </div>
           </div>
         </div>
-        <div class="col-md-6 col-sm-12">
-          <div class="discovery-tile" style="background: url('https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing4a.jpg');">
-            <a href="#/listings/4">
-              <div class="va-middle text-center">SOMA</div>
-            </a>
-          </div>
+        <div class="discovery-footer">
+          <button type="button" class="btn btn-large btn-block listings">
+            See Listings in San Francisco
+          </button>
         </div>
-      </div>
-      <div class="discovery-footer">
-        <button type="button" class="btn btn-large btn-block">
-          <!-- backbone: trigger search for all listings -->
-          See All Listings
-        </button>
       </div>
     </div>
   </div>
-</div>
 
-<script charset="utf-8">
-  $(document).ready(function () {
-    $('#checkin').datepicker({ minDate: 1 });
-    $('#checkout').datepicker({ minDate: 1 });
-  })
-</script>
+  <script charset="utf-8">
+    $(document).ready(function () {
+      $('#checkin').datepicker({ minDate: 1 });
+      $('#checkout').datepicker({ minDate: 1 });
+    })
+  </script>
+<% end %>

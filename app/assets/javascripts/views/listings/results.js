@@ -15,12 +15,8 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   initialize: function (options) {
     var center = (options.coords.lat) ? options.coords :
                                         { lat: 0, lng: 0 };
-    var mapOptions = {
-      center: center,
-      zoom: 13
-    };
     PetBnB.mapView = new PetBnB.Views.MapShowView({
-      mapOptions: mapOptions
+      center: center
     });
 
     this._resultsSubview = new PetBnB.Views.resultsSubview();

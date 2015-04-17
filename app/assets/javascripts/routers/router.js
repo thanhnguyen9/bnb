@@ -12,9 +12,7 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   },
 
   home: function () {
-    var homeView = new PetBnB.Views.HomeView({
-      router: this
-    });
+    var homeView = new PetBnB.Views.HomeView();
   },
 
   results: function () {
