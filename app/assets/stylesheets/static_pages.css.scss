@@ -85,6 +85,8 @@
     padding: 0 25px;
     margin: 0 25%;
 
+    .discovery-text h2 { font-weight: bold; }
+
     .discovery-tiles {
       .col-md-6, .col-sm-12 { padding: 20px; }
 
@@ -97,7 +99,11 @@
           color: white;
           line-height: 300px;
 
-          .va-middle { font-size: 24px; }
+          .va-middle {
+            font-size: 24px;
+
+            &:hover { background-color: rgba(0, 0, 0, 0.65); }
+          }
         }
       }
     }
