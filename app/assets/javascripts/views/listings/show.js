@@ -44,8 +44,8 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
             var city = results[0].formatted_address.split(', ')[1];
             var addr = results[0].formatted_address.split(', ').slice(1).join(', ');
             $('.address').html(addr);
-            var title = this.model.get('name') + ' in ' + city + ' | PetBnB';
-            $(document).attr('title', title);
+            var title = this.model.get('name') + ' in ' + city;
+            $(document).attr('title', title + ' | PetBnB');
           }
         }
       }.bind(this));
