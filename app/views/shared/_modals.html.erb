@@ -32,13 +32,7 @@
     $('.modal.in .errors').html('');
     $('.modal.in button').prop('disabled', 'true');
 
-    $('.modal.in').find('#email').val('Guest');
-    $('.modal.in').find('input[type=password]').val('password');
-    loginOrSignup({
-      action: '/session',
-      email: 'Guest',
-      password: 'password'
-    });
+    animateGuestLogin();
   });
   $('#login').click(function (event) {
     event.preventDefault();
@@ -89,6 +83,30 @@
         $('.modal.in button').removeAttr('disabled');
       }
     });
-  }
+  };
+
+  // animate guest login key entries
+  function animateGuestLogin() {
+    var text = 'Guestpassword';
+    var index = 0;
+    var enterText = setInterval(function () {
+      var field = $('.modal.in').find('#email');
+      if (index > 4) {
+        field = $('.modal.in').find('input[type=password]');
+      }
+      var currentVal = field.val();
+      field.val(currentVal + text[index]);
+
+      index++;
+      if (index >= text.length) {
+        clearInterval(enterText);
+        loginOrSignup({
+          action: '/session',
+          email: 'Guest',
+          password: 'password'
+        });
+      }
+    }, 50);
+  };
 
 </script>
