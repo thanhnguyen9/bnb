@@ -95,7 +95,7 @@ need styling, and standardize the format across the whole site.
 
 ### Bonus Features (TBD)
 - [ ] Email activation / password reset
-- [ ] Animation of data population on guest login
+- [x] Animation of data population on guest login
 - [ ] Messaging between users
 - [ ] Notifications when another user respond to your message
 - [ ] Suggest hosts near user's location on home page

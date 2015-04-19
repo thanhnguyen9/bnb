@@ -47,13 +47,19 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     google.maps.event.addListener(marker, 'click', function (event) {
       view.toggleMarkerInfo(event, marker);
     });
+    google.maps.event.addListener(marker, 'click', function () {
+      view.toggleBounce(marker);
+    });
 
     this._markers[listing.id] = marker;
   },
 
   search: function () {
-    var min = $('#slider-min').html().slice(1);
-    var max = $('#slider-max').html().slice(1);
+    var min = 0, max = 500;
+    if ($('#slider-min').length > 0) {
+      min = $('#slider-min').html().slice(1);
+      max = $('#slider-max').html().slice(1);
+    }
     PetBnB.search({ min: min, max: max });
   },
 
@@ -73,6 +79,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
 
   removeMarker: function (listing) {
     var marker = this._markers[listing.id];
+    google.maps.event.clearInstanceListeners(marker);
     marker.setMap(null);
     delete this._markers[listing.id];
   },
@@ -87,13 +94,13 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
     this._currentInfoWindow.open(PetBnB.map, marker);
   },
 
-  startBounce: function (id) {
-    var marker = this._markers[id];
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  },
-
-  stopBounce: function (id) {
-    var marker = this._markers[id];
-    marker.setAnimation(null);
+  toggleBounce: function (marker) {
+    this._bouncingMarker && this._bouncingMarker.setAnimation(null);
+    if (marker.getAnimation()) {
+      marker.setAnimation(null);
+    } else {
+      this._bouncingMarker = marker;
+      marker.setAnimation(google.maps.Animation.BOUNCE);
+    }
   }
 });
