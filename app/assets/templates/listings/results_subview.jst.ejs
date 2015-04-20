@@ -1,7 +1,7 @@
 <div class="outer-container">
   <div class="row listings-container">
     <% listings.each(function (listing) { %>
-      <div class="listing-container row-space-2 pull-left">
+      <div class="listing-container col-md-6 col-sm-12 row-space-2 pull-left">
         <div class="panel-img listing-img">
           <a href="#/listings/<%= listing.id %>">
             <img src="<%= listing.images().first().escape('url') %>" alt="" />
@@ -21,7 +21,6 @@
             </h3>
           </a>
           <a href="#/listings/<%= listing.id %>" class="listing-snippet">
-            Entire place ~ [num] reviews ~ [neighborhood]
           </a>
         </div>
       </div>

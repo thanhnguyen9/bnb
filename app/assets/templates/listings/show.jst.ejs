@@ -25,7 +25,7 @@
             <h1><%= listing.escape('name') %></h1>
             <input type="hidden" id="lat" value=<%= listing.escape('latitude') %>>
             <input type="hidden" id="lng" value=<%= listing.escape('longitude') %>>
-            <span class="address"></span>
+            <span class="address"><%= listing.escape('address') %></span>
             <span class="reviews">[Reviews TBA]</span>
             <div class="row row-condensed text-muted">
               <div class="col-sm-3">

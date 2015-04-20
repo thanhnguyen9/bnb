@@ -25,31 +25,9 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
     $('#navbar-search-container').addClass('active');
 
     PetBnB.setDatepickers();
-    this.getAddress();
     this.getTotalNights();
 
     return this;
-  },
-
-  // find readable location based on lat and lng from listing data
-  getAddress: function () {
-    var lat = parseFloat(this.model.get('latitude'));
-    var lng = parseFloat(this.model.get('longitude'));
-    if (lat && lng) {
-      var latlng = new google.maps.LatLng(lat, lng);
-      var geocoder = geocoder = new google.maps.Geocoder();
-      geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (results[0]) {
-            var city = results[0].formatted_address.split(', ')[1];
-            var addr = results[0].formatted_address.split(', ').slice(1).join(', ');
-            $('.address').html(addr);
-            var title = this.model.get('name') + ' in ' + city;
-            $(document).attr('title', title + ' | PetBnB');
-          }
-        }
-      }.bind(this));
-    }
   },
 
   // calculates number of nights based on checkin and checkout dates
