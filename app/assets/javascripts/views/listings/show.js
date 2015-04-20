@@ -22,6 +22,7 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       user: this.model.user()
     });
     this.$el.html(content);
+    document.title = this.model.get('name') + ' | PetBnB';
     $('#navbar-search-container').addClass('active');
 
     PetBnB.setDatepickers();

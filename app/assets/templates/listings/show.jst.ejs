@@ -130,11 +130,13 @@
             <strong>Contact Host</strong>
           </a>
         </p>
-        <div class="row-space-4 row-space-top-4 inline-photo">
-          <a href="#" class="photo-trigger" data-index="1">
-            <img src="<%= detailImgTop %>" alt="" />
-          </a>
-        </div>
+        <% if (detailImgTop !== "") { %>
+          <div class="row-space-4 row-space-top-4 inline-photo">
+            <a href="#" class="photo-trigger" data-index="1">
+              <img src="<%= detailImgTop %>" alt="" />
+            </a>
+          </div>
+        <% } %>
         <hr>
         <div class="row">
           <div class="col-md-3 text-muted">
@@ -181,11 +183,13 @@
             </div>
           </div>
         </div>
-        <div class="row-space-4 row-space-top-4 inline-photo">
-          <a href="#" class="photo-trigger" data-index="1">
-            <img src="<%= detailImgBottom %>" alt="" />
-          </a>
-        </div>
+        <% if (detailImgBottom !== "") { %>
+          <div class="row-space-4 row-space-top-4 inline-photo">
+            <a href="#" class="photo-trigger" data-index="1">
+              <img src="<%= detailImgBottom %>" alt="" />
+            </a>
+          </div>
+        <% } %>
       </div>
     </div>
   </div>

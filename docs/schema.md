@@ -24,6 +24,7 @@ name            | string    | not null
 description     | text      | not null
 latitude        | decimal   | not null
 longitude       | decimal   | not null
+address         | string    | not null
 price_daily     | integer   | not null
 booked          | boolean   | not null, default: false
 

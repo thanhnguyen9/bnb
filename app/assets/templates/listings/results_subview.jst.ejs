@@ -19,8 +19,9 @@
             <h3 class="row-space-top-1">
               <%= listing.escape('name') %>
             </h3>
-          </a>
-          <a href="#/listings/<%= listing.id %>" class="listing-snippet">
+            <span class="address">
+              <%= listing.escape('address') %>
+            </span>
           </a>
         </div>
       </div>

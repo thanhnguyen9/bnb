@@ -12,7 +12,15 @@ PetBnB.Views.resultsSubview = Backbone.View.extend({
       listings: PetBnB.listings
     });
     this.$el.html(content);
+    this.resize();
 
     return this;
+  },
+
+  resize: function () {
+    var mapHeight = $('.search-map').height();
+    var searchDetailsHeight = $('.search-details').height();
+    var newHeight = mapHeight - searchDetailsHeight;
+    this.$el.css('height', newHeight + 'px');
   }
 });
