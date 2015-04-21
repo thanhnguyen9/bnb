@@ -23,16 +23,16 @@
                            name="user[password]">
         </div>
         <div class="modal-body-row">
+          <button type="submit" class="btn btn-primary"
+                  id="<%= title.split.join('').downcase %>">
+            <%= title %>
+          </button>
           <% if title == 'Log in' %>
             <button type="submit" class="btn btn-primary btn-info"
                     id="guest-login">
               Guest login
             </button>
           <% end %>
-          <button type="submit" class="btn btn-primary"
-                  id="<%= title.split.join('').downcase %>">
-            <%= title %>
-          </button>
         </div>
       </div>
       <div class="modal-footer">
