@@ -12,6 +12,7 @@ PetBnB.Views.UserShowView = Backbone.View.extend({
       user: this.model
     });
     this.$el.html(content);
+    $('#navbar-search-container').addClass('active');
 
     return this;
   }

@@ -14,6 +14,7 @@ PetBnB.Views.ProfileView = Backbone.View.extend({
       reservations: reservations
     });
     this.$el.html(content);
+    $('#navbar-search-container').addClass('active');
 
     return this;
   }
