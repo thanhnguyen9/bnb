@@ -1,14 +1,68 @@
 <div class="row-space-4 row-space-top-4">
   <div class="row">
-    <div class="col-3">
+    <div class="col-md-3">
       <div class="panel row-space-4">
         <div class="media photo">
           <img src="<%= user.escape('avatar_url') %>" alt="" />
         </div>
+        <div class="panel-body">
+          <h2 class="text-center"><%= user.escape('email') %></h2>
+          <ul class="list-unstyled text-center">
+            <li>
+              <a href="#/users/<%= user.id %>">View Profile</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <div class="col-9">
-      User reservations and stuff
+    <div class="col-md-9">
+      <div class="panel row-space-4">
+        <div class="panel-heading">
+          <div class="panel-title">
+            Current Reservations
+          </div>
+        </div>
+        <div class="panel-body">
+          <% if (user.reservations().length) { %>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Location</th>
+                  <th>Host</th>
+                  <th>Start Date</th>
+                  <th>End Date</th>
+                </tr>
+                <% user.reservations().each(function(reservation) { %>
+                  <tr class="reservation">
+                    <% var listing = reservation.get('listing') %>
+                    <% var host = reservation.get('host') %>
+                    <td class="location">
+                      <% if (listing) { %>
+                        <a href="#/listings/<%= listing.id %>"><%= listing.name %></a>
+                      <% } %>
+                    </td>
+                    <td class="host">
+                      <% if (host) { %>
+                        <a href="#/users/<%= host.id %>"><%= host.email %></a>
+                      <% } %>
+                    </td>
+                    <td class="start-date">
+                      <%= reservation.get('start_date') %>
+                    </td>
+                    <td class="end-date">
+                      <%= reservation.get('end_date') %>
+                    </td>
+                  </tr>
+                <% }) %>
+              </tbody>
+            </table>
+          <% } else { %>
+            <div class="no-reservations">
+              You have no reservations currently.
+            </div>
+          <% } %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

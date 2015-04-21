@@ -1,3 +1,44 @@
 // Place all the styles related to the Users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* Profile */
+
+.user-profile {
+  .col-md-9 {
+    .panel-heading { background-color: #edefed; }
+
+    .panel-body {
+      padding: 20px;
+      border-top: 1px solid #dce0e0;
+
+      table {
+        width: 100%;
+
+        tr.reservation { border-top: 1px solid #dce0e0; }
+
+        td { padding: 5px 0; }
+      }
+
+      .no-reservations { margin: 0 -5px; }
+    }
+  }
+}
+
+.user-profile, .user-show {
+  padding: 0 25px;
+  margin: 0 auto;
+  width: 80%;
+
+  .panel { border: 1px solid #dce0e0; }
+
+  .col-md-3 {
+    .media.photo {
+      margin: 0 auto;
+      padding: 10px;
+      width: 250px;
+
+      img { width: 100%; }
+    }
+  }
+}

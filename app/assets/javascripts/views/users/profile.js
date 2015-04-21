@@ -8,8 +8,10 @@ PetBnB.Views.ProfileView = Backbone.View.extend({
   },
 
   render: function () {
+    var reservations = this.model.reservations();
     var content = this.template({
-      user: this.model
+      user: this.model,
+      reservations: reservations
     });
     this.$el.html(content);
 

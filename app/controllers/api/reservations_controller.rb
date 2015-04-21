@@ -3,7 +3,7 @@ module Api
     def create
       @reservation = current_user.reservations.new(reservation_params)
       if @reservation.try_booking
-        render json: @reservation
+        render :show
       else
         render json: @reservation.errors.full_messages,
                      status: :unprocessable_entity
@@ -12,7 +12,7 @@ module Api
 
     def show
       @reservation = Reservation.find(params[:id])
-      render json: @reservation
+      render :show
     end
 
     private
