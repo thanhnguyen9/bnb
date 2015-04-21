@@ -11,6 +11,14 @@ PetBnB.Models.User = Backbone.Model.extend({
     return this._reservations;
   },
 
+  listings: function () {
+    if (!this._listings) {
+      this._listings = new PetBnB.Collections.Listings();
+    }
+
+    return this._listings;
+  },
+
   reviews: function () {
 
   },
@@ -19,6 +27,10 @@ PetBnB.Models.User = Backbone.Model.extend({
     if (payload.reservations) {
       this.reservations().set(payload.reservations);
       delete payload.reservations;
+    }
+    if (payload.listings) {
+      this.listings().set(payload.listings);
+      delete payload.listings;
     }
 
     return payload;

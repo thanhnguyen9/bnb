@@ -47,10 +47,10 @@
                       <% } %>
                     </td>
                     <td class="start-date">
-                      <%= reservation.get('start_date') %>
+                      <%= reservation.escape('start_date') %>
                     </td>
                     <td class="end-date">
-                      <%= reservation.get('end_date') %>
+                      <%= reservation.escape('end_date') %>
                     </td>
                   </tr>
                 <% }) %>

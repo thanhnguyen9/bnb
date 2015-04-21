@@ -7,3 +7,7 @@ json.reservations @user.reservations do |reservation|
 
   json.host(reservation.listing.user, :id, :email)
 end
+
+json.listings @user.listings do |listing|
+  json.extract! listing, :id, :name
+end

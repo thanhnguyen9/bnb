@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_many :sessions
-  has_many :listings
-  has_many :reservations, foreign_key: :booker_id
+  has_many :listings, -> { order "name ASC" }
+  has_many :reservations, -> { order "start_date ASC" },
+                          foreign_key: :booker_id
 
   validates :email, :password_digest, presence: true
   validates :email, uniqueness: true
