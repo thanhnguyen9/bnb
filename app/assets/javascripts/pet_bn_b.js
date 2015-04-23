@@ -4,7 +4,7 @@ window.PetBnB = {
   Views: {},
   Routers: {},
   initialize: function() {
-    // console.log('Hello from PetBnB!');
+    console.log('Hello from PetBnB!');
 
     this.checkin = "";
     this.checkout = "";
