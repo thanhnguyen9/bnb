@@ -17,7 +17,7 @@ guest = User.create!(email: 'Guest', password: 'password',
 amy = User.create!(email: 'Amy', password: 'amyamyamy',
                    avatar_url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/female_avatar.png')
 
-shibo = User.create!(email: 'shibo.fang@gmail.com', password: 'shibofang',
+shibo = User.create!(email: 'Shibo', password: 'shibofang',
                      avatar_url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/female_avatar.png')
 
 listing1 = amy.listings.create!(name: 'Cozy cat heaven in Noe Valley',
