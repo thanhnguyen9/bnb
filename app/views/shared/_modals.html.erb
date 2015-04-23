@@ -32,6 +32,8 @@
     $('.modal.in .errors').html('');
     $('.modal.in button').prop('disabled', 'true');
 
+    $('.modal.in').find('#email').val('');
+    $('.modal.in').find('input[type=password]').val('');
     animateGuestLogin();
   });
   $('#login').click(function (event) {

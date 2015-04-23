@@ -1,6 +1,5 @@
 PetBnB.Routers.Router = Backbone.Router.extend({
   routes: {
-    '': 'home',
     'results': 'results',
     'listings/:id': 'listingShow',
     'profile': 'profile',
@@ -10,10 +9,6 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   initialize: function (options) {
     this.$rootEl = options.$rootEl;
     this._coords = {};
-  },
-
-  home: function () {
-    var homeView = new PetBnB.Views.HomeView();
   },
 
   results: function () {
