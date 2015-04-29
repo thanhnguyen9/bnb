@@ -19,7 +19,7 @@ PetBnB.Views.NavbarSearchView = Backbone.View.extend({
       var newBounds = new google.maps.LatLng(coords.lat(),
                                              coords.lng());
       PetBnB.map.setCenter(coords);
-      PetBnB.map.setZoom(13);
+      PetBnB.map.setZoom(12);
       Backbone.history.navigate('results', { trigger: true });
     }
   }

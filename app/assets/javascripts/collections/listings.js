@@ -20,7 +20,7 @@ PetBnB.Collections.Listings = Backbone.Collection.extend({
   },
 
   getMaxPrice: function () {
-    var max = 50;
+    var max = 250;
     this.each(function (listing) {
       var price = listing.get('price_daily');
       if (price > max) {

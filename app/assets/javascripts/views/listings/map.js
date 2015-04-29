@@ -6,7 +6,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   initialize: function (options) {
     var mapOptions = {
       center: options.center,
-      zoom: 13
+      zoom: 12
     };
     PetBnB.map = new google.maps.Map(this.el, mapOptions);
     this._markers = {};
@@ -55,7 +55,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
   },
 
   search: function () {
-    var min = 0, max = 500;
+    var min = 0, max = 250;
     if ($('#slider-min').length > 0) {
       min = $('#slider-min').html().slice(1);
       max = $('#slider-max').html().slice(1);
