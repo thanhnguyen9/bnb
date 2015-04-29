@@ -9,6 +9,13 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
       zoom: 12
     };
     PetBnB.map = new google.maps.Map(this.el, mapOptions);
+
+    // default to california if no search term
+    if (!PetBnB.router._coords.lat) {
+      PetBnB.map.setCenter(new google.maps.LatLng(35.272496, -120.670386));
+      PetBnB.map.setZoom(7);
+    }
+
     this._markers = {};
 
     this.listenTo(PetBnB.listings, 'add', this.addMarker);
@@ -69,7 +76,7 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
       var newBounds = new google.maps.LatLng(coords.lat(),
                                              coords.lng());
       PetBnB.map.setCenter(coords);
-      PetBnB.map.setZoom(13);
+      PetBnB.map.setZoom(12);
     }
   },
 

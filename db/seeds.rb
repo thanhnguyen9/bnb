@@ -110,7 +110,7 @@ listing12 = andy.listings.create!(name: "Brand new 2B apartment",
 listing13 = guest.listings.create!(name: "Beachside studio",
                                   description: "This studio is perfect for the adventurous pet wanting direct access to the stunning famous beaches of Sydney or just a cosy quiet spot to get away from the other pets on the streets. What makes this place unique? THE LOCATION! From the back yard there are opportunities to see dolphins, whales, seals and the occasional penguin. The block has a lovely community feel with young animal citizens and a great vibe.",
                                   address: 'Vaucluse, Sydney, New South Wales, Australia',
-                                  latitude: 33.8512074,
+                                  latitude: -33.8512074,
                                   longitude: 151.266793,
                                   price_daily: 100)
 
