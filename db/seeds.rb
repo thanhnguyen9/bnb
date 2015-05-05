@@ -149,7 +149,7 @@ listing1.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/l
 listing2.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing2a.jpg')
 listing2.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing2b.jpg')
 
-listing3.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing3.jpg')
+listing3.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing3a.jpg')
 
 listing4.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing4a.jpg')
 listing4.images.create!(url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/listings/listing4b.jpg')
