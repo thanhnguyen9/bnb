@@ -33,8 +33,6 @@ PetBnB.Views.HomeView = Backbone.View.extend({
       PetBnB.goToResults({
         searchBox: this._searchBox
       });
-    } else {
-      this.moreListings();
     }
   },
 
