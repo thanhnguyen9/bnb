@@ -33,7 +33,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     this.addSlider();
     PetBnB.setDatepickers();
     this.$('.search-map').html(PetBnB.mapView.$el);
-    google.maps.event.trigger(PetBnB.map, 'resize');
+    // google.maps.event.trigger(PetBnB.map, 'resize');
     google.maps.event.trigger(PetBnB.map, 'idle');
     this.$('.search-container').append(this._resultsSubview.render().$el);
 
@@ -82,7 +82,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   //   var listingId = $(event.currentTarget).children('a').data('listing-id');
   //   PetBnB.mapView.stopBounce(listingId);
   // },
-  
+
   remove: function () {
     Backbone.View.prototype.remove.call(this);
     PetBnB.mapView.remove();

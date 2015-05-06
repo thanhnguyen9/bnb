@@ -5,7 +5,11 @@
 
   & > * { padding: 0; }
 
-  .search-container { height: 100%; }
+  .search-container {
+    height: 100%;
+
+    @media screen and (max-width: 990px) { height: 50%; }
+  }
 
   .search-details, {
     margin-right: 0;
@@ -73,6 +77,8 @@
   }
 
   .search-results {
+    @media screen and (max-width: 990px) { min-height: 300px; }
+
     padding-top: 20px;
     margin: 0;
     width: 100%;
@@ -91,7 +97,7 @@
 
         .listing-img {
           img {
-            max-height: 250px;
+            height: 250px;
             width: 100%;
           }
 
@@ -134,6 +140,8 @@
   }
 
   .search-map {
+    @media screen and (max-width: 990px) { height: 50%; }
+
     height: 100%;
     padding-left: 0;
 

@@ -6,11 +6,6 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.destroy_all
-Listing.destroy_all
-Image.destroy_all
-Reservation.destroy_all
-
 guest = User.create!(email: 'Guest', password: 'password',
                      avatar_url: 'https://s3-us-west-1.amazonaws.com/petbnb/images/male_avatar.png')
 
