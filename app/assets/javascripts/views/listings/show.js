@@ -24,6 +24,9 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
     this.$el.html(content);
     document.title = this.model.get('name') + ' | PetBnB';
     $('#navbar-search-container').addClass('active');
+    if (this.model.user().id === PetBnB.currentUser.id) {
+      $('#booking-button').prop('disabled', true);
+    }
 
     PetBnB.setDatepickers();
     this.getTotalNights();
@@ -39,7 +42,6 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
     var checkout = $('#checkout').val();
     if (checkin !== "" && checkout !== "") {
       if (checkout > checkin) {
-        // $('.booking-errors').removeClass('enabled');
         $('.panel-padding-fit').addClass('enabled');
         $('.booking-button').addClass('enabled');
 
@@ -53,12 +55,12 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       }
     } else {
       $('.panel-padding-fit').removeClass('enabled');
-      // $('.booking-errors').removeClass('enabled');
       $('.booking-button').addClass('enabled');
     }
   },
 
   instantBook: function (event) {
+    $('.booking-errors').removeClass('enabled');
     if ($('#checkin').val() === "") {
       $('#checkin').focus();
     } else if ($('#checkout').val() === "") {
@@ -74,18 +76,19 @@ PetBnB.Views.ListingShowView = Backbone.View.extend({
       var reservation = new PetBnB.Models.Reservation();
       reservation.save({ reservation: reservationData }, {
         success: function () {
+          $('#checkin').val('');
+          $('#checkout').val('');
           PetBnB.currentUser.reservations().add(reservation);
           var successMsg = 'You have successfully booked this listing ';
-          successMsg += 'from ' + checkin + ' to ' + checkout + ' :)';
+          successMsg += 'from ' + checkin + ' to ' + checkout;
           successMsg += '<br/>';
           successMsg += 'Please go to your account to view it!';
           $('#bookingSuccessModal .modal-body').html(successMsg);
           $('#bookingSuccessModal').modal();
         },
         error: function (models, resp) {
-          var failureMsg = resp.responseJSON;
-          $('#bookingFailureModal .modal-body').html(failureMsg);
-          $('#bookingFailureModal').modal();
+          $('.booking-errors .message').html('Those dates are not available');
+          $('.booking-errors').addClass('enabled');
         }
       });
       $('.panel-padding-fit').removeClass('enabled');

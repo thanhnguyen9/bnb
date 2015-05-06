@@ -21,16 +21,12 @@ PetBnB is AirBnB for pets, built on Rails and Backbone. Users can:
   - [x] Brief owner's info
   - [x] Description
   - [x] Dates to book
-  - [ ] Reviews
 - [x] Make reservations on listing details page
-- [ ] Leave reviews on listings and user profiles
 - [x] See user's own profile with:
   - [x] Brief info
   - [x] Reservations
-- [ ] See other users' profiles with:
+- [x] See other users' profiles with:
   - [x] Listings
-  - [ ] Reviews
-- [ ] Create new listings
 
 ## Design Docs
 * [View Wireframes][views]
@@ -84,12 +80,7 @@ a listing's detail page.
 
 [Details][phase-four]
 
-### Phase 5: Reviews and Wrapping Up (~1-2 days)
-I will add the ability for users to leave reviews on both listings and
-other users. These will be shown on the bottom of a listing detail page
-or a user's profile page. This will be implemented with a polymorphic
-association that connects reviews to either users or listings. Users
-will also be able to edit their profiles.
+### Phase 5: Wrapping Up (~1-2 days)
 I will do any styling needed for the pages from previous days that still
 need styling, and standardize the format across the whole site.
 
@@ -97,6 +88,8 @@ need styling, and standardize the format across the whole site.
 [Details][phase-five]
 
 ### Bonus Features (TBD)
+- [ ] Create new listings
+- [ ] Leave / view reviews on listings and user profiles
 - [ ] Email activation / password reset
 - [x] Animation of data population on guest login
 - [ ] Messaging between users

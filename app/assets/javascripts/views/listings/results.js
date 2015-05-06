@@ -6,8 +6,6 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   events: {
     'change #checkin': 'checkDates',
     'change #checkout': 'checkDates'
-    // 'click a.remove-listing': 'destroyListing',
-    // 'click a.listing-name': 'panToListing',
     // 'mouseenter .listing': 'startBounce',
     // 'mouseleave .listing': 'stopBounce'
   },
@@ -84,19 +82,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
   //   var listingId = $(event.currentTarget).children('a').data('listing-id');
   //   PetBnB.mapView.stopBounce(listingId);
   // },
-  //
-  // destroyListing: function (event) {
-  //   var listingId = $(event.currentTarget).data('listing-id');
-  //   var listing = this.collection.get(listingId);
-  //   listing.destroy();
-  // },
-  //
-  // panToListing: function (event) {
-  //   var listingId = $(event.currentTarget).data('listing-id');
-  //   var marker = PetBnB.mapView._markers[listingId];
-  //   PetBnB.mapView._map.panTo(marker.getPosition());
-  // },
-
+  
   remove: function () {
     Backbone.View.prototype.remove.call(this);
     PetBnB.mapView.remove();

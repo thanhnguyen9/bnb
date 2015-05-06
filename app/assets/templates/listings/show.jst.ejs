@@ -26,7 +26,6 @@
             <input type="hidden" id="lat" value=<%= listing.escape('latitude') %>>
             <input type="hidden" id="lng" value=<%= listing.escape('longitude') %>>
             <span class="address"><%= listing.escape('address') %></span>
-            <span class="reviews">[Reviews TBA]</span>
           </div>
         </div>
       </div>
@@ -41,6 +40,10 @@
           <div class="panel">
             <div class="panel-body panel-light">
               <div class="form-fields">
+                <div class="booking-errors">
+                  <div class="message">
+                  </div>
+                </div>
                 <div class="row row-condensed">
                   <div class="col-sm-6">
                     Check In
@@ -82,15 +85,6 @@
                     <i class="fa fa-bolt"></i>  Instant Book
                   </button>
                 </div>
-                <div class="booking-errors">
-                  <div class="message">
-                    Those dates are not available
-                  </div>
-                  <a class="btn btn-large btn-block"
-                     id="view_other_listings">
-                    View Other Listings
-                  </a>
-                </div>
               </div>
               <div id="book-urgency-commitment">
                 <div class="panel-body">
@@ -120,11 +114,6 @@
             With PetBnB, you can find unique accommodations for your pets—from houses and apartments, to tree houses and igloos. The listing details below explain what you'll find in this space. If you have any questions, you can contact the host directly.
           </div>
         </div>
-        <!-- <p>
-          <a href="#" id="contact-host-link">
-            <strong>Contact Host</strong>
-          </a>
-        </p> -->
         <% if (detailImgTop !== "") { %>
           <div class="row-space-4 row-space-top-4 inline-photo">
             <a href="#" class="photo-trigger" data-index="1">
@@ -170,11 +159,6 @@
               <div class="col-md-6">
                 <strong>2 nights</strong> minimum stay
               </div>
-              <!-- <div class="col-md-6">
-                <a href="#" id="calendar">
-                  <strong>View Calendar</strong>
-                </a>
-              </div> -->
             </div>
           </div>
         </div>
@@ -189,51 +173,6 @@
     </div>
   </div>
 </div>
-<!-- <div id="reviews">
-  <div class="panel">
-    <div class="row container-responsive">
-      <div class="col-md-8 col-sm-12">
-        <div class="row-space-8 row-space-top-8">
-          [reviewers]
-        </div>
-        <div class="review-content">
-          [review details]
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<div id="host-profile">
-  <div class="row container-responsive">
-    <div class="col-md-8 col-sm-12">
-      <div class="row-space-8 row-space-top-8">
-        <h4>About the Host, <%= userName %></h4>
-        <div class="row">
-          <div class="col-md-3 text-center">
-            <a href="/users/<%= listing.escape('user_id') %>"
-               class="user-icon">
-              <img src="<%= iconUrl %>" alt="user_icon" />
-            </a>
-          </div>
-          <div class="col-md-9">
-            <div class="row-space-2" id="user-description">
-              [user description]
-            </div>
-            <div class="row-space-2" id="u">
-              [more user description]
-            </div>
-            <div class="contact-wrapper">
-              <button class="btn btn-small btn-primary"
-                      id="host-profile-contact-btn">
-                Contact Host
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div> -->
 
 <div class="modal fade" id="bookingSuccessModal" tabindex="-1"
      role="dialog" aria-labelledby="reservationSuccessModal"
@@ -253,20 +192,8 @@
   </div>
 </div>
 
-<div class="modal fade" id="bookingFailureModal" tabindex="-1"
-     role="dialog" aria-labelledby="reservationSuccessModal"
-     aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal"
-                 aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <h4 class="modal-title">Booking failure</h4>
-      </div>
-      <div class="modal-body">
-      </div>
-    </div>
-  </div>
-</div>
+<script type="text/javascript">
+  (function () {
+
+  })();
+</script>

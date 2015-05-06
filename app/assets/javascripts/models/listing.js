@@ -17,14 +17,6 @@ PetBnB.Models.Listing = Backbone.Model.extend({
     return this._images;
   },
 
-  reservations: function () {
-
-  },
-
-  reviews: function () {
-
-  },
-
   parse: function (payload) {
     if (payload.images) {
       this.images().set(payload.images);

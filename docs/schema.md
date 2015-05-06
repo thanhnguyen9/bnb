@@ -43,10 +43,3 @@ booker_id       | integer   | not null, fk (ref users)
 listing_id      | integer   | not null, fk (ref listings)
 start_date      | string    | not null
 end_date        | string    | not null
-
-## reviews
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, pk
-user_id         | integer   | not null, fk (ref users)
-body            | string    | not null

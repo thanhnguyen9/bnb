@@ -19,10 +19,6 @@ PetBnB.Models.User = Backbone.Model.extend({
     return this._listings;
   },
 
-  reviews: function () {
-
-  },
-
   parse: function (payload) {
     if (payload.reservations) {
       this.reservations().set(payload.reservations);

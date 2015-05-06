@@ -5,4 +5,4 @@ json.images @listing.images do |image|
   json.extract! image, :listing_id, :url
 end
 
-json.user(@listing.user, :email, :avatar_url)
+json.user(@listing.user, :id, :email, :avatar_url)

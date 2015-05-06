@@ -93,7 +93,6 @@ PetBnB.Views.MapShowView = Backbone.View.extend({
 
   toggleMarkerInfo: function (event, marker) {
     this._currentInfoWindow && this._currentInfoWindow.close();
-    // make template for this (marker has title, first image, and price)
     this._currentInfoWindow = new google.maps.InfoWindow({
       content: marker.title
     });
