@@ -33,7 +33,7 @@ PetBnB.Views.ResultsView = Backbone.View.extend({
     this.addSlider();
     PetBnB.setDatepickers();
     this.$('.search-map').html(PetBnB.mapView.$el);
-    // google.maps.event.trigger(PetBnB.map, 'resize');
+    google.maps.event.trigger(PetBnB.map, 'resize');
     google.maps.event.trigger(PetBnB.map, 'idle');
     this.$('.search-container').append(this._resultsSubview.render().$el);
 
