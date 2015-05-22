@@ -1,12 +1,15 @@
+<% var email = user.escape('email').split('@')[0] %>
+<% var avatar_url = user.escape('avatar_url') === '' ? "https://s3-us-west-1.amazonaws.com/petbnb/images/listings/user_icon.png" : user.escape('avatar_url') %>
+
 <div class="row-space-4 row-space-top-4">
   <div class="row">
     <div class="col-md-3">
       <div class="panel row-space-4">
         <div class="media photo">
-          <img src="<%= user.escape('avatar_url') %>" alt="" />
+          <img src="<%= avatar_url %>" alt="" />
         </div>
         <div class="panel-body">
-          <h2 class="text-center"><%= user.escape('email') %></h2>
+          <h2 class="text-center"><%= email %></h2>
           <ul class="list-unstyled text-center">
             <li>
               <a href="#/users/<%= user.id %>">View Profile</a>

@@ -1,5 +1,15 @@
 module Api
   class ListingsController < ApplicationController
+    def create
+      @listing = Listing.save_to_db(listing_params)
+      if @listing
+        render json: @listing
+      else
+        render json: @listing.errors.full_messages,
+                     status: :unprocessable_entity
+      end
+    end
+
     def search
       @listings = filter(search_params)
       render :search
@@ -30,6 +40,11 @@ module Api
 
     def search_params
       params.require(:search).permit(:min, :max, :lat => [], :lng => [])
+    end
+
+    def listing_params
+      params.require(:listing).permit(:title, :address, :description, :city,
+                                      :state, :price)
     end
   end
 end

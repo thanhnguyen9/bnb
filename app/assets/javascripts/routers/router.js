@@ -2,6 +2,7 @@ PetBnB.Routers.Router = Backbone.Router.extend({
   routes: {
     '': 'home',
     'results': 'results',
+    'listings/new': 'newListing',
     'listings/:id': 'listingShow',
     'profile': 'profile',
     'users/:id': 'userShow'
@@ -29,6 +30,14 @@ PetBnB.Routers.Router = Backbone.Router.extend({
       model: listing
     });
     this._swapView(listingShowView);
+  },
+
+  newListing: function () {
+    var listing = new PetBnB.Models.Listing();
+    var newListingView = new PetBnB.Views.NewListingView({
+      model: listing
+    });
+    this._swapView(newListingView);
   },
 
   profile: function () {

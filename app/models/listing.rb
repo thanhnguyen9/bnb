@@ -11,4 +11,8 @@ class Listing < ActiveRecord::Base
       res.overlaps?(other_res)
     end
   end
+
+  def self.save_to_db(params)
+    debugger
+  end
 end
