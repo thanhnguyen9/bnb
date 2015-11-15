@@ -1,16 +1,18 @@
 <div class="outer-container">
   <div class="row listings-container">
     <% listings.each(function (listing) { %>
-      <div class="listing-container col-md-6 col-sm-12 row-space-2 pull-left">
+      <div class="col-md-4">
         <div class="panel-img listing-img">
-          <a href="#/listings/<%= listing.id %>">
+          <!-- <a href="#/listings/<%= listing.id %>">
             <img src="<%= listing.images().first().escape('url') %>" alt="" />
-          </a>
+          </a> -->
           <div class="listing-price">
             $<%= listing.escape('price_daily') %>
             <i class="fa fa-bolt"></i>
           </div>
         </div>
+      </div>
+      <div class="col-md-8">
         <div class="panel-body">
           <a href="#/listings/<%= listing.id %>">
             <h3 class="row-space-top-1">
