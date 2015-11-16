@@ -1,15 +1,15 @@
 <div class="intro-wrapper">
   <div class="intro-text">
-    VACATION HOMES FOR YOUR PET
+    Never easier
     <% if !logged_in? %>
       <div class="welcome-text">
-        Welcome to PetBnB :)
+        Get your phone fixed wherever you want.
         <br>
-        Please login or sign up with the links on the top right!
+        <button type="button" name="button" class="btn btn-primary">How it works</button>
       </div>
     <% end %>
   </div>
-  <% if logged_in? %>
+  <% if !logged_in? %>
     <div class="intro-search">
       <form class="form-group form-inline search-bar">
         <%= auth_input %>
@@ -18,10 +18,10 @@
             <input type="text" class="form-control search"
                    name="search[location]"
                    id="homepage-searchbox"
-                   placeholder="Where does your pet want to go?">
+                   placeholder="Check out your location">
             <span class="errors"></span>
           </span>
-          <span class="input-group hidden-xs">
+          <!-- <span class="input-group hidden-xs">
             <input type="text" class="form-control"
                    id="checkin"
                    name="search[checkin]"
@@ -32,7 +32,7 @@
                    id="checkout"
                    name="search[checkout]"
                    placeholder="Check Out">
-          </span>
+          </span> -->
           <span class="input-group-btn">
             <button class="btn btn-primary search">Search</button>
           </span>
@@ -41,7 +41,7 @@
     </div>
   <% end %>
 </div>
-<% if logged_in? %>
+<% if !logged_in? %>
   <div class="intro-listings">
     <div class="panel panel-dark">
       <div class="discovery-container">

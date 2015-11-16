@@ -9,7 +9,7 @@ window.PetBnB = {
     this.checkin = "";
     this.checkout = "";
 
-    if ($('#logged_in').length) {
+    // if ($('#logged_in').length) {
       var id = parseInt($('#logged_in').val());
       this.currentUser = new PetBnB.Models.User({ id: id });
       this.currentUser.fetch({
@@ -26,7 +26,7 @@ window.PetBnB = {
         $rootEl: $('#content')
       });
       Backbone.history.start();
-    }
+    // }
   },
 };
 

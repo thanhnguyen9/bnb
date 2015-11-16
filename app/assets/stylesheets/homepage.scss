@@ -2,13 +2,13 @@
 
 .intro-wrapper {
   height: 600px;
-  background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/bg.jpg');
+  background-image: url('http://i.imgur.com/RC983B1.jpg');
   background-repeat: no-repeat;
   background-position: 0 -150px;
 
   .intro-text {
     position: relative;
-    top: 200px;
+    top: 150px;
     text-align: center;
     font-size: 54px;
     font-weight: 700;
@@ -16,7 +16,7 @@
 
     .welcome-text {
       height: 100px;
-      background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
+      // background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
       line-height: 50px;
       font-size: 24px;
       font-weight: 500;
@@ -26,7 +26,7 @@
   .intro-search {
     padding: 30px 0;
     position: absolute;
-    top: 450px;
+    top: 500px;
     left: 0;
     width: 100%;
     background-image: url('https://s3-us-west-1.amazonaws.com/petbnb/images/homepage/search_bg.png');
